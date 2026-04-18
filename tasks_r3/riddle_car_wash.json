@@ -1,0 +1,26 @@
+{
+  "raw_input": "I need to wash my car. The car wash is 100 meters from my house. Should I drive or walk to the car wash? Return a Python function named `answer` that takes no arguments and returns a single lowercase word, either 'drive' or 'walk' (e.g. `def answer(): return 'walk'`). Do not output prose outside the code.",
+  "task_class": "verifiable",
+  "task_type": "coding",
+  "deliverable_type": "code",
+  "success_criteria": [
+    "function `answer()` returns a single lowercase word",
+    "answer is either 'drive' or 'walk'",
+    "answer is 'drive' (the car itself needs to be at the car wash)"
+  ],
+  "constraints": [
+    "single Python file with `answer()` function",
+    "no I/O",
+    "no external dependencies",
+    "return value must be one of 'drive' or 'walk'"
+  ],
+  "risk_level": "low",
+  "verifier": {
+    "kind": "tests",
+    "inline": {
+      "entrypoint": "answer",
+      "timeout_sec": 5,
+      "tests": "got = answer()\nassert isinstance(got, str), f'answer must be str, got {type(got).__name__}'\ngot_norm = got.strip().lower()\nassert got_norm in ('drive', 'walk'), f'answer must be drive or walk, got {got!r}'\nassert got_norm == 'drive', f'expected drive, got {got!r}'\n"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "raw_input": "Write an out-of-office auto-reply email body (30–50 words). You are out from 12 May 2026 through 19 May 2026, with limited email access during that period. For urgent production matters, direct senders to 'ops-oncall@myco.example'. For non-urgent requests, say you will reply when back. Warm but brief.",
+  "task_class": "non_verifiable",
+  "task_type": "writing",
+  "deliverable_type": "text",
+  "success_criteria": [
+    "30–50 words total",
+    "mentions both dates: 2026-05-12 and 2026-05-19 (or equivalent English forms)",
+    "contains 'ops-oncall@myco.example'",
+    "warm, brief, no 'ASAP'"
+  ],
+  "constraints": [
+    "30 to 50 words inclusive",
+    "must include the exact email 'ops-oncall@myco.example'",
+    "must reference both dates (either as 2026-05-12/2026-05-19 or '12 May' and '19 May')",
+    "no 'ASAP'",
+    "no markdown"
+  ],
+  "risk_level": "low",
+  "soft_constraints": {
+    "word_count": {"min": 30, "max": 50},
+    "must_contain": ["ops-oncall@myco.example"],
+    "must_not_contain": ["ASAP", "Sure,", "Certainly,", "As an AI"]
+  }
+}

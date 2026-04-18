@@ -1,0 +1,45 @@
+{
+  "raw_input": "Extract structured data from the meeting note below. Return a JSON object with: date (YYYY-MM-DD), attendees (array of names), action_items (array of objects with {owner, task, due_date}). Only output JSON, no prose.\n\nNote: \"Standup on Thursday March 12 2026 at 9am. Present: Alex Chen, Priya Raman, Marcus Weiss. Discussed the Q2 plan. Action items from the call: Alex will finalize the roadmap draft by March 19. Priya owns the customer-research writeup, due March 25. Marcus follows up with legal on the DPA by end of this week (March 13).\"",
+  "task_class": "verifiable",
+  "task_type": "extraction",
+  "deliverable_type": "json",
+  "success_criteria": [
+    "valid JSON conforming to the schema",
+    "date = '2026-03-12'",
+    "attendees = ['Alex Chen', 'Priya Raman', 'Marcus Weiss'] (order may vary)",
+    "three action_items, each with owner/task/due_date",
+    "due_dates in YYYY-MM-DD format"
+  ],
+  "constraints": [
+    "single JSON object, no markdown fences, no prose"
+  ],
+  "risk_level": "low",
+  "verifier": {
+    "kind": "json_schema",
+    "inline": {
+      "schema": {
+        "type": "object",
+        "required": ["date", "attendees", "action_items"],
+        "properties": {
+          "date": {"type": "string"},
+          "attendees": {
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "action_items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["owner", "task", "due_date"],
+              "properties": {
+                "owner": {"type": "string"},
+                "task": {"type": "string"},
+                "due_date": {"type": "string"}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

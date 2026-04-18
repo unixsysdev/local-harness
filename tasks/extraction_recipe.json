@@ -1,0 +1,46 @@
+{
+  "raw_input": "Extract the recipe into JSON. Fields: name (string), servings (integer), ingredients (array of objects with item (string), quantity (number, null if not a numeric quantity like 'a pinch'), unit (string, null if implicit)), steps (array of strings, in order).\n\nRecipe:\n\"Classic Vinaigrette (serves 4)\n\nWhisk together 3 tablespoons olive oil, 1 tablespoon red wine vinegar, 1 teaspoon Dijon mustard, and a pinch of salt until emulsified. Drizzle over mixed greens just before serving.\"\n\nReturn only the JSON object.",
+  "task_class": "verifiable",
+  "task_type": "extraction",
+  "deliverable_type": "json",
+  "success_criteria": [
+    "valid JSON matching schema",
+    "name = 'Classic Vinaigrette' (or close)",
+    "servings = 4",
+    "four ingredients, each with item/quantity/unit",
+    "'a pinch of salt' has quantity=null, unit='pinch' (or similar)",
+    "at least one cooking step captured"
+  ],
+  "constraints": [
+    "single JSON object",
+    "no markdown fences",
+    "quantity must be a number OR explicitly null, not a string"
+  ],
+  "risk_level": "low",
+  "verifier": {
+    "kind": "json_schema",
+    "inline": {
+      "schema": {
+        "type": "object",
+        "required": ["name", "servings", "ingredients", "steps"],
+        "properties": {
+          "name": {"type": "string"},
+          "servings": {"type": "integer"},
+          "ingredients": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["item", "quantity", "unit"],
+              "properties": {
+                "item": {"type": "string"},
+                "quantity": {"type": ["number", "null"]},
+                "unit": {"type": ["string", "null"]}
+              }
+            }
+          },
+          "steps": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    }
+  }
+}

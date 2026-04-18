@@ -1,0 +1,29 @@
+{
+  "raw_input": "Write a Python function `my_atoi(s: str) -> int` that converts a string to a 32-bit signed integer following these rules in order: (1) ignore leading whitespace; (2) check for an optional leading `+` or `-` sign; (3) read as many digits as possible to form the integer; (4) if no digits are read, return 0; (5) clamp to the 32-bit signed range [-2**31, 2**31 - 1]; (6) characters after the last digit are ignored. You MUST NOT use `int()`, `float()`, or `eval()` on the input string — write the digit parsing yourself.",
+  "task_class": "verifiable",
+  "task_type": "coding",
+  "deliverable_type": "code",
+  "success_criteria": [
+    "signature `my_atoi(s: str) -> int`",
+    "skips leading whitespace",
+    "handles + and - signs",
+    "clamps to 32-bit signed integer range",
+    "returns 0 on strings with no leading digits after sign",
+    "does not use int() or float() on the input string"
+  ],
+  "constraints": [
+    "single Python file",
+    "no use of int(), float(), or eval() on the input string (you may call int('5') in helpers only on single-digit literals via ord())",
+    "no regex imports (optional, but we want to see parser logic)",
+    "no I/O"
+  ],
+  "risk_level": "low",
+  "verifier": {
+    "kind": "tests",
+    "inline": {
+      "entrypoint": "my_atoi",
+      "timeout_sec": 10,
+      "tests": "import inspect\nsrc = inspect.getsource(my_atoi)\nforbidden = ['int(s', 'float(s', 'eval(']\nfor f in forbidden:\n    assert f not in src, f'forbidden call {f} found'\nINT_MIN = -2**31\nINT_MAX = 2**31 - 1\nassert my_atoi('42') == 42\nassert my_atoi('   -42') == -42\nassert my_atoi('4193 with words') == 4193\nassert my_atoi('words and 987') == 0\nassert my_atoi('-91283472332') == INT_MIN\nassert my_atoi('91283472332') == INT_MAX\nassert my_atoi('') == 0\nassert my_atoi('   +0 123') == 0\nassert my_atoi('+') == 0\nassert my_atoi('-') == 0\nassert my_atoi('   ') == 0\nassert my_atoi('+-12') == 0\nassert my_atoi('00000-42a123') == 0\nassert my_atoi('  0000000000012345678') == 12345678\nassert my_atoi('2147483647') == INT_MAX\nassert my_atoi('2147483648') == INT_MAX\nassert my_atoi('-2147483648') == INT_MIN\nassert my_atoi('-2147483649') == INT_MIN\n"
+    }
+  }
+}

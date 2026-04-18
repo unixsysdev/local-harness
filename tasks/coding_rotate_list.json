@@ -1,0 +1,28 @@
+{
+  "raw_input": "Write a Python function `rotate_right(nums: list[int], k: int) -> list[int]` that returns a new list rotated right by `k` positions. Rules: (a) when `k >= len(nums)`, rotate by `k mod len(nums)`; (b) when `k < 0`, rotate left by `abs(k) mod len(nums)`; (c) empty list returns a new empty list; (d) the input list must NOT be mutated.",
+  "task_class": "verifiable",
+  "task_type": "coding",
+  "deliverable_type": "code",
+  "success_criteria": [
+    "signature `rotate_right(nums: list[int], k: int) -> list[int]`",
+    "correct on k < len",
+    "correct when k > len (modulo)",
+    "correct when k is negative (rotate left)",
+    "returns a new list (does not mutate)",
+    "handles empty list"
+  ],
+  "constraints": [
+    "single Python file",
+    "no external dependencies",
+    "no I/O"
+  ],
+  "risk_level": "low",
+  "verifier": {
+    "kind": "tests",
+    "inline": {
+      "entrypoint": "rotate_right",
+      "timeout_sec": 10,
+      "tests": "assert rotate_right([], 5) == []\nassert rotate_right([1], 10) == [1]\nassert rotate_right([1,2,3], 0) == [1,2,3]\nassert rotate_right([1,2,3,4,5], 2) == [4,5,1,2,3]\nassert rotate_right([1,2,3], 3) == [1,2,3]\nassert rotate_right([1,2,3], 4) == [3,1,2]\nassert rotate_right([1,2,3,4,5], 100) == rotate_right([1,2,3,4,5], 100 % 5)\nassert rotate_right([1,2,3,4,5], -1) == [2,3,4,5,1]\nassert rotate_right([1,2,3,4,5], -6) == [2,3,4,5,1]\ninp = [1,2,3,4,5]\nout = rotate_right(inp, 2)\nassert out == [4,5,1,2,3]\nassert inp == [1,2,3,4,5], 'input must not be mutated'\n"
+    }
+  }
+}

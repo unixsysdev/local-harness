@@ -1,0 +1,28 @@
+{
+  "raw_input": "Write a Python function `median_sorted(a: list[int], b: list[int]) -> float` that returns the median of the combined values of two already-sorted lists `a` and `b`. Both lists are sorted ascending and may have different lengths; one or both may be empty (but not both empty — assume at least one element total). The median of an even-sized combined list is the average of the two middle values. You may not sort or concatenate-and-sort the combined list as a shortcut — the function must run in O(log(min(m, n))) time and must handle m + n up to 200,000 in under 0.5 seconds.",
+  "task_class": "verifiable",
+  "task_type": "coding",
+  "deliverable_type": "code",
+  "success_criteria": [
+    "signature `median_sorted(a: list[int], b: list[int]) -> float`",
+    "correct on small cases",
+    "correct when one list is empty",
+    "correct on even- and odd-total-length",
+    "runs fast enough on m+n = 200,000 (effectively requires O(log) not O(m+n))"
+  ],
+  "constraints": [
+    "single Python file",
+    "no external dependencies",
+    "no I/O",
+    "no sorted(a+b) or similar O(n log n) shortcut"
+  ],
+  "risk_level": "low",
+  "verifier": {
+    "kind": "tests",
+    "inline": {
+      "entrypoint": "median_sorted",
+      "timeout_sec": 15,
+      "tests": "import inspect, time\nsrc = inspect.getsource(median_sorted)\nforbidden_snips = ['sorted(a + b)', 'sorted(a+b)', 'sorted(list(a) + list(b))', '.sort()']\n# informational: heavy concatenation patterns are a smell; hard rule below is the perf check.\nassert abs(median_sorted([1,3], [2]) - 2.0) < 1e-9\nassert abs(median_sorted([1,2], [3,4]) - 2.5) < 1e-9\nassert abs(median_sorted([], [1]) - 1.0) < 1e-9\nassert abs(median_sorted([2], []) - 2.0) < 1e-9\nassert abs(median_sorted([0,0], [0,0]) - 0.0) < 1e-9\nassert abs(median_sorted([1,2,3,4,5], [6,7,8,9,10]) - 5.5) < 1e-9\nassert abs(median_sorted([1,2,3,4,5,6,7,8,9,10], [11]) - 6.0) < 1e-9\nassert abs(median_sorted([1], [2,3,4,5,6,7,8,9,10,11]) - 6.0) < 1e-9\n# perf: O(log(min(m,n))) with m+n = 200k must finish easily under 0.5s\nbig_a = list(range(0, 200000, 2))        # 100k evens\nbig_b = list(range(1, 200000, 2))        # 100k odds\nt0 = time.perf_counter()\ngot = median_sorted(big_a, big_b)\nassert (time.perf_counter() - t0) < 0.5, 'too slow on m+n=200k (requires O(log))'\nexpected = (99999 + 100000) / 2.0\nassert abs(got - expected) < 1e-9, f'expected {expected}, got {got}'\n"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "raw_input": "Write a bug report (80–120 words) with exactly three labeled sections in this order: 'Steps:', 'Expected:', 'Actual:'. Each section gets its own short paragraph. The bug: on Safari 17.4 (macOS), clicking the 'Save Draft' button in the blog post editor clears the editor body instead of saving it — but ONLY when the post title contains an emoji. No other browser or title state reproduces it. Write in direct engineering-style prose, no sugar-coating.",
+  "task_class": "non_verifiable",
+  "task_type": "writing",
+  "deliverable_type": "text",
+  "success_criteria": [
+    "80–120 words total",
+    "three labeled sections: 'Steps:', 'Expected:', 'Actual:' in that order",
+    "mentions Safari 17.4 and the emoji-in-title trigger condition",
+    "direct, engineering-style prose"
+  ],
+  "constraints": [
+    "80 to 120 words inclusive",
+    "contains literal labels 'Steps:', 'Expected:', 'Actual:'",
+    "mentions 'Safari'",
+    "no markdown headers, no filler openings"
+  ],
+  "risk_level": "low",
+  "soft_constraints": {
+    "word_count": {"min": 80, "max": 120},
+    "must_contain": ["Steps:", "Expected:", "Actual:", "Safari"],
+    "must_not_contain": ["Sure,", "Certainly,", "As an AI", "Here is"]
+  }
+}

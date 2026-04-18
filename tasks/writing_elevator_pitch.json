@@ -1,0 +1,22 @@
+{
+  "raw_input": "Write an elevator pitch (50–80 words) for a startup that offers same-day in-home diagnostic blood testing for pet owners, staffed by mobile veterinary phlebotomists. Target audience is a time-constrained pet owner who currently dreads vet visits. Avoid jargon. Be concrete about the offer and the benefit. No filler openings.",
+  "task_class": "non_verifiable",
+  "task_type": "writing",
+  "deliverable_type": "text",
+  "success_criteria": [
+    "50–80 words (hard range)",
+    "mentions same-day in-home visit",
+    "addresses a time-constrained pet owner benefit",
+    "no filler openings"
+  ],
+  "constraints": [
+    "50 to 80 words inclusive",
+    "no markdown headers or bullet lists",
+    "no filler openings like 'Sure,' / 'Certainly,'"
+  ],
+  "risk_level": "low",
+  "soft_constraints": {
+    "word_count": {"min": 50, "max": 80},
+    "must_not_contain": ["Sure, ", "Certainly,", "As an AI"]
+  }
+}

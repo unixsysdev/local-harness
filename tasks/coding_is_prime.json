@@ -1,0 +1,26 @@
+{
+  "raw_input": "Write a Python function `is_prime(n: int) -> bool` that returns True iff n is a prime number. Handle n <= 1 correctly (not prime). The function must handle n up to 10_000_000 in under 1 second.",
+  "task_class": "verifiable",
+  "task_type": "coding",
+  "deliverable_type": "code",
+  "success_criteria": [
+    "signature `is_prime(n: int) -> bool`",
+    "correct on small cases (0, 1, 2, 3, 4, 17, 25, 97, 100, 7919)",
+    "correct on edge cases (negative, 0, 1)",
+    "handles n up to 10_000_000 fast"
+  ],
+  "constraints": [
+    "single Python file",
+    "no external dependencies",
+    "no I/O, no print statements"
+  ],
+  "risk_level": "low",
+  "verifier": {
+    "kind": "tests",
+    "inline": {
+      "entrypoint": "is_prime",
+      "timeout_sec": 15,
+      "tests": "assert is_prime(2) is True\nassert is_prime(3) is True\nassert is_prime(4) is False\nassert is_prime(1) is False\nassert is_prime(0) is False\nassert is_prime(-7) is False\nassert is_prime(17) is True\nassert is_prime(25) is False\nassert is_prime(97) is True\nassert is_prime(100) is False\nassert is_prime(7919) is True\nassert is_prime(7920) is False\nimport time\nt0 = time.perf_counter()\nassert is_prime(9999991) is True\nassert (time.perf_counter() - t0) < 1.0, 'too slow on 10M-range prime'"
+    }
+  }
+}

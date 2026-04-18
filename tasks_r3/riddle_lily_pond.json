@@ -1,0 +1,25 @@
+{
+  "raw_input": "A lily pad doubles in surface area every day. On day 48 the pad covers the entire pond. On which day did the pad cover half the pond? Return a Python function named `answer` that takes no arguments and returns the day as an integer (e.g. `def answer(): return 42`).",
+  "task_class": "verifiable",
+  "task_type": "coding",
+  "deliverable_type": "code",
+  "success_criteria": [
+    "function `answer()` returns the day of half-coverage",
+    "answer is an integer between 1 and 48",
+    "answer is exactly 47 (doubling from half to full is one day)"
+  ],
+  "constraints": [
+    "single Python file with `answer()` function",
+    "no I/O",
+    "no external dependencies"
+  ],
+  "risk_level": "low",
+  "verifier": {
+    "kind": "tests",
+    "inline": {
+      "entrypoint": "answer",
+      "timeout_sec": 5,
+      "tests": "got = answer()\nassert isinstance(got, int), f'answer must be int, got {type(got).__name__}'\nassert got == 47, f'expected 47, got {got}'\n"
+    }
+  }
+}

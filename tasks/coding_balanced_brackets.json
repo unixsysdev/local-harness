@@ -1,0 +1,27 @@
+{
+  "raw_input": "Write a Python function `is_balanced(s: str) -> bool` that returns True iff every opening bracket in `s` has a matching closing bracket of the same type AND the nesting order is valid. The bracket pairs are `()`, `[]`, and `{}`. Any other characters in the string must be ignored. An empty string is balanced. Mismatched pairs such as `([)]` are NOT balanced.",
+  "task_class": "verifiable",
+  "task_type": "coding",
+  "deliverable_type": "code",
+  "success_criteria": [
+    "signature `is_balanced(s: str) -> bool`",
+    "correct on empty string (returns True)",
+    "correct on simple matches and mismatches",
+    "correct on interleaved mismatches like '([)]' -> False",
+    "ignores non-bracket characters"
+  ],
+  "constraints": [
+    "single Python file",
+    "no external dependencies",
+    "no I/O"
+  ],
+  "risk_level": "low",
+  "verifier": {
+    "kind": "tests",
+    "inline": {
+      "entrypoint": "is_balanced",
+      "timeout_sec": 10,
+      "tests": "assert is_balanced('') is True\nassert is_balanced('()') is True\nassert is_balanced('()[]{}') is True\nassert is_balanced('([{}])') is True\nassert is_balanced('((((()))))') is True\nassert is_balanced('(') is False\nassert is_balanced(')') is False\nassert is_balanced('(]') is False\nassert is_balanced('([)]') is False\nassert is_balanced('{[}]') is False\nassert is_balanced(']') is False\nassert is_balanced('((())') is False\nassert is_balanced('int main() { return arr[0]; }') is True\nassert is_balanced('if (x > [1, 2) { }') is False\nassert is_balanced('abcdef') is True\nassert is_balanced('{{{') is False\n"
+    }
+  }
+}

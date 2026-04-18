@@ -1,0 +1,28 @@
+{
+  "raw_input": "Write a Python function `decode(s: str) -> str` that decodes a string encoded with the pattern `k[X]` where `k` is a positive integer and `X` is the substring to repeat. The pattern can be nested: e.g. `3[a2[c]]` decodes to `accaccacc`. Rules: (a) `k` is always a positive integer given in decimal; (b) literal characters outside brackets are kept verbatim; (c) assume input is well-formed.",
+  "task_class": "verifiable",
+  "task_type": "coding",
+  "deliverable_type": "code",
+  "success_criteria": [
+    "signature `decode(s: str) -> str`",
+    "correct on simple patterns like '3[a]'",
+    "correct on compound patterns like '3[a]2[bc]'",
+    "correct on nested patterns like '3[a2[c]]'",
+    "correct on multi-digit counts like '10[a]'",
+    "correct on empty input"
+  ],
+  "constraints": [
+    "single Python file",
+    "no external dependencies",
+    "no I/O"
+  ],
+  "risk_level": "low",
+  "verifier": {
+    "kind": "tests",
+    "inline": {
+      "entrypoint": "decode",
+      "timeout_sec": 10,
+      "tests": "assert decode('') == ''\nassert decode('a') == 'a'\nassert decode('abc') == 'abc'\nassert decode('3[a]') == 'aaa'\nassert decode('3[a]2[bc]') == 'aaabcbc'\nassert decode('2[abc]3[cd]ef') == 'abcabccdcdcdef'\nassert decode('3[a2[c]]') == 'accaccacc'\nassert decode('2[2[2[a]]]') == 'aaaaaaaa'\nassert decode('10[a]') == 'a' * 10\nassert decode('12[ab]') == 'ab' * 12\nassert decode('a2[b]c') == 'abbc'\nassert decode('1[z]') == 'z'\n"
+    }
+  }
+}

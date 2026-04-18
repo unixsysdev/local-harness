@@ -1,0 +1,418 @@
+[
+  {
+    "task": "coding_atoi.json",
+    "task_path": "tasks_r3/coding_atoi.json",
+    "model_results": [
+      {
+        "model": "model_a",
+        "passed": true,
+        "wall_ms": 446159,
+        "output_tokens": 5337,
+        "finish_reason": "stop",
+        "truncated": false,
+        "validator_summary": {
+          "status": "ok",
+          "failures": []
+        },
+        "output_preview": "Here's the complete implementation following all your rules and constraints:\n\n```python\ndef my_atoi(s: str) -> int:\n    INT_MAX = 2**31 - 1\n    INT_MIN = -2**31\n\n    i, n = 0, len(s)\n    sign = 1\n    result = 0\n    started = False\n\n    # 1. Ignore leading whitespace\n    while i <",
+        "_rerun": true
+      },
+      {
+        "model": "model_b",
+        "passed": true,
+        "wall_ms": 187769,
+        "output_tokens": 2063,
+        "finish_reason": "stop",
+        "truncated": false,
+        "validator_summary": {
+          "status": "ok",
+          "failures": []
+        },
+        "output_preview": "```python\ndef my_atoi(s: str) -> int:\n    \"\"\"\n    Converts a string to a 32-bit signed integer following the rules of \n    the standard atoi implementation.\n    \"\"\"\n    # Constants for 32-bit signed integer limits\n    INT_MIN = -2147483648\n    INT_MAX = 2147483647\n\n    n = len(s)"
+      }
+    ],
+    "disposition": "BOTH_PASS (drop - too easy)"
+  },
+  {
+    "task": "coding_calculator.json",
+    "task_path": "tasks_r3/coding_calculator.json",
+    "model_results": [
+      {
+        "model": "model_a",
+        "passed": true,
+        "wall_ms": 512071,
+        "output_tokens": 7285,
+        "finish_reason": "stop",
+        "truncated": false,
+        "validator_summary": {
+          "status": "ok",
+          "failures": []
+        },
+        "output_preview": "```python\ndef calc(expr: str) -> float:\n    # Tokenize the expression, ignoring whitespace\n    tokens = []\n    i = 0\n    n = len(expr)\n    while i < n:\n        if expr[i].isspace():\n            i += 1\n        elif expr[i].isdigit():\n            j = i\n            while j < n and e",
+        "_rerun": true
+      },
+      {
+        "model": "model_b",
+        "passed": false,
+        "wall_ms": 418942,
+        "output_tokens": 4923,
+        "finish_reason": "stop",
+        "truncated": false,
+        "validator_summary": {
+          "status": "fail",
+          "failures": [
+            {
+              "type": "assertion",
+              "msg": "forbidden call eval( found in solution"
+            }
+          ]
+        },
+        "output_preview": "```python\ndef calc(expr: str) -> float:\n    \"\"\"\n    Evaluates an arithmetic expression string containing non-negative integers,\n    operators (+, -, *, /), and parentheses.\n    \n    Uses a Recursive Descent Parser to handle operator precedence and \n    parentheses without using e"
+      }
+    ],
+    "disposition": "ASYMMETRIC (KEEP - test if harness rescues model_b)"
+  },
+  {
+    "task": "coding_median_two_sorted.json",
+    "task_path": "tasks_r3/coding_median_two_sorted.json",
+    "model_results": [
+      {
+        "model": "model_a",
+        "passed": true,
+        "wall_ms": 590592,
+        "output_tokens": 5474,
+        "finish_reason": "stop",
+        "truncated": false,
+        "validator_summary": {
+          "status": "ok",
+          "failures": []
+        },
+        "output_preview": "```python\ndef median_sorted(a: list[int], b: list[int]) -> float:\n    # Ensure a is the smaller array to guarantee O(log(min(m, n))) time complexity\n    if len(a) > len(b):\n        a, b = b, a\n        \n    m, n = len(a), len(b)\n    low, high = 0, m\n    half_len = (m + n + 1) // 2"
+      },
+      {
+        "model": "model_b",
+        "passed": true,
+        "wall_ms": 511770,
+        "output_tokens": 6172,
+        "finish_reason": "stop",
+        "truncated": false,
+        "validator_summary": {
+          "status": "ok",
+          "failures": []
+        },
+        "output_preview": "```python\ndef median_sorted(a: list[int], b: list[int]) -> float:\n    \"\"\"\n    Returns the median of two sorted lists in O(log(min(m, n))) time.\n    \n    The algorithm uses binary search to find a partition point in both lists\n    such that all elements on the left side are less t"
+      }
+    ],
+    "disposition": "BOTH_PASS (drop - too easy)"
+  },
+  {
+    "task": "coding_simplify_path.json",
+    "task_path": "tasks_r3/coding_simplify_path.json",
+    "model_results": [
+      {
+        "model": "model_a",
+        "passed": true,
+        "wall_ms": 503322,
+        "output_tokens": 4785,
+        "finish_reason": "stop",
+        "truncated": false,
+        "validator_summary": {
+          "status": "ok",
+          "failures": []
+        },
+        "output_preview": "```python\ndef simplify_path(path: str) -> str:\n    \"\"\"\n    Takes an absolute Unix-style path and returns its canonical form.\n    \n    Rules applied:\n    (a) '.' refers to the current directory (ignored).\n    (b) '..' moves up one directory level (pops stack).\n    (c) Multiple con"
+      },
+      {
+        "model": "model_b",
+        "passed": true,
+        "wall_ms": 151602,
+        "output_tokens": 1607,
+        "finish_reason": "stop",
+        "truncated": false,
+        "validator_summary": {
+          "status": "ok",
+          "failures": []
+        },
+        "output_preview": "```python\ndef simplify_path(path: str) -> str:\n    \"\"\"\n    Simplifies a Unix-style absolute path to its canonical form.\n    \n    Args:\n        path: The absolute Unix-style path string.\n        \n    Returns:\n        The canonical version of the path.\n    \"\"\"\n    # Split the path "
+      }
+    ],
+    "disposition": "BOTH_PASS (drop - too easy)"
+  },
+  {
+    "task": "coding_valid_number.json",
+    "task_path": "tasks_r3/coding_valid_number.json",
+    "model_results": [
+      {
+        "model": "model_a",
+        "passed": true,
+        "wall_ms": 249882,
+        "output_tokens": 8381,
+        "finish_reason": "stop",
+        "truncated": false,
+        "validator_summary": {
+          "status": "ok",
+          "failures": []
+        },
+        "output_preview": "```python\ndef is_number(s: str) -> bool:\n    # Reject empty strings and any string with leading/trailing whitespace\n    if not s or s != s.strip():\n        return False\n\n    i = 0\n    n = len(s)\n\n    # Optional leading sign\n    if i < n and s[i] in '+-':\n        i += 1\n\n    num_d",
+        "_rerun_uncapped": true
+      },
+      {
+        "model": "model_b",
+        "passed": true,
+        "wall_ms": 442815,
+        "output_tokens": 7902,
+        "finish_reason": "stop",
+        "truncated": false,
+        "validator_summary": {
+          "status": "ok",
+          "failures": []
+        },
+        "output_preview": "```python\ndef is_number(s: str) -> bool:\n    \"\"\"\n    Returns True if the string s represents a valid number according to the grammar:\n    - An optional leading sign (+ or -).\n    - A decimal part:\n        - One or more digits, optionally followed by a '.' and zero or more digits.",
+        "_rerun": true
+      }
+    ],
+    "disposition": "BOTH_PASS (drop - too easy)"
+  },
+  {
+    "task": "coding_word_break.json",
+    "task_path": "tasks_r3/coding_word_break.json",
+    "model_results": [
+      {
+        "model": "model_a",
+        "passed": false,
+        "wall_ms": 130798,
+        "output_tokens": 3837,
+        "finish_reason": "stop",
+        "truncated": false,
+        "validator_summary": {
+          "status": "fail",
+          "failures": [
+            {
+              "type": "assertion",
+              "msg": ""
+            }
+          ]
+        },
+        "output_preview": "Here's a clean, efficient implementation using dynamic programming with a set-based lookup and a length-based pruning optimization:\n\n```python\ndef word_break(s: str, word_dict: list[str]) -> bool:\n    word_set = set(word_dict)\n    n = len(s)\n    dp = [False] * (n + 1)\n    dp[0] =",
+        "_rerun_uncapped": true
+      },
+      {
+        "model": "model_b",
+        "passed": false,
+        "wall_ms": 659468,
+        "output_tokens": 1950,
+        "finish_reason": "stop",
+        "truncated": false,
+        "validator_summary": {
+          "status": "fail",
+          "failures": [
+            {
+              "type": "assertion",
+              "msg": ""
+            }
+          ]
+        },
+        "output_preview": "```python\ndef word_break(s: str, word_dict: list[str]) -> bool:\n    \"\"\"\n    Determines if the string 's' can be segmented into a sequence of one or more \n    words from 'word_dict'.\n    \n    Args:\n        s: The input string to segment.\n        word_dict: A list of allowed words."
+      }
+    ],
+    "disposition": "BOTH_FAIL (KEEP - sweet spot)"
+  },
+  {
+    "task": "riddle_bat_and_ball.json",
+    "task_path": "tasks_r3/riddle_bat_and_ball.json",
+    "model_results": [
+      {
+        "model": "model_a",
+        "passed": true,
+        "wall_ms": 613123,
+        "output_tokens": 824,
+        "finish_reason": "stop",
+        "truncated": false,
+        "validator_summary": {
+          "status": "ok",
+          "failures": []
+        },
+        "output_preview": "```python\ndef answer():\n    return 0.05\n```"
+      },
+      {
+        "model": "model_b",
+        "passed": true,
+        "wall_ms": 647484,
+        "output_tokens": 610,
+        "finish_reason": "stop",
+        "truncated": false,
+        "validator_summary": {
+          "status": "ok",
+          "failures": []
+        },
+        "output_preview": "```python\ndef answer():\n    \"\"\"\n    Returns the cost of the ball.\n    \n    Mathematical derivation:\n    Let x be the cost of the ball.\n    Let y be the cost of the bat.\n    \n    Equations:\n    1) x + y = 1.10\n    2) y = x + 1.00\n    \n    Substitute (2) into (1):\n    x + (x + 1.00"
+      }
+    ],
+    "disposition": "BOTH_PASS (drop - too easy)"
+  },
+  {
+    "task": "riddle_hen_and_half.json",
+    "task_path": "tasks_r3/riddle_hen_and_half.json",
+    "model_results": [
+      {
+        "model": "model_a",
+        "passed": true,
+        "wall_ms": 708868,
+        "output_tokens": 1085,
+        "finish_reason": "stop",
+        "truncated": false,
+        "validator_summary": {
+          "status": "ok",
+          "failures": []
+        },
+        "output_preview": "```python\ndef answer():\n    return 6\n```"
+      },
+      {
+        "model": "model_b",
+        "passed": true,
+        "wall_ms": 688465,
+        "output_tokens": 937,
+        "finish_reason": "stop",
+        "truncated": false,
+        "validator_summary": {
+          "status": "ok",
+          "failures": []
+        },
+        "output_preview": "```python\ndef answer():\n    \"\"\"\n    Calculates the number of eggs 3 hens lay in 3 days based on the rate:\n    1.5 hens lay 1.5 eggs in 1.5 days.\n\n    Reasoning:\n    1. Rate = Eggs / (Hens * Days)\n    2. Rate = 1.5 / (1.5 * 1.5) = 1.5 / 2.25 = 2/3 eggs per hen per day.\n    3. For "
+      }
+    ],
+    "disposition": "BOTH_PASS (drop - too easy)"
+  },
+  {
+    "task": "riddle_lily_pond.json",
+    "task_path": "tasks_r3/riddle_lily_pond.json",
+    "model_results": [
+      {
+        "model": "model_a",
+        "passed": true,
+        "wall_ms": 651034,
+        "output_tokens": 398,
+        "finish_reason": "stop",
+        "truncated": false,
+        "validator_summary": {
+          "status": "ok",
+          "failures": []
+        },
+        "output_preview": "```python\ndef answer():\n    return 47\n```"
+      },
+      {
+        "model": "model_b",
+        "passed": true,
+        "wall_ms": 698181,
+        "output_tokens": 535,
+        "finish_reason": "stop",
+        "truncated": false,
+        "validator_summary": {
+          "status": "ok",
+          "failures": []
+        },
+        "output_preview": "```python\ndef answer():\n    \"\"\"\n    The lily pad doubles in surface area every day.\n    If it covers the entire pond on day 48, then one day prior (day 47),\n    it must have covered exactly half of that area.\n    \n    Logic:\n    Area(day n) = 2 * Area(day n-1)\n    Area(48) = Full"
+      }
+    ],
+    "disposition": "BOTH_PASS (drop - too easy)"
+  },
+  {
+    "task": "riddle_monty_hall.json",
+    "task_path": "tasks_r3/riddle_monty_hall.json",
+    "model_results": [
+      {
+        "model": "model_a",
+        "passed": true,
+        "wall_ms": 1043735,
+        "output_tokens": 8192,
+        "finish_reason": "length",
+        "truncated": true,
+        "validator_summary": {
+          "status": "ok",
+          "failures": []
+        },
+        "output_preview": "The user wants a Python function `answer()` that returns the probability of winning the Monty Hall problem if the player always switches doors.\n\n**Problem Analysis:**\n1.  **Setup:** 3 doors. 1 Car (Win), 2 Goats (Lose).\n2.  **Player's Initial Choice:** The player picks a door (sa"
+      },
+      {
+        "model": "model_b",
+        "passed": true,
+        "wall_ms": 743862,
+        "output_tokens": 970,
+        "finish_reason": "stop",
+        "truncated": false,
+        "validator_summary": {
+          "status": "ok",
+          "failures": []
+        },
+        "output_preview": "```python\ndef answer():\n    \"\"\"\n    Returns the probability of winning the car in the Monty Hall problem \n    if the player always switches their choice.\n    \n    The logic:\n    - There are three doors. One has a car, two have goats.\n    - The probability of picking a goat initia"
+      }
+    ],
+    "disposition": "BOTH_PASS (drop - too easy)"
+  },
+  {
+    "task": "riddle_sock_drawer.json",
+    "task_path": "tasks_r3/riddle_sock_drawer.json",
+    "model_results": [
+      {
+        "model": "model_a",
+        "passed": true,
+        "wall_ms": 762706,
+        "output_tokens": 669,
+        "finish_reason": "stop",
+        "truncated": false,
+        "validator_summary": {
+          "status": "ok",
+          "failures": []
+        },
+        "output_preview": "```python\ndef answer():\n    \"\"\"\n    Calculates the minimum number of socks to pull to guarantee a matching pair.\n    \n    There are 2 colors (Red and Blue). \n    According to the Pigeonhole Principle, if you have n categories (colors),\n    you need to select n + 1 items to guaran"
+      },
+      {
+        "model": "model_b",
+        "passed": true,
+        "wall_ms": 748690,
+        "output_tokens": 583,
+        "finish_reason": "stop",
+        "truncated": false,
+        "validator_summary": {
+          "status": "ok",
+          "failures": []
+        },
+        "output_preview": "```python\ndef answer():\n    \"\"\"\n    Returns the minimum number of socks required to guarantee a matching pair.\n    \n    According to the Pigeonhole Principle:\n    - There are 2 possible colors (holes): Red and Blue.\n    - If we pull 2 socks, they could be one of each color (no gu"
+      }
+    ],
+    "disposition": "BOTH_PASS (drop - too easy)"
+  },
+  {
+    "task": "riddle_widget_machines.json",
+    "task_path": "tasks_r3/riddle_widget_machines.json",
+    "model_results": [
+      {
+        "model": "model_a",
+        "passed": true,
+        "wall_ms": 1041598,
+        "output_tokens": 7534,
+        "finish_reason": "stop",
+        "truncated": false,
+        "validator_summary": {
+          "status": "ok",
+          "failures": []
+        },
+        "output_preview": "```python\ndef answer():\n    return 5\n```"
+      },
+      {
+        "model": "model_b",
+        "passed": true,
+        "wall_ms": 781421,
+        "output_tokens": 513,
+        "finish_reason": "stop",
+        "truncated": false,
+        "validator_summary": {
+          "status": "ok",
+          "failures": []
+        },
+        "output_preview": "```python\ndef answer():\n    \"\"\"\n    Calculates the time taken by 100 machines to produce 100 widgets.\n    \n    Logic:\n    If 5 machines take 5 minutes to produce 5 widgets, each machine \n    produces 1 widget in 5 minutes.\n    If 100 machines work simultaneously, each machine wil"
+      }
+    ],
+    "disposition": "BOTH_PASS (drop - too easy)"
+  }
+]

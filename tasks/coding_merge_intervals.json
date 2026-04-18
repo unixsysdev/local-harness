@@ -1,0 +1,28 @@
+{
+  "raw_input": "Write a Python function `merge_intervals(intervals: list[list[int]]) -> list[list[int]]` that takes a list of closed intervals `[start, end]` with `start <= end`, and returns a new list of merged intervals sorted by start. Two intervals should be merged if they overlap OR touch (i.e. [1,4] and [4,5] become [1,5]). Do not mutate the input.",
+  "task_class": "verifiable",
+  "task_type": "coding",
+  "deliverable_type": "code",
+  "success_criteria": [
+    "signature `merge_intervals(intervals: list[list[int]]) -> list[list[int]]`",
+    "result is sorted by start",
+    "touching intervals merge ([1,4],[4,5] -> [1,5])",
+    "fully-contained intervals disappear into their container",
+    "empty input returns empty list",
+    "input is not mutated"
+  ],
+  "constraints": [
+    "single Python file",
+    "no external dependencies",
+    "no I/O"
+  ],
+  "risk_level": "low",
+  "verifier": {
+    "kind": "tests",
+    "inline": {
+      "entrypoint": "merge_intervals",
+      "timeout_sec": 10,
+      "tests": "assert merge_intervals([]) == []\nassert merge_intervals([[1,4]]) == [[1,4]]\nassert merge_intervals([[1,3],[2,6],[8,10],[15,18]]) == [[1,6],[8,10],[15,18]]\nassert merge_intervals([[1,4],[4,5]]) == [[1,5]]\nassert merge_intervals([[1,10],[2,3],[4,5]]) == [[1,10]]\nassert merge_intervals([[5,6],[1,2]]) == [[1,2],[5,6]]\nassert merge_intervals([[1,4],[0,4]]) == [[0,4]]\nassert merge_intervals([[1,2],[3,4],[5,6]]) == [[1,2],[3,4],[5,6]]\ninp = [[1,3],[2,6]]\nout = merge_intervals(inp)\nassert out == [[1,6]]\nassert inp == [[1,3],[2,6]], 'input must not be mutated'\n"
+    }
+  }
+}

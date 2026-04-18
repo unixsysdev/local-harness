@@ -1,0 +1,26 @@
+{
+  "raw_input": "Write a Python function `roman_to_int(s: str) -> int` that converts a valid Roman numeral (in the range 1..3999) to an integer. You must handle subtractive notation: IV=4, IX=9, XL=40, XC=90, CD=400, CM=900. Assume the input is a well-formed Roman numeral — you do not need to validate it.",
+  "task_class": "verifiable",
+  "task_type": "coding",
+  "deliverable_type": "code",
+  "success_criteria": [
+    "signature `roman_to_int(s: str) -> int`",
+    "handles all subtractive pairs (IV, IX, XL, XC, CD, CM)",
+    "correct on compound numerals like MCMXCIV (1994) and MMMCMXCIX (3999)",
+    "correct on trivial cases (I, V, X, L, C, D, M)"
+  ],
+  "constraints": [
+    "single Python file",
+    "no external dependencies",
+    "no I/O"
+  ],
+  "risk_level": "low",
+  "verifier": {
+    "kind": "tests",
+    "inline": {
+      "entrypoint": "roman_to_int",
+      "timeout_sec": 10,
+      "tests": "assert roman_to_int('I') == 1\nassert roman_to_int('III') == 3\nassert roman_to_int('IV') == 4\nassert roman_to_int('V') == 5\nassert roman_to_int('IX') == 9\nassert roman_to_int('X') == 10\nassert roman_to_int('XL') == 40\nassert roman_to_int('L') == 50\nassert roman_to_int('XC') == 90\nassert roman_to_int('C') == 100\nassert roman_to_int('CD') == 400\nassert roman_to_int('D') == 500\nassert roman_to_int('CM') == 900\nassert roman_to_int('M') == 1000\nassert roman_to_int('LVIII') == 58\nassert roman_to_int('XLII') == 42\nassert roman_to_int('MCMXCIV') == 1994\nassert roman_to_int('MMXXVI') == 2026\nassert roman_to_int('MMMCMXCIX') == 3999\n"
+    }
+  }
+}

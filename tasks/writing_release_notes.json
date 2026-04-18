@@ -1,0 +1,26 @@
+{
+  "raw_input": "Write release notes (60–100 words) for version 2.4.0 of an internal dashboard tool. Facts to convey: (a) new features — CSV export on all chart views, and dark mode; (b) fixed — timezone bug that caused chart timestamps to be one hour off during DST transitions; (c) breaking change — the /api/v1/metrics endpoint is removed; clients must migrate to /v2/metrics. Structure: one short intro sentence, then sections labeled 'New:', 'Fixed:', 'Breaking:' with plain-text prose (no bullets or markdown lists). Audience: internal engineering team.",
+  "task_class": "non_verifiable",
+  "task_type": "writing",
+  "deliverable_type": "text",
+  "success_criteria": [
+    "60–100 words total",
+    "version number '2.4.0' appears",
+    "labels 'New:', 'Fixed:', 'Breaking:' appear",
+    "both new features, the DST fix, and the /v2/metrics migration are all mentioned",
+    "plain prose after each label, not bullet lists"
+  ],
+  "constraints": [
+    "60 to 100 words inclusive",
+    "must contain '2.4.0'",
+    "must contain labels 'New:', 'Fixed:', 'Breaking:'",
+    "must contain '/v2/metrics'",
+    "no markdown bullets (- or *) or headers (#)"
+  ],
+  "risk_level": "low",
+  "soft_constraints": {
+    "word_count": {"min": 60, "max": 100},
+    "must_contain": ["2.4.0", "New:", "Fixed:", "Breaking:", "/v2/metrics"],
+    "must_not_contain": ["Sure,", "Certainly,", "As an AI"]
+  }
+}

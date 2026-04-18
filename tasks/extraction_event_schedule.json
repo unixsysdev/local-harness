@@ -1,0 +1,43 @@
+{
+  "raw_input": "Extract event information as JSON. Fields: event_name (string), start_datetime (ISO 8601 local, with NO timezone suffix, e.g. '2026-06-10T10:00'), end_datetime (ISO 8601 local), timezone (IANA zone name like 'Europe/Berlin' — derive from the abbreviation), location (string), organizer (string), virtual (boolean: true if explicitly virtual/online, false otherwise), duration_minutes (integer).\n\nNotice:\n\"Q2 All-Hands Meeting hosted by Priya Raman on Wednesday, 10 June 2026 from 10:00 to 11:30 CEST in the Main Auditorium (Berlin office). In-person only — no dial-in.\"\n\nReturn only the JSON object.",
+  "task_class": "verifiable",
+  "task_type": "extraction",
+  "deliverable_type": "json",
+  "success_criteria": [
+    "valid JSON matching schema",
+    "event_name = 'Q2 All-Hands Meeting'",
+    "start_datetime = '2026-06-10T10:00'",
+    "end_datetime = '2026-06-10T11:30'",
+    "timezone = 'Europe/Berlin' (CEST maps to this)",
+    "location contains 'Main Auditorium'",
+    "organizer = 'Priya Raman'",
+    "virtual = false",
+    "duration_minutes = 90"
+  ],
+  "constraints": [
+    "single JSON object",
+    "no markdown fences",
+    "datetimes without timezone suffix, IANA zone in separate field",
+    "duration_minutes is an integer"
+  ],
+  "risk_level": "low",
+  "verifier": {
+    "kind": "json_schema",
+    "inline": {
+      "schema": {
+        "type": "object",
+        "required": ["event_name", "start_datetime", "end_datetime", "timezone", "location", "organizer", "virtual", "duration_minutes"],
+        "properties": {
+          "event_name": {"type": "string"},
+          "start_datetime": {"type": "string"},
+          "end_datetime": {"type": "string"},
+          "timezone": {"type": "string"},
+          "location": {"type": "string"},
+          "organizer": {"type": "string"},
+          "virtual": {"type": "boolean"},
+          "duration_minutes": {"type": "integer"}
+        }
+      }
+    }
+  }
+}

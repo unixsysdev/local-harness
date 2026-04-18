@@ -1,0 +1,37 @@
+{
+  "raw_input": "Extract fields from the invoice below into a JSON object. Fields: invoice_number (string), invoice_date (ISO 8601 YYYY-MM-DD), due_date (ISO 8601 YYYY-MM-DD), total_amount (number, no currency symbol), currency (ISO 4217 code). Output only the JSON object — no prose, no markdown fences.\n\nInvoice text:\n\"Invoice No. INV-2026-0412\nIssued: 18 April 2026\nPayment due: 18 May 2026\nTotal: €1.247,50\nPayment terms: Net 30 days\"",
+  "task_class": "verifiable",
+  "task_type": "extraction",
+  "deliverable_type": "json",
+  "success_criteria": [
+    "valid JSON matching schema",
+    "invoice_number = 'INV-2026-0412'",
+    "invoice_date = '2026-04-18'",
+    "due_date = '2026-05-18'",
+    "total_amount = 1247.50 (parsed from European format)",
+    "currency = 'EUR'"
+  ],
+  "constraints": [
+    "single JSON object",
+    "no markdown fences, no prose outside JSON",
+    "dates in YYYY-MM-DD format",
+    "total_amount as a number, not a string"
+  ],
+  "risk_level": "low",
+  "verifier": {
+    "kind": "json_schema",
+    "inline": {
+      "schema": {
+        "type": "object",
+        "required": ["invoice_number", "invoice_date", "due_date", "total_amount", "currency"],
+        "properties": {
+          "invoice_number": {"type": "string"},
+          "invoice_date": {"type": "string"},
+          "due_date": {"type": "string"},
+          "total_amount": {"type": "number"},
+          "currency": {"type": "string"}
+        }
+      }
+    }
+  }
+}

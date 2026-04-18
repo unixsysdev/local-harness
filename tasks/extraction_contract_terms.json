@@ -1,0 +1,39 @@
+{
+  "raw_input": "Extract key contract terms from the clause below into JSON. Fields: effective_date (YYYY-MM-DD), initial_term_months (integer), renewal_term_months (integer), auto_renew (boolean), notice_period_days (integer), governing_law (string — jurisdiction). The clause uses natural-language numbers (e.g. 'twelve months') which you must convert to integers.\n\nClause:\n\"This Master Services Agreement takes effect on the first of May, 2026, and shall continue for an initial term of twenty-four months. At the end of the initial term, the Agreement automatically renews for successive periods of twelve months each, unless either party provides the other with at least sixty days' prior written notice of non-renewal. This Agreement is governed by the laws of the Federal Republic of Germany.\"\n\nReturn only the JSON object.",
+  "task_class": "verifiable",
+  "task_type": "extraction",
+  "deliverable_type": "json",
+  "success_criteria": [
+    "valid JSON matching schema",
+    "effective_date = '2026-05-01'",
+    "initial_term_months = 24",
+    "renewal_term_months = 12",
+    "auto_renew = true",
+    "notice_period_days = 60",
+    "governing_law = 'Germany' or 'Federal Republic of Germany'"
+  ],
+  "constraints": [
+    "single JSON object",
+    "no markdown fences",
+    "month/day counts must be integers, NOT strings",
+    "effective_date in ISO format"
+  ],
+  "risk_level": "low",
+  "verifier": {
+    "kind": "json_schema",
+    "inline": {
+      "schema": {
+        "type": "object",
+        "required": ["effective_date", "initial_term_months", "renewal_term_months", "auto_renew", "notice_period_days", "governing_law"],
+        "properties": {
+          "effective_date": {"type": "string"},
+          "initial_term_months": {"type": "integer"},
+          "renewal_term_months": {"type": "integer"},
+          "auto_renew": {"type": "boolean"},
+          "notice_period_days": {"type": "integer"},
+          "governing_law": {"type": "string"}
+        }
+      }
+    }
+  }
+}

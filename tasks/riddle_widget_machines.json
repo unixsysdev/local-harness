@@ -1,0 +1,25 @@
+{
+  "raw_input": "If 5 machines take 5 minutes to produce 5 widgets, how many minutes do 100 machines take to produce 100 widgets (assuming each machine works independently at the same rate)? Return a Python function named `answer` that takes no arguments and returns the time in minutes as an integer (e.g. `def answer(): return 42`). The intuitive answer is not correct — each machine still produces one widget in 5 minutes.",
+  "task_class": "verifiable",
+  "task_type": "coding",
+  "deliverable_type": "code",
+  "success_criteria": [
+    "function `answer()` returns the time in minutes",
+    "answer is a positive integer",
+    "answer is exactly 5 (each machine produces one widget in 5 minutes; parallel machines don't speed up per-widget production)"
+  ],
+  "constraints": [
+    "single Python file with `answer()` function",
+    "no I/O",
+    "no external dependencies"
+  ],
+  "risk_level": "low",
+  "verifier": {
+    "kind": "tests",
+    "inline": {
+      "entrypoint": "answer",
+      "timeout_sec": 5,
+      "tests": "got = answer()\nassert isinstance(got, int), f'answer must be int, got {type(got).__name__}'\nassert got == 5, f'expected 5, got {got}'\n"
+    }
+  }
+}

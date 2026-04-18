@@ -1,0 +1,25 @@
+{
+  "raw_input": "If a hen and a half lays an egg and a half in a day and a half, how many eggs do 3 hens lay in 3 days, assuming hens lay at a constant rate? Return a Python function named `answer` that takes no arguments and returns the exact number of eggs as an integer.",
+  "task_class": "verifiable",
+  "task_type": "coding",
+  "deliverable_type": "code",
+  "success_criteria": [
+    "function `answer()` returns the number of eggs",
+    "answer is a positive integer",
+    "answer is exactly 6 (rate: 1 hen lays 1 egg per 1.5 days = 2 eggs per 3 days; 3 hens × 2 eggs = 6)"
+  ],
+  "constraints": [
+    "single Python file with `answer()` function",
+    "no I/O",
+    "no external dependencies"
+  ],
+  "risk_level": "low",
+  "verifier": {
+    "kind": "tests",
+    "inline": {
+      "entrypoint": "answer",
+      "timeout_sec": 5,
+      "tests": "got = answer()\nassert isinstance(got, int), f'answer must be int, got {type(got).__name__}'\nassert got == 6, f'expected 6, got {got}'\n"
+    }
+  }
+}

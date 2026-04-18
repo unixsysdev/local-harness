@@ -1,0 +1,35 @@
+[
+  {
+    "task": "riddle_car_wash.json",
+    "task_path": "tasks_r3_new/riddle_car_wash.json",
+    "model_results": [
+      {
+        "model": "model_a",
+        "passed": true,
+        "wall_ms": 14405,
+        "output_tokens": 242,
+        "finish_reason": "stop",
+        "truncated": false,
+        "validator_summary": {
+          "status": "ok",
+          "failures": []
+        },
+        "output_preview": "```python\ndef answer():\n    return 'drive'\n```"
+      },
+      {
+        "model": "model_b",
+        "passed": true,
+        "wall_ms": 11789,
+        "output_tokens": 218,
+        "finish_reason": "stop",
+        "truncated": false,
+        "validator_summary": {
+          "status": "ok",
+          "failures": []
+        },
+        "output_preview": "```python\ndef answer():\n    return 'drive'\n```"
+      }
+    ],
+    "disposition": "BOTH_PASS (drop - too easy)"
+  }
+]

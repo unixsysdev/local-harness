@@ -1,0 +1,24 @@
+{
+  "raw_input": "Write a 150-word explanation of KV cache in transformer inference for a strong software engineer who has never implemented an LLM. Make it precise, concrete, and free of hand-waving. Use at most one analogy. Do not define 'transformer' or 'attention' from scratch — assume those are known.",
+  "task_class": "non_verifiable",
+  "task_type": "writing",
+  "deliverable_type": "text",
+  "success_criteria": [
+    "roughly 150 words (±20 acceptable)",
+    "explains what is cached (K and V projections per layer per token)",
+    "explains why (avoid recomputing for previous tokens)",
+    "mentions the memory/quality tradeoff or context length limit",
+    "no factual errors"
+  ],
+  "constraints": [
+    "150 words ±20 (i.e. between 130 and 170 words)",
+    "at most one analogy",
+    "no markdown headers",
+    "no filler openings like 'Sure, here is…'"
+  ],
+  "risk_level": "low",
+  "soft_constraints": {
+    "word_count": {"min": 130, "max": 170},
+    "must_not_contain": ["Sure, here", "Certainly,"]
+  }
+}

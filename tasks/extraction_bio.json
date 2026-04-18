@@ -1,0 +1,35 @@
+{
+  "raw_input": "From the following biography, extract a JSON object with fields: full_name (string), age (integer, in years), birth_year (integer), current_city (string), profession (string). Only output the JSON object, no prose.\n\nBio: \"Dr. Elena María Sokolov was born on 14 March 1978 in Saint Petersburg, Russia. After earning her PhD in computational biology from ETH Zürich, she settled in Berlin, where she now leads a systems-biology lab at the Max Planck Institute. As of the 2026 season, she is 48 years old.\"",
+  "task_class": "verifiable",
+  "task_type": "extraction",
+  "deliverable_type": "json",
+  "success_criteria": [
+    "valid JSON",
+    "full_name = 'Elena María Sokolov' or equivalent",
+    "age = 48",
+    "birth_year = 1978",
+    "current_city = 'Berlin'",
+    "profession roughly matches 'computational biologist' / 'systems biologist' / 'scientist'"
+  ],
+  "constraints": [
+    "output is a single JSON object",
+    "no markdown fences, no prose before or after"
+  ],
+  "risk_level": "low",
+  "verifier": {
+    "kind": "json_schema",
+    "inline": {
+      "schema": {
+        "type": "object",
+        "required": ["full_name", "age", "birth_year", "current_city", "profession"],
+        "properties": {
+          "full_name": {"type": "string"},
+          "age": {"type": "integer"},
+          "birth_year": {"type": "integer"},
+          "current_city": {"type": "string"},
+          "profession": {"type": "string"}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "raw_input": "Extract structured fields from the job posting below as JSON. Fields: title (string), company (string), location (string), employment_type (one of: 'full_time', 'part_time', 'contract', 'internship'), remote (boolean), min_years_experience (integer), required_skills (array of strings, lowercase).\n\nPosting:\n\"Senior Backend Engineer — FinlyCorp — Berlin, Germany (hybrid: 2 days/week in office)\n\nWe are hiring a senior backend engineer to own our payment-service rewrite. Full-time permanent position.\n\nRequired: 5+ years of Go experience, strong PostgreSQL, experience with event-driven architectures and Kubernetes. Nice to have: prior fintech experience.\"\n\nReturn only the JSON object.",
+  "task_class": "verifiable",
+  "task_type": "extraction",
+  "deliverable_type": "json",
+  "success_criteria": [
+    "valid JSON matching schema",
+    "title = 'Senior Backend Engineer'",
+    "company = 'FinlyCorp'",
+    "location contains 'Berlin'",
+    "employment_type = 'full_time'",
+    "remote = false (hybrid in-office requirement disqualifies pure remote)",
+    "min_years_experience = 5",
+    "required_skills is an array including 'go', 'postgresql', 'kubernetes' (lowercased)"
+  ],
+  "constraints": [
+    "single JSON object",
+    "no markdown fences",
+    "employment_type must be one of the enumerated values",
+    "skills lowercased"
+  ],
+  "risk_level": "low",
+  "verifier": {
+    "kind": "json_schema",
+    "inline": {
+      "schema": {
+        "type": "object",
+        "required": ["title", "company", "location", "employment_type", "remote", "min_years_experience", "required_skills"],
+        "properties": {
+          "title": {"type": "string"},
+          "company": {"type": "string"},
+          "location": {"type": "string"},
+          "employment_type": {"type": "string"},
+          "remote": {"type": "boolean"},
+          "min_years_experience": {"type": "integer"},
+          "required_skills": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    }
+  }
+}

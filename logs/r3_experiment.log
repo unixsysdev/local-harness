@@ -1,0 +1,28 @@
+Phase 1: 18 baseline calls (3 tasks × 2 models × 3 samples)
+  [PASS] coding_calculator.json         model_b    sample=2 wall=182.9s out=2487tok
+  [FAIL] coding_calculator.json         model_b    sample=1 wall=246.8s out=3351tok
+  [PASS] coding_calculator.json         model_b    sample=0 wall=339.2s out=4552tok
+  [FAIL] coding_calculator.json         model_a    sample=1 wall=613.8s out=5373tok
+  [FAIL] coding_valid_number.json       model_b    sample=0 wall=862.4s out=7989tok
+  [FAIL] coding_valid_number.json       model_b    sample=1 wall=873.2s out=6974tok
+  [PASS] coding_calculator.json         model_a    sample=2 wall=915.2s out=7770tok
+  [FAIL] coding_valid_number.json       model_a    sample=0 wall=1093.8s out=9122tok
+  [FAIL] coding_word_break.json         model_a    sample=2 wall=1095.2s out=0tok
+  [FAIL] coding_word_break.json         model_b    sample=1 wall=1290.8s out=2261tok
+  [PASS] coding_valid_number.json       model_b    sample=2 wall=1314.9s out=9235tok
+  [FAIL] coding_word_break.json         model_b    sample=0 wall=1397.7s out=3670tok
+  [FAIL] coding_word_break.json         model_b    sample=2 wall=1536.1s out=3661tok
+  [FAIL] coding_calculator.json         model_a    sample=0 wall=1560.9s out=0tok
+  [FAIL] coding_word_break.json         model_a    sample=1 wall=1560.9s out=0tok
+  [FAIL] coding_valid_number.json       model_a    sample=1 wall=1560.9s out=0tok
+  [PASS] coding_valid_number.json       model_a    sample=2 wall=1561.0s out=0tok
+  [FAIL] coding_word_break.json         model_a    sample=0 wall=1561.0s out=0tok
+
+Phase 2: harness on 3 tasks
+
+  === coding_calculator.json ===
+[baseline] running single-shot…
+[baseline] done in 142862 ms, 6695 out tokens
+[rubric] building…
+[rubric] done in 33389 ms
+[propose] generating 6×2 candidates (verifiable=True)…

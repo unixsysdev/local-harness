@@ -1,0 +1,182 @@
+[
+  {
+    "task": "coding_calculator.json",
+    "model": "model_a",
+    "sample_idx": 0,
+    "passed": false,
+    "wall_ms": 1560885,
+    "output_tokens": 0,
+    "finish_reason": "",
+    "output_preview": "The user wants a Python function `calc(expr: str) -> float` that parses and evaluates arithmetic expressions.\nThe expression contains non-negative integers, operators `+`, `-`, `*`, `/`, and parentheses `(`, `)`.\nPrecedence: `*`, `/` > `+`,"
+  },
+  {
+    "task": "coding_calculator.json",
+    "model": "model_a",
+    "sample_idx": 1,
+    "passed": false,
+    "wall_ms": 613758,
+    "output_tokens": 5373,
+    "finish_reason": "stop",
+    "output_preview": "Here's a complete, self-contained implementation using a recursive descent parser. It respects operator precedence, left-to-right associativity, handles nested parentheses, and strips whitespace without using any restricted functions or ext"
+  },
+  {
+    "task": "coding_calculator.json",
+    "model": "model_a",
+    "sample_idx": 2,
+    "passed": true,
+    "wall_ms": 915162,
+    "output_tokens": 7770,
+    "finish_reason": "stop",
+    "output_preview": "```python\ndef calc(expr: str) -> float:\n    expr = ''.join(expr.split())\n    pos = 0\n    length = len(expr)\n    \n    def peek():\n        return expr[pos] if pos < length else None\n        \n    def consume():\n        nonlocal pos\n        ch "
+  },
+  {
+    "task": "coding_calculator.json",
+    "model": "model_b",
+    "sample_idx": 0,
+    "passed": true,
+    "wall_ms": 339182,
+    "output_tokens": 4552,
+    "finish_reason": "stop",
+    "output_preview": "```python\ndef calc(expr: str) -> float:\n    \"\"\"\n    Evaluates an arithmetic expression string containing non-negative integers,\n    operators (+, -, *, /), and parentheses.\n    \n    Implements a Recursive Descent Parser to handle operator p"
+  },
+  {
+    "task": "coding_calculator.json",
+    "model": "model_b",
+    "sample_idx": 1,
+    "passed": false,
+    "wall_ms": 246818,
+    "output_tokens": 3351,
+    "finish_reason": "stop",
+    "output_preview": "```python\ndef calc(expr: str) -> float:\n    \"\"\"\n    Evaluates an arithmetic expression string containing non-negative integers,\n    operators (+, -, *, /), and parentheses.\n    \n    Implements a Recursive Descent Parser to handle operator p"
+  },
+  {
+    "task": "coding_calculator.json",
+    "model": "model_b",
+    "sample_idx": 2,
+    "passed": true,
+    "wall_ms": 182921,
+    "output_tokens": 2487,
+    "finish_reason": "stop",
+    "output_preview": "```python\ndef calc(expr: str) -> float:\n    \"\"\"\n    Evaluates an arithmetic expression string containing non-negative integers,\n    operators (+, -, *, /), and parentheses.\n    \n    Uses a Recursive Descent Parser to handle operator precede"
+  },
+  {
+    "task": "coding_valid_number.json",
+    "model": "model_a",
+    "sample_idx": 0,
+    "passed": false,
+    "wall_ms": 1093788,
+    "output_tokens": 9122,
+    "finish_reason": "stop",
+    "output_preview": "Here's a complete, self-contained Python function that strictly follows your grammar and constraints:\n\n```python\ndef is_number(s: str) -> bool:\n    # Reject empty strings and any string with leading/trailing whitespace\n    if not s or s != "
+  },
+  {
+    "task": "coding_valid_number.json",
+    "model": "model_a",
+    "sample_idx": 1,
+    "passed": false,
+    "wall_ms": 1560945,
+    "output_tokens": 0,
+    "finish_reason": "",
+    "output_preview": "The user wants a Python function `is_number(s: str) -> bool` that validates if a string represents a valid number based on a specific grammar.\nThe grammar is:\n- Optional leading sign (`+` or `-`)\n- Followed by a decimal number:\n    - Option"
+  },
+  {
+    "task": "coding_valid_number.json",
+    "model": "model_a",
+    "sample_idx": 2,
+    "passed": true,
+    "wall_ms": 1560974,
+    "output_tokens": 0,
+    "finish_reason": "",
+    "output_preview": "Here's a thinking process that leads to the suggested solution:\n\n1.  **Understand the Goal:** The objective is to write a Python function `is_number(s: str) -> bool` that validates if a string represents a valid number based on a specific g"
+  },
+  {
+    "task": "coding_valid_number.json",
+    "model": "model_b",
+    "sample_idx": 0,
+    "passed": false,
+    "wall_ms": 862367,
+    "output_tokens": 7989,
+    "finish_reason": "stop",
+    "output_preview": "```python\ndef is_number(s: str) -> bool:\n    \"\"\"\n    Determines if a string represents a valid number according to a specific grammar:\n    - Optional leading sign (+ or -)\n    - A decimal part:\n        - One or more digits\n        - OR one "
+  },
+  {
+    "task": "coding_valid_number.json",
+    "model": "model_b",
+    "sample_idx": 1,
+    "passed": false,
+    "wall_ms": 873187,
+    "output_tokens": 6974,
+    "finish_reason": "stop",
+    "output_preview": "```python\ndef is_number(s: str) -> bool:\n    \"\"\"\n    Validates if a string represents a number based on a specific grammar:\n    - Optional leading sign (+ or -)\n    - Either:\n        a) one or more digits, optionally followed by '.' and mor"
+  },
+  {
+    "task": "coding_valid_number.json",
+    "model": "model_b",
+    "sample_idx": 2,
+    "passed": true,
+    "wall_ms": 1314877,
+    "output_tokens": 9235,
+    "finish_reason": "stop",
+    "output_preview": "```python\ndef is_number(s: str) -> bool:\n    \"\"\"\n    Returns True if s represents a valid number according to the grammar:\n    - Optional leading sign (+ or -)\n    - Either:\n        a) One or more digits, optionally followed by '.' and zero"
+  },
+  {
+    "task": "coding_word_break.json",
+    "model": "model_a",
+    "sample_idx": 0,
+    "passed": false,
+    "wall_ms": 1561005,
+    "output_tokens": 0,
+    "finish_reason": "",
+    "output_preview": "Here's a thinking process that leads to the suggested solution:\n\n1.  **Understand the Goal:** The objective is to determine if a given string $s$ can be segmented into a sequence of words found in a provided dictionary `word_dict`.\n\n2.  **A"
+  },
+  {
+    "task": "coding_word_break.json",
+    "model": "model_a",
+    "sample_idx": 1,
+    "passed": false,
+    "wall_ms": 1560915,
+    "output_tokens": 0,
+    "finish_reason": "",
+    "output_preview": "The user wants a Python function `word_break(s: str, word_dict: list[str]) -> bool` that determines if a string `s` can be segmented into words from a given dictionary `word_dict`.\n\n**Key Requirements:**\n1.  **Input:**\n    *   `s`: A string"
+  },
+  {
+    "task": "coding_word_break.json",
+    "model": "model_a",
+    "sample_idx": 2,
+    "passed": false,
+    "wall_ms": 1095249,
+    "output_tokens": 0,
+    "finish_reason": "",
+    "output_preview": ""
+  },
+  {
+    "task": "coding_word_break.json",
+    "model": "model_b",
+    "sample_idx": 0,
+    "passed": false,
+    "wall_ms": 1397722,
+    "output_tokens": 3670,
+    "finish_reason": "stop",
+    "output_preview": "```python\ndef word_break(s: str, word_dict: list[str]) -> bool:\n    \"\"\"\n    Determines if the string 's' can be segmented into a sequence of one or more \n    words from 'word_dict'. \n    \n    Complexity:\n    - Time: O(n^3), where n is the l"
+  },
+  {
+    "task": "coding_word_break.json",
+    "model": "model_b",
+    "sample_idx": 1,
+    "passed": false,
+    "wall_ms": 1290753,
+    "output_tokens": 2261,
+    "finish_reason": "stop",
+    "output_preview": "```python\ndef word_break(s: str, word_dict: list[str]) -> bool:\n    \"\"\"\n    Determines if the string 's' can be segmented into a sequence of one or more \n    words from 'word_dict'. \n    \n    Uses Dynamic Programming to achieve O(n^2) time "
+  },
+  {
+    "task": "coding_word_break.json",
+    "model": "model_b",
+    "sample_idx": 2,
+    "passed": false,
+    "wall_ms": 1536103,
+    "output_tokens": 3661,
+    "finish_reason": "stop",
+    "output_preview": "```python\ndef word_break(s: str, word_dict: list[str]) -> bool:\n    \"\"\"\n    Determines if the string 's' can be segmented into a sequence of one or more \n    words from 'word_dict'.\n\n    Args:\n        s: The target string to segment.\n      "
+  }
+]

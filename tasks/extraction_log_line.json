@@ -1,0 +1,38 @@
+{
+  "raw_input": "Parse the structured log line below into JSON. Fields: timestamp (ISO 8601 string preserving the input format), level (string, one of: DEBUG, INFO, WARN, ERROR, FATAL), service (string), error_type (string — the Exception class name if present, otherwise null), message (string — the human-readable message), fields (object — any key=value pairs found at the end, e.g. account=12345).\n\nLog line:\n'2026-04-18T14:02:13.204Z ERROR payments.svc DatabaseTimeout: query exceeded 5s on user_lookup account=10293 retry_count=3'\n\nReturn only the JSON object.",
+  "task_class": "verifiable",
+  "task_type": "extraction",
+  "deliverable_type": "json",
+  "success_criteria": [
+    "valid JSON matching schema",
+    "timestamp = '2026-04-18T14:02:13.204Z'",
+    "level = 'ERROR'",
+    "service = 'payments.svc'",
+    "error_type = 'DatabaseTimeout'",
+    "message contains 'query exceeded 5s on user_lookup'",
+    "fields = {'account': '10293', 'retry_count': '3'} (values as strings is OK, ints also OK)"
+  ],
+  "constraints": [
+    "single JSON object",
+    "no markdown fences",
+    "error_type is the Exception class name, not the full message"
+  ],
+  "risk_level": "low",
+  "verifier": {
+    "kind": "json_schema",
+    "inline": {
+      "schema": {
+        "type": "object",
+        "required": ["timestamp", "level", "service", "error_type", "message", "fields"],
+        "properties": {
+          "timestamp": {"type": "string"},
+          "level": {"type": "string"},
+          "service": {"type": "string"},
+          "error_type": {"type": "string"},
+          "message": {"type": "string"},
+          "fields": {"type": "object"}
+        }
+      }
+    }
+  }
+}

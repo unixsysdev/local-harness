@@ -1,0 +1,25 @@
+{
+  "raw_input": "A bat and a ball cost $1.10 in total. The bat costs $1.00 MORE than the ball. How much does the ball cost, in dollars? Return a Python function named `answer` that takes no arguments and returns the ball's price as a float (e.g. `def answer(): return 0.42`). Do not output prose outside the code. Think carefully — the intuitive answer is not correct.",
+  "task_class": "verifiable",
+  "task_type": "coding",
+  "deliverable_type": "code",
+  "success_criteria": [
+    "function `answer()` returns the ball's price in dollars",
+    "the answer is a positive number less than 1.0",
+    "bat (answer + 1.00) + ball (answer) = 1.10"
+  ],
+  "constraints": [
+    "single Python file with a function `answer()` that takes no arguments",
+    "no I/O",
+    "no external dependencies"
+  ],
+  "risk_level": "low",
+  "verifier": {
+    "kind": "tests",
+    "inline": {
+      "entrypoint": "answer",
+      "timeout_sec": 5,
+      "tests": "got = answer()\nassert isinstance(got, (int, float)), f'answer must be numeric, got {type(got).__name__}'\nassert abs(got - 0.05) < 1e-6, f'expected 0.05, got {got}'\n"
+    }
+  }
+}

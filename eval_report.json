@@ -1,0 +1,418 @@
+{
+  "config_file": "config.yaml",
+  "tasks_dir": "tasks",
+  "summary": {
+    "total_tasks": 8,
+    "harness_wins": 3,
+    "baseline_wins": 0,
+    "ties_or_both": 5,
+    "unresolved": 0,
+    "errors": 0,
+    "harness_win_rate": 0.375,
+    "baseline_win_rate": 0.0,
+    "avg_baseline_wall_s": 5.37,
+    "avg_harness_wall_s": 106.84,
+    "judge_stats": {
+      "model_a": {
+        "tasks": 3,
+        "consistent": 3,
+        "harness_votes": 6,
+        "baseline_votes": 0,
+        "tie_votes": 0,
+        "parse_errors": 0,
+        "A_votes": 3,
+        "B_votes": 3,
+        "consistency_rate": 1.0,
+        "positional_bias_A": 0.5
+      },
+      "model_b": {
+        "tasks": 3,
+        "consistent": 2,
+        "harness_votes": 5,
+        "baseline_votes": 1,
+        "tie_votes": 0,
+        "parse_errors": 0,
+        "A_votes": 4,
+        "B_votes": 2,
+        "consistency_rate": 0.667,
+        "positional_bias_A": 0.667
+      }
+    }
+  },
+  "tasks": [
+    {
+      "task_file": "tasks/coding_is_prime.json",
+      "task_id": "ead4e097681b",
+      "run_id": "743a5235adc3",
+      "task_class": "verifiable",
+      "baseline_wall_ms": 4390,
+      "harness_wall_ms_total": 70639,
+      "baseline_output_preview": "```python\ndef is_prime(n: int) -> bool:\n    \"\"\"\n    Returns True if n is a prime number, False otherwise.\n    \n    Handles edge cases: n <= 1 is not prime.\n    Optimized for performance up to n = 10,000,000.\n    \"\"\"\n    if n <= 1:\n        r",
+      "harness_output_preview": "def is_prime(n: int) -> bool:\n    if n <= 1:\n        return False\n    if n <= 3:\n        return True\n    if n % 2 == 0 or n % 3 == 0:\n        return False\n    i = 5\n    while i * i <= n:\n        if n % i == 0 or n % (i + 2) == 0:\n          ",
+      "mode": "verifiable",
+      "baseline_pass": true,
+      "harness_pass": true,
+      "verdict": "both_pass",
+      "baseline_signals": {
+        "status": "ok",
+        "failures": [],
+        "duration_ms": 37,
+        "stderr_tail": ""
+      },
+      "harness_signals": {
+        "status": "ok",
+        "failures": [],
+        "duration_ms": 21,
+        "stderr_tail": ""
+      }
+    },
+    {
+      "task_file": "tasks/coding_longest_palindrome.json",
+      "task_id": "17d33de47f71",
+      "run_id": "5c778044bfd6",
+      "task_class": "verifiable",
+      "baseline_wall_ms": 10179,
+      "harness_wall_ms_total": 166697,
+      "baseline_output_preview": "```python\ndef longest_palindrome(s: str) -> str:\n    \"\"\"\n    Returns the longest contiguous palindromic substring of s.\n    If there are ties, returns the one that appears first.\n    Handles empty input by returning the empty string.\n    Us",
+      "harness_output_preview": "```python\ndef longest_palindrome(s: str) -> str:\n    if not s:\n        return \"\"\n    \n    start = 0\n    max_len = 1\n    n = len(s)\n    \n    def expand_around_center(left: int, right: int) -> tuple:\n        while left",
+      "mode": "verifiable",
+      "baseline_pass": false,
+      "harness_pass": false,
+      "verdict": "both_fail",
+      "baseline_signals": {
+        "status": "fail",
+        "failures": [
+          {
+            "type": "assertion",
+            "msg": ""
+          }
+        ],
+        "duration_ms": 31,
+        "stderr_tail": ""
+      },
+      "harness_signals": {
+        "status": "import_error",
+        "error": "SyntaxError('invalid syntax', ('/tmp/tmp5w215hti/solution.py', 1, 1, '```python\\n', 1, 2))",
+        "trace": "Traceback (most recent call last):\n  File \"/tmp/tmp5w215hti/harness.py\", line 4, in <module>\n    from solution import longest_palindrome  # type: ignore\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/tmp5w215hti/solution.py\", line 1\n    ```python\n    ^\nSyntaxError: invalid syntax\n",
+        "duration_ms": 51,
+        "stderr_tail": ""
+      }
+    },
+    {
+      "task_file": "tasks/coding_valid_ipv4.json",
+      "task_id": "758d19a10d44",
+      "run_id": "0e52c81df3b5",
+      "task_class": "verifiable",
+      "baseline_wall_ms": 8965,
+      "harness_wall_ms_total": 123777,
+      "baseline_output_preview": "```python\ndef is_valid_ipv4(s: str) -> bool:\n    \"\"\"\n    Returns True iff s is a strictly-valid IPv4 address in dotted notation.\n    \n    Requirements:\n    - Exactly 4 octets separated by dots\n    - Each octet is a base-10 integer in [0, 25",
+      "harness_output_preview": "def is_valid_ipv4(s: str) -> bool:\n    \"\"\"\n    Returns True if s is a strictly-valid IPv4 address in dotted notation.\n    \n    Rules:\n    - Exactly 4 octets separated by dots.\n    - Each octet is a base-10 integer in [0, 255].\n    - No lead",
+      "mode": "verifiable",
+      "baseline_pass": true,
+      "harness_pass": true,
+      "verdict": "both_pass",
+      "baseline_signals": {
+        "status": "ok",
+        "failures": [],
+        "duration_ms": 32,
+        "stderr_tail": ""
+      },
+      "harness_signals": {
+        "status": "ok",
+        "failures": [],
+        "duration_ms": 22,
+        "stderr_tail": ""
+      }
+    },
+    {
+      "task_file": "tasks/extraction_bio.json",
+      "task_id": "2cb2f91e3e54",
+      "run_id": "da5dcc42db91",
+      "task_class": "verifiable",
+      "baseline_wall_ms": 1849,
+      "harness_wall_ms_total": 63018,
+      "baseline_output_preview": "{\n  \"full_name\": \"Elena Mar\u00eda Sokolov\",\n  \"age\": 48,\n  \"birth_year\": 1978,\n  \"current_city\": \"Berlin\",\n  \"profession\": \"systems biologist\"\n}",
+      "harness_output_preview": "{\n  \"full_name\": \"Elena Mar\u00eda Sokolov\",\n  \"age\": 48,\n  \"birth_year\": 1978,\n  \"current_city\": \"Berlin\",\n  \"profession\": \"systems biologist\"\n}",
+      "mode": "verifiable",
+      "baseline_pass": true,
+      "harness_pass": true,
+      "verdict": "both_pass",
+      "baseline_signals": {
+        "errors": [],
+        "instance": {
+          "full_name": "Elena Mar\u00eda Sokolov",
+          "age": 48,
+          "birth_year": 1978,
+          "current_city": "Berlin",
+          "profession": "systems biologist"
+        }
+      },
+      "harness_signals": {
+        "errors": [],
+        "instance": {
+          "full_name": "Elena Mar\u00eda Sokolov",
+          "age": 48,
+          "birth_year": 1978,
+          "current_city": "Berlin",
+          "profession": "systems biologist"
+        }
+      }
+    },
+    {
+      "task_file": "tasks/extraction_meeting.json",
+      "task_id": "b7ce87897b05",
+      "run_id": "37523dd977ff",
+      "task_class": "verifiable",
+      "baseline_wall_ms": 4995,
+      "harness_wall_ms_total": 82078,
+      "baseline_output_preview": "{\n  \"date\": \"2026-03-12\",\n  \"attendees\": [\n    \"Alex Chen\",\n    \"Priya Raman\",\n    \"Marcus Weiss\"\n  ],\n  \"action_items\": [\n    {\n      \"owner\": \"Alex Chen\",\n      \"task\": \"finalize the roadmap draft\",\n      \"due_date\": \"2026-03-19\"\n    },\n ",
+      "harness_output_preview": "{\n  \"date\": \"2026-03-12\",\n  \"attendees\": [\n    \"Alex Chen\",\n    \"Priya Raman\",\n    \"Marcus Weiss\"\n  ],\n  \"action_items\": [\n    {\n      \"owner\": \"Alex Chen\",\n      \"task\": \"finalize the roadmap draft\",\n      \"due_date\": \"2026-03-19\"\n    },\n ",
+      "mode": "verifiable",
+      "baseline_pass": true,
+      "harness_pass": true,
+      "verdict": "both_pass",
+      "baseline_signals": {
+        "errors": [],
+        "instance": {
+          "date": "2026-03-12",
+          "attendees": [
+            "Alex Chen",
+            "Priya Raman",
+            "Marcus Weiss"
+          ],
+          "action_items": [
+            {
+              "owner": "Alex Chen",
+              "task": "finalize the roadmap draft",
+              "due_date": "2026-03-19"
+            },
+            {
+              "owner": "Priya Raman",
+              "task": "customer-research writeup",
+              "due_date": "2026-03-25"
+            },
+            {
+              "owner": "Marcus Weiss",
+              "task": "follow up with legal on the DPA",
+              "due_date": "2026-03-13"
+            }
+          ]
+        }
+      },
+      "harness_signals": {
+        "errors": [],
+        "instance": {
+          "date": "2026-03-12",
+          "attendees": [
+            "Alex Chen",
+            "Priya Raman",
+            "Marcus Weiss"
+          ],
+          "action_items": [
+            {
+              "owner": "Alex Chen",
+              "task": "finalize the roadmap draft",
+              "due_date": "2026-03-19"
+            },
+            {
+              "owner": "Priya Raman",
+              "task": "customer-research writeup",
+              "due_date": "2026-03-25"
+            },
+            {
+              "owner": "Marcus Weiss",
+              "task": "follow up with legal on the DPA",
+              "due_date": "2026-03-13"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "task_file": "tasks/writing_decline_email.json",
+      "task_id": "eb1fc3f6f0ec",
+      "run_id": "0ca48b678b20",
+      "task_class": "non_verifiable",
+      "baseline_wall_ms": 4837,
+      "harness_wall_ms_total": 127716,
+      "baseline_output_preview": "Hi Kira,\n\nThank you so much for taking the time to share the detailed presentation regarding FunnelForge\u2019s sales-analytics SaaS tool. I genuinely appreciate the effort you and your team put into preparing such a comprehensive overview of yo",
+      "harness_output_preview": "Hi Kira,\n\nThank you very much for reaching out and sharing the details regarding FunnelForge. I appreciate the time and effort you put into preparing the pitch for your sales-analytics SaaS tool; it certainly looks like a powerful platform ",
+      "mode": "pairwise",
+      "harness_wins": 4,
+      "baseline_wins": 0,
+      "ties": 0,
+      "total_calls": 4,
+      "order_consistent_per_judge": {
+        "model_a": true,
+        "model_b": true
+      },
+      "verdict": "harness_win",
+      "calls": [
+        {
+          "judge": "model_a",
+          "side_of_harness": "A",
+          "winner_label": "A",
+          "harness_won": true,
+          "confidence": 0.9,
+          "reason": "Answer A meets the word count constraint (120-150 words) while Answer B exceeds it (approx. 160 words), and Answer A adheres to the 'no door left open' constraint through clear finality without the overly aggressive tone found in Answer B.",
+          "raw": "{\n  \"winner\": \"A\",\n  \"confidence\": 0.9,\n  \"reason\": \"Answer A meets the word count constraint (120-150 words) while Answer B exceeds it (approx. 160 words), and Answer A adheres to the 'no door left open' constraint through clear finality without the overly aggressive tone found in Answer B.\"\n}",
+          "error": null
+        },
+        {
+          "judge": "model_a",
+          "side_of_harness": "B",
+          "winner_label": "B",
+          "harness_won": true,
+          "confidence": 1.0,
+          "reason": "Answer B meets the word count constraint (120-150 words) and avoids inviting a follow-up call, whereas Answer A exceeds the word count limit and explicitly invites the user to request no follow-up calls, which is a negative constraint violation.",
+          "raw": "{\n  \"winner\": \"B\",\n  \"confidence\": 1.0,\n  \"reason\": \"Answer B meets the word count constraint (120-150 words) and avoids inviting a follow-up call, whereas Answer A exceeds the word count limit and explicitly invites the user to request no follow-up calls, which is a negative constraint violation.\"\n}",
+          "error": null
+        },
+        {
+          "judge": "model_b",
+          "side_of_harness": "A",
+          "winner_label": "A",
+          "harness_won": true,
+          "confidence": 1.0,
+          "reason": "Answer A meets the word count constraint (141 words), whereas Answer B exceeds it (176 words).",
+          "raw": "```json\n{\n  \"winner\": \"A\",\n  \"confidence\": 1.0,\n  \"reason\": \"Answer A meets the word count constraint (141 words), whereas Answer B exceeds it (176 words).\"\n}\n```",
+          "error": null
+        },
+        {
+          "judge": "model_b",
+          "side_of_harness": "B",
+          "winner_label": "B",
+          "harness_won": true,
+          "confidence": 1.0,
+          "reason": "Answer B meets the word count constraint (141 words), whereas Answer A exceeds it (168 words).",
+          "raw": "```json\n{\n  \"winner\": \"B\",\n  \"confidence\": 1.0,\n  \"reason\": \"Answer B meets the word count constraint (141 words), whereas Answer A exceeds it (168 words).\"\n}\n```",
+          "error": null
+        }
+      ]
+    },
+    {
+      "task_file": "tasks/writing_elevator_pitch.json",
+      "task_id": "281de62864d8",
+      "run_id": "bbcd1084943b",
+      "task_class": "non_verifiable",
+      "baseline_wall_ms": 2636,
+      "harness_wall_ms_total": 100352,
+      "baseline_output_preview": "Stop stressing over chaotic vet clinic waits. We bring professional, stress-free blood testing directly to your living room. Our trained mobile phlebotomists visit your home the same day, handling every step with gentle care for your anxiou",
+      "harness_output_preview": "Stop dreading stressful vet trips and wasting hours in waiting rooms. Our service brings expert blood testing directly to your living room. We dispatch mobile veterinary phlebotomists to your home for same-day diagnostic testing, ensuring y",
+      "mode": "pairwise",
+      "harness_wins": 4,
+      "baseline_wins": 0,
+      "ties": 0,
+      "total_calls": 4,
+      "order_consistent_per_judge": {
+        "model_a": true,
+        "model_b": true
+      },
+      "verdict": "harness_win",
+      "calls": [
+        {
+          "judge": "model_a",
+          "side_of_harness": "A",
+          "winner_label": "A",
+          "harness_won": true,
+          "confidence": 0.9,
+          "reason": "Answer A is 63 words, fitting perfectly within the 50\u201380 word limit, whereas Answer B is 78 words which is borderline and feels cluttered; additionally, Answer A is more concise and directly addresses the time-constrained benefit without unnecessary filler.",
+          "raw": "{\n  \"winner\": \"A\",\n  \"confidence\": 0.9,\n  \"reason\": \"Answer A is 63 words, fitting perfectly within the 50\u201380 word limit, whereas Answer B is 78 words which is borderline and feels cluttered; additionally, Answer A is more concise and directly addresses the time-constrained benefit without unnecessary filler.\"\n}",
+          "error": null
+        },
+        {
+          "judge": "model_a",
+          "side_of_harness": "B",
+          "winner_label": "B",
+          "harness_won": true,
+          "confidence": 0.9,
+          "reason": "Answer B is 63 words, fitting perfectly within the 50\u201380 word limit, whereas Answer A is 73 words but feels slightly more verbose and less punchy; both meet the other criteria, but B's phrasing is more direct and avoids the slight redundancy in A.",
+          "raw": "{\n  \"winner\": \"B\",\n  \"confidence\": 0.9,\n  \"reason\": \"Answer B is 63 words, fitting perfectly within the 50\u201380 word limit, whereas Answer A is 73 words but feels slightly more verbose and less punchy; both meet the other criteria, but B's phrasing is more direct and avoids the slight redundancy in A.\"\n}",
+          "error": null
+        },
+        {
+          "judge": "model_b",
+          "side_of_harness": "A",
+          "winner_label": "A",
+          "harness_won": true,
+          "confidence": 1.0,
+          "reason": "Answer A adheres to the word count constraint (74 words), whereas Answer B exceeds it (88 words).",
+          "raw": "```json\n{\n  \"winner\": \"A\",\n  \"confidence\": 1.0,\n  \"reason\": \"Answer A adheres to the word count constraint (74 words), whereas Answer B exceeds it (88 words).\"\n}\n```",
+          "error": null
+        },
+        {
+          "judge": "model_b",
+          "side_of_harness": "B",
+          "winner_label": "B",
+          "harness_won": true,
+          "confidence": 1.0,
+          "reason": "Answer B adheres to the word count constraint (68 words), whereas Answer A exceeds it (86 words).",
+          "raw": "```json\n{\n  \"winner\": \"B\",\n  \"confidence\": 1.0,\n  \"reason\": \"Answer B adheres to the word count constraint (68 words), whereas Answer A exceeds it (86 words).\"\n}\n```",
+          "error": null
+        }
+      ]
+    },
+    {
+      "task_file": "tasks/writing_explain_kv_cache.json",
+      "task_id": "3a49ecd1f7b9",
+      "run_id": "691458be741b",
+      "task_class": "non_verifiable",
+      "baseline_wall_ms": 5092,
+      "harness_wall_ms_total": 120418,
+      "baseline_output_preview": "KV cache optimization eliminates redundant computation during autoregressive text generation. In a standard transformer, calculating attention scores requires comparing the current query against keys from all previous tokens in the sequence",
+      "harness_output_preview": "During autoregressive decoding, each new token is generated one at a time. To compute the attention output for the current token, the model requires the Key (K) and Value (V) projections of all preceding tokens in the sequence. Without cach",
+      "mode": "pairwise",
+      "harness_wins": 3,
+      "baseline_wins": 1,
+      "ties": 0,
+      "total_calls": 4,
+      "order_consistent_per_judge": {
+        "model_a": true,
+        "model_b": false
+      },
+      "verdict": "harness_win",
+      "calls": [
+        {
+          "judge": "model_a",
+          "side_of_harness": "A",
+          "winner_label": "A",
+          "harness_won": true,
+          "confidence": 0.9,
+          "reason": "Answer A is significantly closer to the 150-word target (approx. 135 words vs Answer B's 165 words) and avoids the unnecessary filler and slightly less precise phrasing found in Answer B, while still meeting all technical criteria.",
+          "raw": "{\n  \"winner\": \"A\",\n  \"confidence\": 0.9,\n  \"reason\": \"Answer A is significantly closer to the 150-word target (approx. 135 words vs Answer B's 165 words) and avoids the unnecessary filler and slightly less precise phrasing found in Answer B, while still meeting all technical criteria.\"\n}",
+          "error": null
+        },
+        {
+          "judge": "model_a",
+          "side_of_harness": "B",
+          "winner_label": "B",
+          "harness_won": true,
+          "confidence": 0.9,
+          "reason": "Answer B is more concise and precise, fitting the word count constraint better while avoiding the slightly inaccurate claim in A that KV caching reduces complexity to 'linear per step' (it reduces the per-step cost from O(n) to O(1) relative to history, or total generation from O(n^2) to O(n), but t",
+          "raw": "{\n  \"winner\": \"B\",\n  \"confidence\": 0.9,\n  \"reason\": \"Answer B is more concise and precise, fitting the word count constraint better while avoiding the slightly inaccurate claim in A that KV caching reduces complexity to 'linear per step' (it reduces the per-step cost from O(n) to O(1) relative to history, or total generation from O(n^2) to O(n), but the phrasing in A is ambiguous and potentially misleading regarding the attention mechanism itself).\"\n}",
+          "error": null
+        },
+        {
+          "judge": "model_b",
+          "side_of_harness": "A",
+          "winner_label": "A",
+          "harness_won": true,
+          "confidence": 1.0,
+          "reason": "Answer A is much closer to the word count constraint (143 words) whereas Answer B is significantly over the limit (196 words), and Answer A more precisely specifies that K and V projections are stored per layer.",
+          "raw": "```json\n{\n  \"winner\": \"A\",\n  \"confidence\": 1.0,\n  \"reason\": \"Answer A is much closer to the word count constraint (143 words) whereas Answer B is significantly over the limit (196 words), and Answer A more precisely specifies that K and V projections are stored per layer.\"\n}\n```",
+          "error": null
+        },
+        {
+          "judge": "model_b",
+          "side_of_harness": "B",
+          "winner_label": "A",
+          "harness_won": false,
+          "confidence": 1.0,
+          "reason": "Answer A follows the word count constraint (168 words) much better than Answer B (142 words), and it provides a more complete explanation of the memory/quality tradeoff as requested.",
+          "raw": "```json\n{\n  \"winner\": \"A\",\n  \"confidence\": 1.0,\n  \"reason\": \"Answer A follows the word count constraint (168 words) much better than Answer B (142 words), and it provides a more complete explanation of the memory/quality tradeoff as requested.\"\n}\n```",
+          "error": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "raw_input": "Write a Python function `simplify_path(path: str) -> str` that takes an absolute Unix-style path and returns its canonical form. Rules: (a) `.` refers to the current directory (removed); (b) `..` moves up one directory level; (c) multiple consecutive slashes are collapsed to a single slash; (d) trailing slashes are removed (except for the root `/`); (e) an absolute path always starts with exactly one `/`; (f) moving up from the root stays at the root; (g) the returned path is always absolute (starts with `/`).",
+  "task_class": "verifiable",
+  "task_type": "coding",
+  "deliverable_type": "code",
+  "success_criteria": [
+    "signature `simplify_path(path: str) -> str`",
+    "handles '..' correctly including at root",
+    "collapses multiple slashes",
+    "removes trailing slash except for root",
+    "returned path always starts with '/'"
+  ],
+  "constraints": [
+    "single Python file",
+    "no external path libraries (no os.path, no pathlib)",
+    "no I/O"
+  ],
+  "risk_level": "low",
+  "verifier": {
+    "kind": "tests",
+    "inline": {
+      "entrypoint": "simplify_path",
+      "timeout_sec": 10,
+      "tests": "import inspect\nsrc = inspect.getsource(simplify_path)\nforbidden = ['os.path', 'pathlib', 'posixpath']\nfor f in forbidden:\n    assert f not in src, f'forbidden import/use {f} found'\nassert simplify_path('/home/') == '/home'\nassert simplify_path('/../') == '/'\nassert simplify_path('/home//foo/') == '/home/foo'\nassert simplify_path('/a/./b/../../c/') == '/c'\nassert simplify_path('/') == '/'\nassert simplify_path('/...') == '/...'\nassert simplify_path('/a/../../b/../c//.//') == '/c'\nassert simplify_path('/a//b////c/d//././/..') == '/a/b/c'\nassert simplify_path('/a') == '/a'\nassert simplify_path('/a/b/c') == '/a/b/c'\nassert simplify_path('/.') == '/'\nassert simplify_path('/..') == '/'\nassert simplify_path('/abc/./def/') == '/abc/def'\n"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "raw_input": "Write a weekly engineering status update (100–150 words) for a backend team. Organize the response into THREE labeled sections in this order: 'Progress:', 'Risks:', 'Next:'. Each section must be at least two sentences. Context for this week: the team shipped the migration to the new NATS queue, began the Go rewrite of the billing service, and is seeing an intermittent flake in the integration suite that blocks ~1 in 8 CI runs. Audience: the engineering director. Tone: concise, factual, no filler.",
+  "task_class": "non_verifiable",
+  "task_type": "writing",
+  "deliverable_type": "text",
+  "success_criteria": [
+    "100–150 words total",
+    "three labeled sections: 'Progress:', 'Risks:', 'Next:' in that order",
+    "each section at least two sentences",
+    "mentions NATS migration, Go billing rewrite, and CI flake",
+    "concise and factual"
+  ],
+  "constraints": [
+    "100 to 150 words inclusive",
+    "contains literal labels 'Progress:', 'Risks:', 'Next:'",
+    "no markdown headers (# or ##)",
+    "no filler openings like 'Here is the status update…'"
+  ],
+  "risk_level": "low",
+  "soft_constraints": {
+    "word_count": {"min": 100, "max": 150},
+    "must_contain": ["Progress:", "Risks:", "Next:"],
+    "must_not_contain": ["Sure,", "Certainly,", "As an AI", "Here is"]
+  }
+}

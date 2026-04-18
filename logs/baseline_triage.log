@@ -1,0 +1,75 @@
+Triaging 12 tasks with BOTH models (thinking=True)  — firing all 24 calls concurrently
+  [PASS] coding_simplify_path.json                model_b    wall=151.6s out=1607tok
+  [PASS] coding_atoi.json                         model_b    wall=187.8s out=2063tok
+  [FAIL] coding_calculator.json                   model_b    wall=418.9s out=4923tok
+  [PASS] coding_simplify_path.json                model_a    wall=503.3s out=4785tok
+  [PASS] coding_median_two_sorted.json            model_b    wall=511.8s out=6172tok
+  [PASS] coding_median_two_sorted.json            model_a    wall=590.6s out=5474tok
+  [FAIL] coding_calculator.json                   model_a    wall=600.0s out=0tok
+  [FAIL] coding_atoi.json                         model_a    wall=600.1s out=0tok
+  [PASS] riddle_bat_and_ball.json                 model_a    wall=613.1s out=824tok
+  [PASS] riddle_bat_and_ball.json                 model_b    wall=647.5s out=610tok
+  [PASS] riddle_lily_pond.json                    model_a    wall=651.0s out=398tok
+  [FAIL] coding_word_break.json                   model_b    wall=659.5s out=1950tok
+  [PASS] riddle_hen_and_half.json                 model_b    wall=688.5s out=937tok
+  [PASS] riddle_lily_pond.json                    model_b    wall=698.2s out=535tok
+  [PASS] riddle_hen_and_half.json                 model_a    wall=708.9s out=1085tok
+  [PASS] riddle_monty_hall.json                   model_b    wall=743.9s out=970tok
+  [PASS] riddle_sock_drawer.json                  model_b    wall=748.7s out=583tok
+  [FAIL] coding_valid_number.json                 model_a    wall=751.7s out=0tok
+  [PASS] riddle_sock_drawer.json                  model_a    wall=762.7s out=669tok
+  [PASS] riddle_widget_machines.json              model_b    wall=781.4s out=513tok
+  [FAIL] coding_valid_number.json                 model_b    wall=787.9s out=0tok
+  [FAIL] coding_word_break.json                   model_a    wall=979.6s out=8192tok
+  [PASS] riddle_widget_machines.json              model_a    wall=1041.6s out=7534tok
+  [PASS] riddle_monty_hall.json                   model_a    wall=1043.7s out=8192tok
+
+=== TRIAGE SUMMARY ===
+  total tasks:          12
+  both_pass (drop):     8
+  asymmetric (drop):    1
+  both_fail (KEEP):     3  <- sweet spot for harness experiment
+
+  Sweet-spot tasks (run harness on these):
+    - coding_calculator.json                   [BOTH_FAIL]
+    - coding_valid_number.json                 [BOTH_FAIL]
+    - coding_word_break.json                   [BOTH_FAIL]
+    - coding_atoi.json                         [ASYMMETRIC]
+Re-running 4 fake failures with timeout=1800.0s, max_tokens=16384
+  - coding_atoi.json [model_a]
+  - coding_calculator.json [model_a]
+  - coding_valid_number.json [model_a]
+  - coding_valid_number.json [model_b]
+  [rerun PASS] coding_valid_number.json                 model_b    wall=442.8s out=7902tok
+  [rerun PASS] coding_atoi.json                         model_a    wall=446.2s out=5337tok
+  [rerun PASS] coding_calculator.json                   model_a    wall=512.1s out=7285tok
+  [rerun FAIL] coding_valid_number.json                 model_a    wall=755.3s out=16384tok
+
+=== POST-RERUN SUMMARY ===
+  BOTH_PASS       9
+  ASYMMETRIC      2
+  BOTH_FAIL       1
+
+  KEEP list (for harness experiment):
+    - coding_calculator.json                   [ASYMMETRIC]
+    - coding_valid_number.json                 [ASYMMETRIC]
+    - coding_word_break.json                   [BOTH_FAIL]
+Rerunning 2 cap-hit entries with max_tokens=48000 (streaming, no total-request timeout)
+  - coding_word_break.json [model_a]
+  - coding_valid_number.json [model_a]
+  [uncapped FAIL] coding_word_break.json                   model_a    wall=130.8s out=3837tok finish=stop
+  [uncapped PASS] coding_valid_number.json                 model_a    wall=249.9s out=8381tok finish=stop
+
+=== POST-UNCAPPED-RERUN FINAL ===
+  coding_atoi.json                         BOTH_PASS
+  coding_calculator.json                   ASYMMETRIC
+  coding_median_two_sorted.json            BOTH_PASS
+  coding_simplify_path.json                BOTH_PASS
+  coding_valid_number.json                 BOTH_PASS
+  coding_word_break.json                   BOTH_FAIL
+  riddle_bat_and_ball.json                 BOTH_PASS
+  riddle_hen_and_half.json                 BOTH_PASS
+  riddle_lily_pond.json                    BOTH_PASS
+  riddle_monty_hall.json                   BOTH_PASS
+  riddle_sock_drawer.json                  BOTH_PASS
+  riddle_widget_machines.json              BOTH_PASS

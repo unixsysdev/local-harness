@@ -1,0 +1,25 @@
+{
+  "raw_input": "The classic Monty Hall problem: You pick one of three doors; behind one is a car and behind the others are goats. The host — who knows what's behind each door — opens one of the remaining two doors that reveals a goat, and offers you the chance to switch your choice to the remaining unopened door. If you ALWAYS switch, what is the probability that you win the car? Return a Python function named `answer` that takes no arguments and returns the probability as a float between 0 and 1 (e.g. `def answer(): return 0.5`). Round to 4 decimal places or use a simple fraction (e.g. 2/3).",
+  "task_class": "verifiable",
+  "task_type": "coding",
+  "deliverable_type": "code",
+  "success_criteria": [
+    "function `answer()` returns the probability of winning when switching",
+    "answer is a float in [0, 1]",
+    "answer is approximately 2/3 (≈ 0.6667)"
+  ],
+  "constraints": [
+    "single Python file with `answer()` function",
+    "no I/O",
+    "no external dependencies"
+  ],
+  "risk_level": "low",
+  "verifier": {
+    "kind": "tests",
+    "inline": {
+      "entrypoint": "answer",
+      "timeout_sec": 5,
+      "tests": "got = answer()\nassert isinstance(got, (int, float)), f'answer must be numeric, got {type(got).__name__}'\ntarget = 2.0 / 3.0\nassert abs(got - target) < 0.005, f'expected ~0.6667, got {got}'\n"
+    }
+  }
+}

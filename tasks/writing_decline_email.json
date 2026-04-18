@@ -1,0 +1,25 @@
+{
+  "raw_input": "Write a polite email (120–150 words) declining a vendor pitch for a sales-analytics SaaS tool. Recipient is the account executive Kira at 'FunnelForge'. The reason for declining is that our existing CRM's native analytics are sufficient for the next 12 months. Tone: warm but clear, no door left open for a follow-up call. Include a greeting ('Hi Kira,'), a brief acknowledgment of their effort, the reason, and a polite sign-off from 'Marcel'.",
+  "task_class": "non_verifiable",
+  "task_type": "writing",
+  "deliverable_type": "text",
+  "success_criteria": [
+    "120–150 words (hard range)",
+    "begins with 'Hi Kira,'",
+    "ends with a sign-off from 'Marcel'",
+    "cites the 12-month existing-CRM reason",
+    "does NOT invite a follow-up call"
+  ],
+  "constraints": [
+    "120 to 150 words inclusive",
+    "begins with 'Hi Kira,'",
+    "signed 'Marcel'",
+    "no markdown"
+  ],
+  "risk_level": "low",
+  "soft_constraints": {
+    "word_count": {"min": 120, "max": 150},
+    "must_contain": ["Hi Kira,", "Marcel"],
+    "must_not_contain": ["follow up call", "follow-up call", "catch up", "Sure,"]
+  }
+}

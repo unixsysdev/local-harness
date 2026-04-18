@@ -1,0 +1,19 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Ephemeral server PIDs (logs are kept)
+logs/*.pid
+
+# Editor noise
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store

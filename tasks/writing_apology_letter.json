@@ -1,0 +1,28 @@
+{
+  "raw_input": "Write an apology email (180–220 words) from Jordan Takahashi, CEO of a SaaS company called 'Flint', to enterprise customers after a 6-hour production outage on 16 April 2026. The outage was caused by a bad database migration. Structure: (1) open with a concrete acknowledgement of the impact — not generic 'we experienced an outage'; (2) explain what went wrong in one sentence; (3) state the two corrective actions the team is taking (rolling back the migration framework to the prior version, and adding a mandatory staging-replay step before all future migrations); (4) offer a goodwill credit of 10% of April charges; (5) sign off as 'Jordan Takahashi, CEO, Flint'. Tone: accountable, not defensive. Avoid hollow phrases.",
+  "task_class": "non_verifiable",
+  "task_type": "writing",
+  "deliverable_type": "text",
+  "success_criteria": [
+    "180–220 words total",
+    "signed 'Jordan Takahashi, CEO, Flint'",
+    "mentions the specific outage date (16 April) and duration (6 hours)",
+    "cites both corrective actions (rollback + staging-replay)",
+    "offers 10% goodwill credit",
+    "accountable tone, no hollow phrases"
+  ],
+  "constraints": [
+    "180 to 220 words inclusive",
+    "must end with sign-off containing 'Jordan Takahashi'",
+    "must contain '6 hours' or 'six hours' (or '6-hour')",
+    "must contain '10%'",
+    "no phrase 'we take this very seriously'",
+    "no phrase 'sorry for any inconvenience'"
+  ],
+  "risk_level": "low",
+  "soft_constraints": {
+    "word_count": {"min": 180, "max": 220},
+    "must_contain": ["Jordan Takahashi", "10%"],
+    "must_not_contain": ["we take this very seriously", "sorry for any inconvenience", "Sure,", "Certainly,", "As an AI"]
+  }
+}

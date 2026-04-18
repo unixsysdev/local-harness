@@ -1,0 +1,39 @@
+
+=== evaluating coding_is_prime.json ===
+  -> verdict: both_pass
+
+=== evaluating coding_longest_palindrome.json ===
+  -> verdict: both_fail
+
+=== evaluating coding_valid_ipv4.json ===
+  -> verdict: both_pass
+
+=== evaluating extraction_bio.json ===
+  -> verdict: both_pass
+
+=== evaluating extraction_meeting.json ===
+  -> verdict: both_pass
+
+=== evaluating writing_decline_email.json ===
+  -> verdict: harness_win
+
+=== evaluating writing_elevator_pitch.json ===
+  -> verdict: harness_win
+
+=== evaluating writing_explain_kv_cache.json ===
+  -> verdict: harness_win
+
+=== SUMMARY ===
+  total_tasks              8
+  harness_wins             3
+  baseline_wins            0
+  ties_or_both             5
+  unresolved               0
+  errors                   0
+  harness_win_rate         0.375
+  baseline_win_rate        0.0
+  avg_baseline_wall_s      5.37
+  avg_harness_wall_s       106.84
+  judge_stats              {'model_a': {'tasks': 3, 'consistent': 3, 'harness_votes': 6, 'baseline_votes': 0, 'tie_votes': 0, 'parse_errors': 0, 'A_votes': 3, 'B_votes': 3, 'consistency_rate': 1.0, 'positional_bias_A': 0.5}, 'model_b': {'tasks': 3, 'consistent': 2, 'harness_votes': 5, 'baseline_votes': 1, 'tie_votes': 0, 'parse_errors': 0, 'A_votes': 4, 'B_votes': 2, 'consistency_rate': 0.667, 'positional_bias_A': 0.667}}
+
+Report: eval_report.json

@@ -1,0 +1,28 @@
+{
+  "raw_input": "Write a Python function `word_freq(text: str) -> dict[str, int]` that returns a dictionary mapping each distinct word in `text` (lowercased) to its count. A word is a maximal run of ASCII letters and digits — any other character (punctuation, whitespace, unicode, etc.) is a separator. The empty string should return an empty dict.",
+  "task_class": "verifiable",
+  "task_type": "coding",
+  "deliverable_type": "code",
+  "success_criteria": [
+    "signature `word_freq(text: str) -> dict[str, int]`",
+    "case-insensitive (words are lowercased)",
+    "empty string returns empty dict",
+    "punctuation is a separator, not part of a word",
+    "digits are part of words (e.g. 'python3' is one word)",
+    "unicode characters act as separators"
+  ],
+  "constraints": [
+    "single Python file",
+    "no external dependencies (no regex is fine but not required)",
+    "no I/O"
+  ],
+  "risk_level": "low",
+  "verifier": {
+    "kind": "tests",
+    "inline": {
+      "entrypoint": "word_freq",
+      "timeout_sec": 10,
+      "tests": "assert word_freq('') == {}\nassert word_freq('hello') == {'hello': 1}\nassert word_freq('Hello hello HELLO') == {'hello': 3}\nassert word_freq('hello, world!') == {'hello': 1, 'world': 1}\nassert word_freq('python3 is fun, python3 is cool.') == {'python3': 2, 'is': 2, 'fun': 1, 'cool': 1}\nassert word_freq('a.b.c a') == {'a': 2, 'b': 1, 'c': 1}\nassert word_freq('... !!! ???') == {}\nassert word_freq('one\\ntwo\\tthree  four') == {'one': 1, 'two': 1, 'three': 1, 'four': 1}\nassert word_freq('\\u00e9clat') == {'clat': 1}\nassert word_freq('cafe\\u0301') == {'cafe': 1}\n"
+    }
+  }
+}

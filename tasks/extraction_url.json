@@ -1,0 +1,39 @@
+{
+  "raw_input": "Parse the URL into a structured JSON object. Fields: scheme (string), host (string), port (integer — if not given explicitly in the URL, use 443 for https and 80 for http), path (string, starting with '/'), query_params (object mapping each query parameter name to its string value), fragment (string, empty string if none).\n\nURL: 'https://api.example.com:8443/v2/users?limit=20&after=abc&sort=name#results'\n\nReturn only the JSON object.",
+  "task_class": "verifiable",
+  "task_type": "extraction",
+  "deliverable_type": "json",
+  "success_criteria": [
+    "valid JSON matching schema",
+    "scheme = 'https'",
+    "host = 'api.example.com'",
+    "port = 8443",
+    "path = '/v2/users'",
+    "query_params = {'limit': '20', 'after': 'abc', 'sort': 'name'}",
+    "fragment = 'results'"
+  ],
+  "constraints": [
+    "single JSON object",
+    "no markdown fences",
+    "port is an integer, not a string",
+    "query_params is an object, not an array"
+  ],
+  "risk_level": "low",
+  "verifier": {
+    "kind": "json_schema",
+    "inline": {
+      "schema": {
+        "type": "object",
+        "required": ["scheme", "host", "port", "path", "query_params", "fragment"],
+        "properties": {
+          "scheme": {"type": "string"},
+          "host": {"type": "string"},
+          "port": {"type": "integer"},
+          "path": {"type": "string"},
+          "query_params": {"type": "object"},
+          "fragment": {"type": "string"}
+        }
+      }
+    }
+  }
+}

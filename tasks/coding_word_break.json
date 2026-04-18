@@ -1,0 +1,27 @@
+{
+  "raw_input": "Write a Python function `word_break(s: str, word_dict: list[str]) -> bool` that returns True iff the string `s` can be segmented into a sequence of one or more words, where each word is in `word_dict`. Words in the dictionary may be reused any number of times. You must be able to handle inputs up to length 150 with a dictionary of up to 1,000 words in under 2 seconds (so a naïve exponential recursion will time out — use memoization or DP).",
+  "task_class": "verifiable",
+  "task_type": "coding",
+  "deliverable_type": "code",
+  "success_criteria": [
+    "signature `word_break(s: str, word_dict: list[str]) -> bool`",
+    "correct on standard cases (can break, cannot break)",
+    "handles empty string (depends on convention — our tests require True for empty s)",
+    "handles word reuse",
+    "fast enough on n=150 with 1000-word dict"
+  ],
+  "constraints": [
+    "single Python file",
+    "no external dependencies",
+    "no I/O"
+  ],
+  "risk_level": "low",
+  "verifier": {
+    "kind": "tests",
+    "inline": {
+      "entrypoint": "word_break",
+      "timeout_sec": 10,
+      "tests": "assert word_break('leetcode', ['leet','code']) is True\nassert word_break('applepenapple', ['apple','pen']) is True\nassert word_break('catsandog', ['cats','dog','sand','and','cat']) is False\nassert word_break('', ['a']) is True  # empty string is trivially segmented\nassert word_break('a', ['a']) is True\nassert word_break('aaaaaaa', ['aaa','aaaa']) is True\nassert word_break('aaaaaaa', ['aaaa']) is False\nassert word_break('aaaa', ['a','aa','aaa']) is True\nimport time\nlong_s = 'a' * 150\ndict_words = ['a' * i for i in range(1, 21)]\nt0 = time.perf_counter()\nassert word_break(long_s, dict_words) is True\nassert (time.perf_counter() - t0) < 2.0, 'too slow on long input'\n# A notorious exponential-blowup case if memoization is missing:\nhard_s = 'a' * 140 + 'b'\nhard_dict = ['a'*i for i in range(1,16)] + ['aab','aaab']\nt0 = time.perf_counter()\nresult = word_break(hard_s, hard_dict)\nassert (time.perf_counter() - t0) < 2.0, 'exponential-time signature; use DP or memoization'\nassert result is False\n"
+    }
+  }
+}

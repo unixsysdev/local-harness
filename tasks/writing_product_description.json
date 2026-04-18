@@ -1,0 +1,26 @@
+{
+  "raw_input": "Write an e-commerce product description (80–120 words) for a camping wool blanket. Key facts to convey: 100% Merino wool, 1.2 kg weight, 150×200 cm, naturally odor-resistant, machine-washable in cold water. Target audience: outdoor enthusiasts who value quiet quality over flash. Tone: grounded and concrete, not salesy. Do NOT use bullet points. Do NOT use superlative marketing language ('unleash', 'revolutionary', 'game-changing', 'ultimate', 'best-in-class'). Write as if for a thoughtful gear-review site.",
+  "task_class": "non_verifiable",
+  "task_type": "writing",
+  "deliverable_type": "text",
+  "success_criteria": [
+    "80–120 words total",
+    "mentions Merino wool, 1.2 kg, and 150×200 cm dimensions",
+    "mentions odor-resistant and machine-washable in cold",
+    "no bullet points",
+    "no superlative marketing language"
+  ],
+  "constraints": [
+    "80 to 120 words inclusive",
+    "must contain 'Merino'",
+    "must contain '1.2 kg'",
+    "no superlatives from the forbidden list",
+    "no bullet points or markdown"
+  ],
+  "risk_level": "low",
+  "soft_constraints": {
+    "word_count": {"min": 80, "max": 120},
+    "must_contain": ["Merino", "1.2 kg"],
+    "must_not_contain": ["unleash", "Unleash", "revolutionary", "Revolutionary", "game-changing", "ultimate", "best-in-class", "Sure,", "Certainly,", "As an AI"]
+  }
+}

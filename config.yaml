@@ -1,0 +1,86 @@
+# Phase-1 config for the dual-model harness.
+# See dual_model_inference_harness_spec_v2.md for meaning of each field.
+
+run:
+  name: phase1
+  trace_dir: traces
+  tasks_dir: tasks
+
+models:
+  model_a:
+    endpoint: http://127.0.0.1:8080/v1
+    served_name: qwen3.6-35b-a3b
+    thinking_default: false      # intermediate JSON stages: no thinking
+  model_b:
+    endpoint: http://127.0.0.1:8081/v1
+    served_name: gemma-4-26b-a4b
+    thinking_default: false
+
+baseline:
+  model: model_a
+  temperature: 0.7
+  max_tokens: 2048               # generous; no thinking eats the budget now
+  thinking: false                # fair comparison: harness candidates also run with thinking off
+
+search:
+  # Tuned to the measured parallelism knee (n=6 per server on Strix Halo iGPU):
+  # -> 6 candidates per model × 2 models = 12 concurrent requests
+  # -> saturates --parallel 6 on both servers simultaneously
+  non_verifiable:
+    proposals_per_model: 6
+    post_score_keep: 3
+  verifiable:
+    proposals_per_model: 6
+    # verifiable path: passers survive; if 0 pass, keep top-2 by near-miss score
+
+sampling:
+  strategies:
+    - baseline
+    - decompose-first
+    - edge-case-first
+    - brevity
+  # Strategy axes get mixed with temperatures to produce the generation matrix.
+  temperatures: [0.3, 0.7, 1.0]
+  top_p: 0.95
+  proposal_max_tokens: 800
+  eval_max_tokens: 400
+  final_max_tokens: 1500
+
+scoring:
+  non_verifiable:
+    cross_eval_weight: 0.83
+    self_eval_weight: 0.17
+    self_eval_enabled: false
+  verifiable:
+    deterministic_weight: 0.70
+    cross_eval_weight: 0.25
+    self_eval_weight: 0.05
+    self_eval_enabled: false
+
+disagreement:
+  tau: 0.25
+
+repair:
+  enabled: true
+  max_to_repair: 4           # cap LLM calls per stage
+  max_tokens: 700
+  viability_floor: 0.1       # candidates below this combined score are not worth repairing
+  auto_disable_if_noop_rate_above: 0.5
+
+short_circuit:
+  enabled: false             # set true for production use; keep false during evaluation so we can see ties
+
+judge_calibration:
+  # Down-weight judges known to be biased. Collected from prior eval runs.
+  # Weights applied to pairwise votes in the evaluator.
+  weights:
+    model_a: 1.0
+    model_b: 0.6             # model_b showed positional bias in 8-task eval; half credit for non-unanimous wins
+  min_consistency_for_full_weight: 0.8
+  non_unanimous_penalty: 0.5
+
+# Synthesizer uses thinking by default (quality > speed for final output).
+synthesis:
+  model: model_a
+  thinking: true
+  temperature: 0.5

@@ -1,0 +1,26 @@
+{
+  "raw_input": "Write the body of a meeting invite (40–60 words) for a Q3 kickoff call. Required facts to include: the meeting is on Thursday 14:00–14:30 CEST; attendees are the Growth and Marketing leads; the three agenda topics are quarterly goals, staffing gaps, and a Q2 retro summary. Tone: warm, direct, not corporate. No bullet points.",
+  "task_class": "non_verifiable",
+  "task_type": "writing",
+  "deliverable_type": "text",
+  "success_criteria": [
+    "40–60 words total",
+    "mentions Thursday and 14:00 (start time)",
+    "mentions CEST",
+    "mentions all three agenda topics",
+    "warm and direct, no bullet points"
+  ],
+  "constraints": [
+    "40 to 60 words inclusive",
+    "must include '14:00' and 'CEST'",
+    "no bullet points or lists",
+    "no markdown headers",
+    "no corporate jargon like 'synergy' or 'circle back'"
+  ],
+  "risk_level": "low",
+  "soft_constraints": {
+    "word_count": {"min": 40, "max": 60},
+    "must_contain": ["14:00", "CEST"],
+    "must_not_contain": ["Sure,", "Certainly,", "As an AI", "synergy", "circle back"]
+  }
+}

@@ -1,0 +1,11 @@
+Triaging 1 tasks with BOTH models (thinking=True)  — firing all 2 calls concurrently
+  [PASS] riddle_car_wash.json                     model_b    wall=11.8s out=218tok
+  [PASS] riddle_car_wash.json                     model_a    wall=14.4s out=242tok
+
+=== TRIAGE SUMMARY ===
+  total tasks:          1
+  both_pass (drop):     1
+  asymmetric (drop):    0
+  both_fail (KEEP):     0  <- sweet spot for harness experiment
+
+  Sweet-spot tasks (run harness on these):

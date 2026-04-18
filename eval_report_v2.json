@@ -1,0 +1,1494 @@
+{
+  "config_file": "config.yaml",
+  "tasks_dir": "tasks",
+  "summary": {
+    "total_tasks": 31,
+    "harness_wins": 7,
+    "baseline_wins": 2,
+    "ties_or_both": 22,
+    "unresolved": 0,
+    "errors": 0,
+    "harness_win_rate": 0.226,
+    "baseline_win_rate": 0.065,
+    "avg_baseline_wall_s": 4.44,
+    "avg_harness_wall_s": 108.63,
+    "judge_stats": {
+      "model_a": {
+        "tasks": 10,
+        "consistent": 8,
+        "harness_votes": 14,
+        "baseline_votes": 5,
+        "tie_votes": 0,
+        "parse_errors": 1,
+        "A_votes": 7,
+        "B_votes": 12,
+        "consistency_rate": 0.8,
+        "positional_bias_A": 0.368
+      },
+      "model_b": {
+        "tasks": 10,
+        "consistent": 6,
+        "harness_votes": 12,
+        "baseline_votes": 8,
+        "tie_votes": 0,
+        "parse_errors": 0,
+        "A_votes": 12,
+        "B_votes": 8,
+        "consistency_rate": 0.6,
+        "positional_bias_A": 0.6
+      }
+    }
+  },
+  "tasks": [
+    {
+      "task_file": "tasks/coding_balanced_brackets.json",
+      "task_id": "680df86230c2",
+      "run_id": "06f84162025b",
+      "task_class": "verifiable",
+      "baseline_wall_ms": 4540,
+      "harness_wall_ms_total": 76052,
+      "baseline_output_preview": "```python\ndef is_balanced(s: str) -> bool:\n    \"\"\"\n    Returns True iff every opening bracket in s has a matching closing bracket\n    of the same type AND the nesting order is valid.\n    Bracket pairs are (), [], and {}. Any other character",
+      "harness_output_preview": "def is_balanced(s: str) -> bool:\n    stack = []\n    matching = {')': '(', ']': '[', '}': '{'}\n    opening = set(matching.values())\n    closing = set(matching.keys())\n    \n    for char in s:\n        if char in opening:\n            stack.appe",
+      "mode": "verifiable",
+      "baseline_pass": true,
+      "harness_pass": true,
+      "verdict": "both_pass",
+      "baseline_signals": {
+        "status": "ok",
+        "failures": [],
+        "duration_ms": 35,
+        "stderr_tail": ""
+      },
+      "harness_signals": {
+        "status": "ok",
+        "failures": [],
+        "duration_ms": 31,
+        "stderr_tail": ""
+      }
+    },
+    {
+      "task_file": "tasks/coding_decode_string.json",
+      "task_id": "75944ddb9355",
+      "run_id": "87e69d92dd91",
+      "task_class": "verifiable",
+      "baseline_wall_ms": 8943,
+      "harness_wall_ms_total": 117625,
+      "baseline_output_preview": "```python\ndef decode(s: str) -> str:\n    \"\"\"\n    Decodes a string encoded with the pattern k[X] where k is a positive integer\n    and X is the substring to repeat. The pattern can be nested.\n    \n    Examples:\n        3[a] -> 'aaa'\n        ",
+      "harness_output_preview": "def decode(s: str) -> str:\n    def helper(index):\n        result = []\n        while index < len(s):\n            char = s[index]\n            if char == ']':\n                index += 1\n                return ''.join(result), index\n           ",
+      "mode": "verifiable",
+      "baseline_pass": true,
+      "harness_pass": true,
+      "verdict": "both_pass",
+      "baseline_signals": {
+        "status": "ok",
+        "failures": [],
+        "duration_ms": 25,
+        "stderr_tail": ""
+      },
+      "harness_signals": {
+        "status": "ok",
+        "failures": [],
+        "duration_ms": 23,
+        "stderr_tail": ""
+      }
+    },
+    {
+      "task_file": "tasks/coding_edit_distance.json",
+      "task_id": "7f8950eea0b0",
+      "run_id": "2c4438b070e3",
+      "task_class": "verifiable",
+      "baseline_wall_ms": 9445,
+      "harness_wall_ms_total": 106025,
+      "baseline_output_preview": "```python\ndef edit_distance(a: str, b: str) -> int:\n    \"\"\"\n    Compute the Levenshtein edit distance between two strings.\n    \n    Uses dynamic programming with optimized space complexity.\n    \n    Args:\n        a: First string\n        b: ",
+      "harness_output_preview": "def edit_distance(a: str, b: str) -> int:\n    n = len(a)\n    m = len(b)\n    \n    # Use two rows to save space: previous and current\n    # Initialize previous row with distances from empty string to b[:j]\n    prev = list(range(m + 1))\n    cu",
+      "mode": "verifiable",
+      "baseline_pass": true,
+      "harness_pass": true,
+      "verdict": "both_pass",
+      "baseline_signals": {
+        "status": "ok",
+        "failures": [],
+        "duration_ms": 41,
+        "stderr_tail": ""
+      },
+      "harness_signals": {
+        "status": "ok",
+        "failures": [],
+        "duration_ms": 47,
+        "stderr_tail": ""
+      }
+    },
+    {
+      "task_file": "tasks/coding_is_prime.json",
+      "task_id": "da697cbfcead",
+      "run_id": "e37ee5d33fd8",
+      "task_class": "verifiable",
+      "baseline_wall_ms": 3217,
+      "harness_wall_ms_total": 70312,
+      "baseline_output_preview": "```python\ndef is_prime(n: int) -> bool:\n    \"\"\"Return True iff n is a prime number.\"\"\"\n    if n <= 1:\n        return False\n    if n <= 3:\n        return True\n    if n % 2 == 0 or n % 3 == 0:\n        return False\n    i = 5\n    while i * i <=",
+      "harness_output_preview": "def is_prime(n: int) -> bool:\n    if n <= 1:\n        return False\n    if n <= 3:\n        return True\n    if n % 2 == 0 or n % 3 == 0:\n        return False\n    i = 5\n    while i * i <= n:\n        if n % i == 0 or n % (i + 2) == 0:\n          ",
+      "mode": "verifiable",
+      "baseline_pass": true,
+      "harness_pass": true,
+      "verdict": "both_pass",
+      "baseline_signals": {
+        "status": "ok",
+        "failures": [],
+        "duration_ms": 26,
+        "stderr_tail": ""
+      },
+      "harness_signals": {
+        "status": "ok",
+        "failures": [],
+        "duration_ms": 23,
+        "stderr_tail": ""
+      }
+    },
+    {
+      "task_file": "tasks/coding_longest_palindrome.json",
+      "task_id": "5952864126c5",
+      "run_id": "d96a944dab55",
+      "task_class": "verifiable",
+      "baseline_wall_ms": 7561,
+      "harness_wall_ms_total": 191783,
+      "baseline_output_preview": "```python\ndef longest_palindrome(s: str) -> str:\n    \"\"\"\n    Returns the longest contiguous palindromic substring of s.\n    If there are ties, returns the one that appears first.\n    Handles empty input by returning the empty string.\n    \"\"",
+      "harness_output_preview": "def longest_palindrome(s: str) -> str:\n    if not s:\n        return \"\"\n    \n    start = 0\n    max_len = 1\n    n = len(s)\n    \n    def expand_around_center(left: int, right: int) -> tuple:\n        while left >= 0 and right < n and s[left] ==",
+      "mode": "verifiable",
+      "baseline_pass": false,
+      "harness_pass": false,
+      "verdict": "both_fail",
+      "baseline_signals": {
+        "status": "fail",
+        "failures": [
+          {
+            "type": "assertion",
+            "msg": ""
+          }
+        ],
+        "duration_ms": 68,
+        "stderr_tail": ""
+      },
+      "harness_signals": {
+        "status": "fail",
+        "failures": [
+          {
+            "type": "assertion",
+            "msg": ""
+          }
+        ],
+        "duration_ms": 72,
+        "stderr_tail": ""
+      }
+    },
+    {
+      "task_file": "tasks/coding_merge_intervals.json",
+      "task_id": "0a423eac7384",
+      "run_id": "c6ae616d52bd",
+      "task_class": "verifiable",
+      "baseline_wall_ms": 5520,
+      "harness_wall_ms_total": 129671,
+      "baseline_output_preview": "```python\ndef merge_intervals(intervals: list[list[int]]) -> list[list[int]]:\n    \"\"\"\n    Merge overlapping or touching intervals.\n    \n    Args:\n        intervals: A list of closed intervals [start, end] with start <= end.\n        \n    Ret",
+      "harness_output_preview": "def merge_intervals(intervals: list[list[int]]) -> list[list[int]]:\n    if not intervals:\n        return []\n    \n    # Create a copy to avoid mutating the input\n    # Sort by start time, then by end time\n    sorted_intervals = sorted(interv",
+      "mode": "verifiable",
+      "baseline_pass": true,
+      "harness_pass": true,
+      "verdict": "both_pass",
+      "baseline_signals": {
+        "status": "ok",
+        "failures": [],
+        "duration_ms": 22,
+        "stderr_tail": ""
+      },
+      "harness_signals": {
+        "status": "ok",
+        "failures": [],
+        "duration_ms": 29,
+        "stderr_tail": ""
+      }
+    },
+    {
+      "task_file": "tasks/coding_roman_to_int.json",
+      "task_id": "3a0945d54c77",
+      "run_id": "5c6792dc9a46",
+      "task_class": "verifiable",
+      "baseline_wall_ms": 5884,
+      "harness_wall_ms_total": 88325,
+      "baseline_output_preview": "```python\ndef roman_to_int(s: str) -> int:\n    \"\"\"\n    Convert a Roman numeral string to an integer.\n    \n    Args:\n        s: A valid Roman numeral string (1..3999)\n        \n    Returns:\n        The integer value of the Roman numeral\n    \"",
+      "harness_output_preview": "def roman_to_int(s: str) -> int:\n    roman_values = {\n        'I': 1,\n        'V': 5,\n        'X': 10,\n        'L': 50,\n        'C': 100,\n        'D': 500,\n        'M': 1000\n    }\n    \n    total = 0\n    prev_value = 0\n    \n    # Iterate fro",
+      "mode": "verifiable",
+      "baseline_pass": true,
+      "harness_pass": true,
+      "verdict": "both_pass",
+      "baseline_signals": {
+        "status": "ok",
+        "failures": [],
+        "duration_ms": 36,
+        "stderr_tail": ""
+      },
+      "harness_signals": {
+        "status": "ok",
+        "failures": [],
+        "duration_ms": 25,
+        "stderr_tail": ""
+      }
+    },
+    {
+      "task_file": "tasks/coding_rotate_list.json",
+      "task_id": "a54ac0500f4f",
+      "run_id": "2f8aa6dd9da1",
+      "task_class": "verifiable",
+      "baseline_wall_ms": 5872,
+      "harness_wall_ms_total": 95934,
+      "baseline_output_preview": "```python\ndef rotate_right(nums: list[int], k: int) -> list[int]:\n    \"\"\"\n    Returns a new list rotated right by k positions.\n    \n    Rules:\n    - When k >= len(nums), rotate by k mod len(nums)\n    - When k < 0, rotate left by abs(k) mod ",
+      "harness_output_preview": "def rotate_right(nums: list[int], k: int) -> list[int]:\n    if not nums:\n        return []\n    \n    n = len(nums)\n    # Normalize k to be within [0, n-1]\n    # Python's % operator handles negative numbers correctly for this purpose\n    # e.",
+      "mode": "verifiable",
+      "baseline_pass": true,
+      "harness_pass": true,
+      "verdict": "both_pass",
+      "baseline_signals": {
+        "status": "ok",
+        "failures": [],
+        "duration_ms": 26,
+        "stderr_tail": ""
+      },
+      "harness_signals": {
+        "status": "ok",
+        "failures": [],
+        "duration_ms": 24,
+        "stderr_tail": ""
+      }
+    },
+    {
+      "task_file": "tasks/coding_valid_ipv4.json",
+      "task_id": "86b48b676ffa",
+      "run_id": "c785700286b8",
+      "task_class": "verifiable",
+      "baseline_wall_ms": 8595,
+      "harness_wall_ms_total": 134793,
+      "baseline_output_preview": "```python\ndef is_valid_ipv4(s: str) -> bool:\n    \"\"\"\n    Returns True iff s is a strictly-valid IPv4 address in dotted notation.\n    \n    Requirements:\n    - Exactly 4 octets separated by dots\n    - Each octet is a base-10 integer in [0, 25",
+      "harness_output_preview": "def is_valid_ipv4(s: str) -> bool:\n    \"\"\"\n    Returns True if s is a strictly-valid IPv4 address in dotted notation.\n    \n    Requirements:\n    - Exactly 4 octets separated by dots.\n    - Each octet is a base-10 integer in [0, 255].\n    - ",
+      "mode": "verifiable",
+      "baseline_pass": true,
+      "harness_pass": true,
+      "verdict": "both_pass",
+      "baseline_signals": {
+        "status": "ok",
+        "failures": [],
+        "duration_ms": 25,
+        "stderr_tail": ""
+      },
+      "harness_signals": {
+        "status": "ok",
+        "failures": [],
+        "duration_ms": 29,
+        "stderr_tail": ""
+      }
+    },
+    {
+      "task_file": "tasks/coding_word_frequency.json",
+      "task_id": "7b3a89a2aa97",
+      "run_id": "2b1b6fecee37",
+      "task_class": "verifiable",
+      "baseline_wall_ms": 5446,
+      "harness_wall_ms_total": 109334,
+      "baseline_output_preview": "```python\ndef word_freq(text: str) -> dict[str, int]:\n    \"\"\"\n    Returns a dictionary mapping each distinct word in text (lowercased) to its count.\n    A word is a maximal run of ASCII letters and digits.\n    Any other character (punctuati",
+      "harness_output_preview": "def word_freq(text: str) -> dict[str, int]:\n    \"\"\"\n    Returns a dictionary mapping each distinct ASCII alphanumeric word in text\n    (lowercased) to its count. Non-ASCII alphanumeric characters act as separators.\n    \"\"\"\n    counts = {}\n ",
+      "mode": "verifiable",
+      "baseline_pass": true,
+      "harness_pass": true,
+      "verdict": "both_pass",
+      "baseline_signals": {
+        "status": "ok",
+        "failures": [],
+        "duration_ms": 24,
+        "stderr_tail": ""
+      },
+      "harness_signals": {
+        "status": "ok",
+        "failures": [],
+        "duration_ms": 30,
+        "stderr_tail": ""
+      }
+    },
+    {
+      "task_file": "tasks/extraction_address.json",
+      "task_id": "8edc1eb834db",
+      "run_id": "2e3994e23b9e",
+      "task_class": "verifiable",
+      "baseline_wall_ms": 1700,
+      "harness_wall_ms_total": 84041,
+      "baseline_output_preview": "{\n  \"street\": \"221B Baker Street\",\n  \"city\": \"London\",\n  \"region\": \"Marylebone\",\n  \"postal_code\": \"NW1 6XE\",\n  \"country\": \"United Kingdom\"\n}",
+      "harness_output_preview": "{\n  \"street\": \"221B Baker Street\",\n  \"city\": \"London\",\n  \"region\": \"England\",\n  \"postal_code\": \"NW1 6XE\",\n  \"country\": \"United Kingdom\"\n}",
+      "mode": "verifiable",
+      "baseline_pass": true,
+      "harness_pass": true,
+      "verdict": "both_pass",
+      "baseline_signals": {
+        "errors": [],
+        "instance": {
+          "street": "221B Baker Street",
+          "city": "London",
+          "region": "Marylebone",
+          "postal_code": "NW1 6XE",
+          "country": "United Kingdom"
+        }
+      },
+      "harness_signals": {
+        "errors": [],
+        "instance": {
+          "street": "221B Baker Street",
+          "city": "London",
+          "region": "England",
+          "postal_code": "NW1 6XE",
+          "country": "United Kingdom"
+        }
+      }
+    },
+    {
+      "task_file": "tasks/extraction_bio.json",
+      "task_id": "a0cb1a29e578",
+      "run_id": "16bf7791b26e",
+      "task_class": "verifiable",
+      "baseline_wall_ms": 1768,
+      "harness_wall_ms_total": 70382,
+      "baseline_output_preview": "{\n  \"full_name\": \"Elena Mar\u00eda Sokolov\",\n  \"age\": 48,\n  \"birth_year\": 1978,\n  \"current_city\": \"Berlin\",\n  \"profession\": \"systems biologist\"\n}",
+      "harness_output_preview": "{\"full_name\": \"Elena Mar\u00eda Sokolov\", \"age\": 48, \"birth_year\": 1978, \"current_city\": \"Berlin\", \"profession\": \"systems biologist\"}",
+      "mode": "verifiable",
+      "baseline_pass": true,
+      "harness_pass": true,
+      "verdict": "both_pass",
+      "baseline_signals": {
+        "errors": [],
+        "instance": {
+          "full_name": "Elena Mar\u00eda Sokolov",
+          "age": 48,
+          "birth_year": 1978,
+          "current_city": "Berlin",
+          "profession": "systems biologist"
+        }
+      },
+      "harness_signals": {
+        "errors": [],
+        "instance": {
+          "full_name": "Elena Mar\u00eda Sokolov",
+          "age": 48,
+          "birth_year": 1978,
+          "current_city": "Berlin",
+          "profession": "systems biologist"
+        }
+      }
+    },
+    {
+      "task_file": "tasks/extraction_contract_terms.json",
+      "task_id": "96f757235a39",
+      "run_id": "57b9b67bad05",
+      "task_class": "verifiable",
+      "baseline_wall_ms": 2279,
+      "harness_wall_ms_total": 71046,
+      "baseline_output_preview": "{\n  \"effective_date\": \"2026-05-01\",\n  \"initial_term_months\": 24,\n  \"renewal_term_months\": 12,\n  \"auto_renew\": true,\n  \"notice_period_days\": 60,\n  \"governing_law\": \"Federal Republic of Germany\"\n}",
+      "harness_output_preview": "{\"effective_date\": \"2026-05-01\", \"initial_term_months\": 24, \"renewal_term_months\": 12, \"auto_renew\": true, \"notice_period_days\": 60, \"governing_law\": \"Federal Republic of Germany\"}",
+      "mode": "verifiable",
+      "baseline_pass": true,
+      "harness_pass": true,
+      "verdict": "both_pass",
+      "baseline_signals": {
+        "errors": [],
+        "instance": {
+          "effective_date": "2026-05-01",
+          "initial_term_months": 24,
+          "renewal_term_months": 12,
+          "auto_renew": true,
+          "notice_period_days": 60,
+          "governing_law": "Federal Republic of Germany"
+        }
+      },
+      "harness_signals": {
+        "errors": [],
+        "instance": {
+          "effective_date": "2026-05-01",
+          "initial_term_months": 24,
+          "renewal_term_months": 12,
+          "auto_renew": true,
+          "notice_period_days": 60,
+          "governing_law": "Federal Republic of Germany"
+        }
+      }
+    },
+    {
+      "task_file": "tasks/extraction_event_schedule.json",
+      "task_id": "1280fc01ceca",
+      "run_id": "2d20dd2b3936",
+      "task_class": "verifiable",
+      "baseline_wall_ms": 3178,
+      "harness_wall_ms_total": 80200,
+      "baseline_output_preview": "{\n  \"event_name\": \"Q2 All-Hands Meeting\",\n  \"start_datetime\": \"2026-06-10T10:00\",\n  \"end_datetime\": \"2026-06-10T11:30\",\n  \"timezone\": \"Europe/Berlin\",\n  \"location\": \"Main Auditorium (Berlin office)\",\n  \"organizer\": \"Priya Raman\",\n  \"virtual",
+      "harness_output_preview": "{\n  \"event_name\": \"Q2 All-Hands Meeting\",\n  \"start_datetime\": \"2026-06-10T10:00\",\n  \"end_datetime\": \"2026-06-10T11:30\",\n  \"timezone\": \"Europe/Berlin\",\n  \"location\": \"Main Auditorium (Berlin office)\",\n  \"organizer\": \"Priya Raman\",\n  \"virtual",
+      "mode": "verifiable",
+      "baseline_pass": true,
+      "harness_pass": true,
+      "verdict": "both_pass",
+      "baseline_signals": {
+        "errors": [],
+        "instance": {
+          "event_name": "Q2 All-Hands Meeting",
+          "start_datetime": "2026-06-10T10:00",
+          "end_datetime": "2026-06-10T11:30",
+          "timezone": "Europe/Berlin",
+          "location": "Main Auditorium (Berlin office)",
+          "organizer": "Priya Raman",
+          "virtual": false,
+          "duration_minutes": 90
+        }
+      },
+      "harness_signals": {
+        "errors": [],
+        "instance": {
+          "event_name": "Q2 All-Hands Meeting",
+          "start_datetime": "2026-06-10T10:00",
+          "end_datetime": "2026-06-10T11:30",
+          "timezone": "Europe/Berlin",
+          "location": "Main Auditorium (Berlin office)",
+          "organizer": "Priya Raman",
+          "virtual": false,
+          "duration_minutes": 90
+        }
+      }
+    },
+    {
+      "task_file": "tasks/extraction_flight.json",
+      "task_id": "f2c46c68b6de",
+      "run_id": "0e27e9132662",
+      "task_class": "verifiable",
+      "baseline_wall_ms": 2917,
+      "harness_wall_ms_total": 81477,
+      "baseline_output_preview": "{\n  \"airline\": \"Lufthansa\",\n  \"flight_number\": \"LH441\",\n  \"departure_airport\": \"FRA\",\n  \"arrival_airport\": \"ORD\",\n  \"departure_datetime\": \"2026-06-04T13:45\",\n  \"arrival_datetime\": \"2026-06-04T16:20\",\n  \"same_day\": true\n}",
+      "harness_output_preview": "{\"airline\":\"Lufthansa\",\"flight_number\":\"LH441\",\"departure_airport\":\"FRA\",\"arrival_airport\":\"ORD\",\"departure_datetime\":\"2026-06-04T13:45\",\"arrival_datetime\":\"2026-06-04T16:20\",\"same_day\":true}",
+      "mode": "verifiable",
+      "baseline_pass": true,
+      "harness_pass": true,
+      "verdict": "both_pass",
+      "baseline_signals": {
+        "errors": [],
+        "instance": {
+          "airline": "Lufthansa",
+          "flight_number": "LH441",
+          "departure_airport": "FRA",
+          "arrival_airport": "ORD",
+          "departure_datetime": "2026-06-04T13:45",
+          "arrival_datetime": "2026-06-04T16:20",
+          "same_day": true
+        }
+      },
+      "harness_signals": {
+        "errors": [],
+        "instance": {
+          "airline": "Lufthansa",
+          "flight_number": "LH441",
+          "departure_airport": "FRA",
+          "arrival_airport": "ORD",
+          "departure_datetime": "2026-06-04T13:45",
+          "arrival_datetime": "2026-06-04T16:20",
+          "same_day": true
+        }
+      }
+    },
+    {
+      "task_file": "tasks/extraction_invoice.json",
+      "task_id": "1ecf0dd73bad",
+      "run_id": "208c750e19bb",
+      "task_class": "verifiable",
+      "baseline_wall_ms": 2294,
+      "harness_wall_ms_total": 79573,
+      "baseline_output_preview": "{\n  \"invoice_number\": \"INV-2026-0412\",\n  \"invoice_date\": \"2026-04-18\",\n  \"due_date\": \"2026-05-18\",\n  \"total_amount\": 1247.5,\n  \"currency\": \"EUR\"\n}",
+      "harness_output_preview": "{\"invoice_number\": \"INV-2026-0412\", \"invoice_date\": \"2026-04-18\", \"due_date\": \"2026-05-18\", \"total_amount\": 1247.50, \"currency\": \"EUR\"}",
+      "mode": "verifiable",
+      "baseline_pass": true,
+      "harness_pass": true,
+      "verdict": "both_pass",
+      "baseline_signals": {
+        "errors": [],
+        "instance": {
+          "invoice_number": "INV-2026-0412",
+          "invoice_date": "2026-04-18",
+          "due_date": "2026-05-18",
+          "total_amount": 1247.5,
+          "currency": "EUR"
+        }
+      },
+      "harness_signals": {
+        "errors": [],
+        "instance": {
+          "invoice_number": "INV-2026-0412",
+          "invoice_date": "2026-04-18",
+          "due_date": "2026-05-18",
+          "total_amount": 1247.5,
+          "currency": "EUR"
+        }
+      }
+    },
+    {
+      "task_file": "tasks/extraction_job_posting.json",
+      "task_id": "4ebeaac1d83a",
+      "run_id": "5776ea6e26fb",
+      "task_class": "verifiable",
+      "baseline_wall_ms": 2561,
+      "harness_wall_ms_total": 88474,
+      "baseline_output_preview": "{\n  \"title\": \"Senior Backend Engineer\",\n  \"company\": \"FinlyCorp\",\n  \"location\": \"Berlin, Germany\",\n  \"employment_type\": \"full_time\",\n  \"remote\": false,\n  \"min_years_experience\": 5,\n  \"required_skills\": [\n    \"go\",\n    \"postgresql\",\n    \"eve",
+      "harness_output_preview": "{\n  \"title\": \"Senior Backend Engineer\",\n  \"company\": \"FinlyCorp\",\n  \"location\": \"Berlin, Germany\",\n  \"employment_type\": \"full_time\",\n  \"remote\": false,\n  \"min_years_experience\": 5,\n  \"required_skills\": [\n    \"go\",\n    \"postgresql\",\n    \"eve",
+      "mode": "verifiable",
+      "baseline_pass": true,
+      "harness_pass": true,
+      "verdict": "both_pass",
+      "baseline_signals": {
+        "errors": [],
+        "instance": {
+          "title": "Senior Backend Engineer",
+          "company": "FinlyCorp",
+          "location": "Berlin, Germany",
+          "employment_type": "full_time",
+          "remote": false,
+          "min_years_experience": 5,
+          "required_skills": [
+            "go",
+            "postgresql",
+            "event-driven architectures",
+            "kubernetes"
+          ]
+        }
+      },
+      "harness_signals": {
+        "errors": [],
+        "instance": {
+          "title": "Senior Backend Engineer",
+          "company": "FinlyCorp",
+          "location": "Berlin, Germany",
+          "employment_type": "full_time",
+          "remote": false,
+          "min_years_experience": 5,
+          "required_skills": [
+            "go",
+            "postgresql",
+            "event-driven architectures",
+            "kubernetes"
+          ]
+        }
+      }
+    },
+    {
+      "task_file": "tasks/extraction_log_line.json",
+      "task_id": "eb3feebe2546",
+      "run_id": "90f166d3f99e",
+      "task_class": "verifiable",
+      "baseline_wall_ms": 2895,
+      "harness_wall_ms_total": 89072,
+      "baseline_output_preview": "{\n  \"timestamp\": \"2026-04-18T14:02:13.204Z\",\n  \"level\": \"ERROR\",\n  \"service\": \"payments.svc\",\n  \"error_type\": \"DatabaseTimeout\",\n  \"message\": \"query exceeded 5s on user_lookup\",\n  \"fields\": {\n    \"account\": \"10293\",\n    \"retry_count\": 3\n  }",
+      "harness_output_preview": "{\"timestamp\": \"2026-04-18T14:02:13.204Z\", \"level\": \"ERROR\", \"service\": \"payments.svc\", \"error_type\": \"DatabaseTimeout\", \"message\": \"query exceeded 5s on user_lookup\", \"fields\": {\"account\": \"10293\", \"retry_count\": \"3\"}}",
+      "mode": "verifiable",
+      "baseline_pass": true,
+      "harness_pass": true,
+      "verdict": "both_pass",
+      "baseline_signals": {
+        "errors": [],
+        "instance": {
+          "timestamp": "2026-04-18T14:02:13.204Z",
+          "level": "ERROR",
+          "service": "payments.svc",
+          "error_type": "DatabaseTimeout",
+          "message": "query exceeded 5s on user_lookup",
+          "fields": {
+            "account": "10293",
+            "retry_count": 3
+          }
+        }
+      },
+      "harness_signals": {
+        "errors": [],
+        "instance": {
+          "timestamp": "2026-04-18T14:02:13.204Z",
+          "level": "ERROR",
+          "service": "payments.svc",
+          "error_type": "DatabaseTimeout",
+          "message": "query exceeded 5s on user_lookup",
+          "fields": {
+            "account": "10293",
+            "retry_count": "3"
+          }
+        }
+      }
+    },
+    {
+      "task_file": "tasks/extraction_meeting.json",
+      "task_id": "68f2f071026b",
+      "run_id": "a83441bd44f2",
+      "task_class": "verifiable",
+      "baseline_wall_ms": 4879,
+      "harness_wall_ms_total": 79266,
+      "baseline_output_preview": "{\n  \"date\": \"2026-03-12\",\n  \"attendees\": [\n    \"Alex Chen\",\n    \"Priya Raman\",\n    \"Marcus Weiss\"\n  ],\n  \"action_items\": [\n    {\n      \"owner\": \"Alex Chen\",\n      \"task\": \"finalize the roadmap draft\",\n      \"due_date\": \"2026-03-19\"\n    },\n ",
+      "harness_output_preview": "{\n  \"date\": \"2026-03-12\",\n  \"attendees\": [\"Alex Chen\", \"Priya Raman\", \"Marcus Weiss\"],\n  \"action_items\": [\n    {\n      \"owner\": \"Alex Chen\",\n      \"task\": \"finalize the roadmap draft\",\n      \"due_date\": \"2026-03-19\"\n    },\n    {\n      \"owne",
+      "mode": "verifiable",
+      "baseline_pass": true,
+      "harness_pass": true,
+      "verdict": "both_pass",
+      "baseline_signals": {
+        "errors": [],
+        "instance": {
+          "date": "2026-03-12",
+          "attendees": [
+            "Alex Chen",
+            "Priya Raman",
+            "Marcus Weiss"
+          ],
+          "action_items": [
+            {
+              "owner": "Alex Chen",
+              "task": "finalize the roadmap draft",
+              "due_date": "2026-03-19"
+            },
+            {
+              "owner": "Priya Raman",
+              "task": "customer-research writeup",
+              "due_date": "2026-03-25"
+            },
+            {
+              "owner": "Marcus Weiss",
+              "task": "follow up with legal on the DPA",
+              "due_date": "2026-03-13"
+            }
+          ]
+        }
+      },
+      "harness_signals": {
+        "errors": [],
+        "instance": {
+          "date": "2026-03-12",
+          "attendees": [
+            "Alex Chen",
+            "Priya Raman",
+            "Marcus Weiss"
+          ],
+          "action_items": [
+            {
+              "owner": "Alex Chen",
+              "task": "finalize the roadmap draft",
+              "due_date": "2026-03-19"
+            },
+            {
+              "owner": "Priya Raman",
+              "task": "customer-research writeup",
+              "due_date": "2026-03-25"
+            },
+            {
+              "owner": "Marcus Weiss",
+              "task": "follow up with legal on the DPA",
+              "due_date": "2026-03-13"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "task_file": "tasks/extraction_recipe.json",
+      "task_id": "71ed6169587d",
+      "run_id": "432d1e06c90a",
+      "task_class": "verifiable",
+      "baseline_wall_ms": 5345,
+      "harness_wall_ms_total": 132819,
+      "baseline_output_preview": "{\n  \"name\": \"Classic Vinaigrette\",\n  \"servings\": 4,\n  \"ingredients\": [\n    {\n      \"item\": \"olive oil\",\n      \"quantity\": 3,\n      \"unit\": \"tablespoons\"\n    },\n    {\n      \"item\": \"red wine vinegar\",\n      \"quantity\": 1,\n      \"unit\": \"tabl",
+      "harness_output_preview": "{\"name\": \"Classic Vinaigrette\", \"servings\": 4, \"ingredients\": [{\"item\": \"olive oil\", \"quantity\": 3, \"unit\": \"tablespoons\"}, {\"item\": \"red wine vinegar\", \"quantity\": 1, \"unit\": \"tablespoon\"}, {\"item\": \"Dijon mustard\", \"quantity\": 1, \"unit\": ",
+      "mode": "verifiable",
+      "baseline_pass": true,
+      "harness_pass": true,
+      "verdict": "both_pass",
+      "baseline_signals": {
+        "errors": [],
+        "instance": {
+          "name": "Classic Vinaigrette",
+          "servings": 4,
+          "ingredients": [
+            {
+              "item": "olive oil",
+              "quantity": 3,
+              "unit": "tablespoons"
+            },
+            {
+              "item": "red wine vinegar",
+              "quantity": 1,
+              "unit": "tablespoon"
+            },
+            {
+              "item": "Dijon mustard",
+              "quantity": 1,
+              "unit": "teaspoon"
+            },
+            {
+              "item": "salt",
+              "quantity": null,
+              "unit": "pinch"
+            }
+          ],
+          "steps": [
+            "Whisk together 3 tablespoons olive oil, 1 tablespoon red wine vinegar, 1 teaspoon Dijon mustard, and a pinch of salt until emulsified.",
+            "Drizzle over mixed greens just before serving."
+          ]
+        }
+      },
+      "harness_signals": {
+        "errors": [],
+        "instance": {
+          "name": "Classic Vinaigrette",
+          "servings": 4,
+          "ingredients": [
+            {
+              "item": "olive oil",
+              "quantity": 3,
+              "unit": "tablespoons"
+            },
+            {
+              "item": "red wine vinegar",
+              "quantity": 1,
+              "unit": "tablespoon"
+            },
+            {
+              "item": "Dijon mustard",
+              "quantity": 1,
+              "unit": "teaspoon"
+            },
+            {
+              "item": "salt",
+              "quantity": null,
+              "unit": "pinch"
+            }
+          ],
+          "steps": [
+            "Whisk together olive oil, red wine vinegar, Dijon mustard, and salt until emulsified.",
+            "Drizzle over mixed greens just before serving."
+          ]
+        }
+      }
+    },
+    {
+      "task_file": "tasks/extraction_url.json",
+      "task_id": "c58518a92368",
+      "run_id": "55924596f37b",
+      "task_class": "verifiable",
+      "baseline_wall_ms": 2473,
+      "harness_wall_ms_total": 62838,
+      "baseline_output_preview": "{\n  \"scheme\": \"https\",\n  \"host\": \"api.example.com\",\n  \"port\": 8443,\n  \"path\": \"/v2/users\",\n  \"query_params\": {\n    \"limit\": \"20\",\n    \"after\": \"abc\",\n    \"sort\": \"name\"\n  },\n  \"fragment\": \"results\"\n}",
+      "harness_output_preview": "{\"scheme\": \"https\", \"host\": \"api.example.com\", \"port\": 8443, \"path\": \"/v2/users\", \"query_params\": {\"limit\": \"20\", \"after\": \"abc\", \"sort\": \"name\"}, \"fragment\": \"results\"}",
+      "mode": "verifiable",
+      "baseline_pass": true,
+      "harness_pass": true,
+      "verdict": "both_pass",
+      "baseline_signals": {
+        "errors": [],
+        "instance": {
+          "scheme": "https",
+          "host": "api.example.com",
+          "port": 8443,
+          "path": "/v2/users",
+          "query_params": {
+            "limit": "20",
+            "after": "abc",
+            "sort": "name"
+          },
+          "fragment": "results"
+        }
+      },
+      "harness_signals": {
+        "errors": [],
+        "instance": {
+          "scheme": "https",
+          "host": "api.example.com",
+          "port": 8443,
+          "path": "/v2/users",
+          "query_params": {
+            "limit": "20",
+            "after": "abc",
+            "sort": "name"
+          },
+          "fragment": "results"
+        }
+      }
+    },
+    {
+      "task_file": "tasks/writing_apology_letter.json",
+      "task_id": "7bc9a19c36d1",
+      "run_id": "fde0bb88ecf9",
+      "task_class": "non_verifiable",
+      "baseline_wall_ms": 6674,
+      "harness_wall_ms_total": 171740,
+      "baseline_output_preview": "Dear Enterprise Customers,\n\nOn 16 April 2026, Flint experienced a six-hour production outage that disrupted your critical workflows and delayed essential business operations. We recognize that this downtime directly impacted your team\u2019s pro",
+      "harness_output_preview": "Dear Enterprise Customers,\n\nI am writing to address the significant disruption your teams faced during our production outage on 16 April 2026. For six hours, your access to critical Flint services was completely unavailable, halting your da",
+      "mode": "pairwise",
+      "harness_wins": 3,
+      "baseline_wins": 1,
+      "ties": 0,
+      "total_calls": 4,
+      "order_consistent_per_judge": {
+        "model_a": false,
+        "model_b": true
+      },
+      "weighted_harness": 1.7,
+      "weighted_baseline": 0.5,
+      "judge_weights_used": {
+        "model_a": 1.0,
+        "model_b": 0.6
+      },
+      "verdict": "harness_win",
+      "calls": [
+        {
+          "judge": "model_a",
+          "side_of_harness": "A",
+          "winner_label": "B",
+          "harness_won": false,
+          "confidence": 0.85,
+          "reason": "Answer B is better because it strictly adheres to the constraint of explaining the cause in 'one sentence' ('The outage was caused by a bad database migration that introduced unexpected latency and connectivity errors across our primary cluster.'), whereas Answer A uses two sentences for the explana",
+          "raw": "{\n  \"winner\": \"B\",\n  \"confidence\": 0.85,\n  \"reason\": \"Answer B is better because it strictly adheres to the constraint of explaining the cause in 'one sentence' ('The outage was caused by a bad database migration that introduced unexpected latency and connectivity errors across our primary cluster.'), whereas Answer A uses two sentences for the explanation. Additionally, Answer B's tone is more directly accountable ('I accept full responsibility') compared to Answer A's slightly more passive phrasing. Both meet the word count and other constraints, but B's structural adherence to the specific prompt instructions is superior.\"\n}",
+          "error": null
+        },
+        {
+          "judge": "model_a",
+          "side_of_harness": "B",
+          "winner_label": "B",
+          "harness_won": true,
+          "confidence": 0.85,
+          "reason": "Answer B is approximately 165 words, which falls outside the strict 180\u2013220 word constraint. Answer A is approximately 195 words, fitting perfectly within the required range. Both answers meet the content, tone, and specific constraint requirements (no forbidden phrases, correct sign-off, specific d",
+          "raw": "{\n  \"winner\": \"B\",\n  \"confidence\": 0.85,\n  \"reason\": \"Answer B is approximately 165 words, which falls outside the strict 180\u2013220 word constraint. Answer A is approximately 195 words, fitting perfectly within the required range. Both answers meet the content, tone, and specific constraint requirements (no forbidden phrases, correct sign-off, specific details), but Answer A is the only one that satisfies the length constraint.\"\n}",
+          "error": null
+        },
+        {
+          "judge": "model_b",
+          "side_of_harness": "A",
+          "winner_label": "A",
+          "harness_won": true,
+          "confidence": 1.0,
+          "reason": "Answer A adheres to the word count constraint (approx. 195 words), whereas Answer B is significantly over the limit (approx. 255 words).",
+          "raw": "```json\n{\n  \"winner\": \"A\",\n  \"confidence\": 1.0,\n  \"reason\": \"Answer A adheres to the word count constraint (approx. 195 words), whereas Answer B is significantly over the limit (approx. 255 words).\"\n}\n```",
+          "error": null
+        },
+        {
+          "judge": "model_b",
+          "side_of_harness": "B",
+          "winner_label": "B",
+          "harness_won": true,
+          "confidence": 1.0,
+          "reason": "Answer B adheres to the word count constraint (approx 195 words), whereas Answer A is too long (approx 245 words), violating the primary constraint.",
+          "raw": "```json\n{\n  \"winner\": \"B\",\n  \"confidence\": 1.0,\n  \"reason\": \"Answer B adheres to the word count constraint (approx 195 words), whereas Answer A is too long (approx 245 words), violating the primary constraint.\"\n}\n```",
+          "error": null
+        }
+      ]
+    },
+    {
+      "task_file": "tasks/writing_bug_report.json",
+      "task_id": "2c8091530162",
+      "run_id": "8bba4e63fd43",
+      "task_class": "non_verifiable",
+      "baseline_wall_ms": 4287,
+      "harness_wall_ms_total": 127568,
+      "baseline_output_preview": "Steps: Open Safari 17.4 on macOS and navigate to the blog post editor. Enter a title containing at least one emoji character. Type some content into the body field. Click the 'Save Draft' button located in the top toolbar. Observe the state",
+      "harness_output_preview": "Steps: Open the blog post editor in Safari 17.4 on macOS. Enter a title that includes at least one emoji character. Type any content into the editor body field. Click the 'Save Draft' button located in the toolbar.\n\nExpected: The system sho",
+      "mode": "pairwise",
+      "harness_wins": 4,
+      "baseline_wins": 0,
+      "ties": 0,
+      "total_calls": 4,
+      "order_consistent_per_judge": {
+        "model_a": true,
+        "model_b": true
+      },
+      "weighted_harness": 3.2,
+      "weighted_baseline": 0.0,
+      "judge_weights_used": {
+        "model_a": 1.0,
+        "model_b": 0.6
+      },
+      "verdict": "harness_win",
+      "calls": [
+        {
+          "judge": "model_a",
+          "side_of_harness": "A",
+          "winner_label": "A",
+          "harness_won": true,
+          "confidence": 0.9,
+          "reason": "Answer A is 98 words, fitting perfectly within the 80\u2013120 word limit, whereas Answer B is 118 words which is borderline and includes speculative details ('script error') not in the prompt.",
+          "raw": "{\n  \"winner\": \"A\",\n  \"confidence\": 0.9,\n  \"reason\": \"Answer A is 98 words, fitting perfectly within the 80\u2013120 word limit, whereas Answer B is 118 words which is borderline and includes speculative details ('script error') not in the prompt.\"\n}",
+          "error": null
+        },
+        {
+          "judge": "model_a",
+          "side_of_harness": "B",
+          "winner_label": "B",
+          "harness_won": true,
+          "confidence": 0.9,
+          "reason": "Answer B is 98 words, fitting the 80-120 word constraint, while Answer A is 118 words but includes unnecessary filler and slightly exceeds the spirit of conciseness; however, both fit, but B is tighter and more direct. Wait, let me recount A. A is ~118 words. B is ~98 words. Both are within range. B",
+          "raw": "{\n  \"winner\": \"B\",\n  \"confidence\": 0.9,\n  \"reason\": \"Answer B is 98 words, fitting the 80-120 word constraint, while Answer A is 118 words but includes unnecessary filler and slightly exceeds the spirit of conciseness; however, both fit, but B is tighter and more direct. Wait, let me recount A. A is ~118 words. B is ~98 words. Both are within range. B is more concise and direct engineering style. A has some fluff like 'located in the top toolbar' vs 'located in the toolbar'. B is better.\"\n}",
+          "error": null
+        },
+        {
+          "judge": "model_b",
+          "side_of_harness": "A",
+          "winner_label": "A",
+          "harness_won": true,
+          "confidence": 1.0,
+          "reason": "Answer A follows the word count constraint (108 words), whereas Answer B exceeds it (147 words).",
+          "raw": "```json\n{\n  \"winner\": \"A\",\n  \"confidence\": 1.0,\n  \"reason\": \"Answer A follows the word count constraint (108 words), whereas Answer B exceeds it (147 words).\"\n}\n```",
+          "error": null
+        },
+        {
+          "judge": "model_b",
+          "side_of_harness": "B",
+          "winner_label": "B",
+          "harness_won": true,
+          "confidence": 1.0,
+          "reason": "Answer B adheres to the word count constraint (98 words), whereas Answer A exceeds it (153 words).",
+          "raw": "```json\n{\n  \"winner\": \"B\",\n  \"confidence\": 1.0,\n  \"reason\": \"Answer B adheres to the word count constraint (98 words), whereas Answer A exceeds it (153 words).\"\n}\n```",
+          "error": null
+        }
+      ]
+    },
+    {
+      "task_file": "tasks/writing_decline_email.json",
+      "task_id": "ca6458b05156",
+      "run_id": "c60c3d3ab800",
+      "task_class": "non_verifiable",
+      "baseline_wall_ms": 4769,
+      "harness_wall_ms_total": 163139,
+      "baseline_output_preview": "Hi Kira,\n\nThank you so much for taking the time to share the detailed overview of FunnelForge\u2019s sales-analytics platform. I truly appreciate the effort you put into preparing the presentation and explaining how your tool could potentially s",
+      "harness_output_preview": "Hi Kira,\n\nThank you very much for reaching out and sharing the details regarding FunnelForge. I appreciate the time and effort you put into preparing the pitch for your sales-analytics SaaS tool; it is clearly a powerful platform with impre",
+      "mode": "pairwise",
+      "harness_wins": 2,
+      "baseline_wins": 2,
+      "ties": 0,
+      "total_calls": 4,
+      "order_consistent_per_judge": {
+        "model_a": false,
+        "model_b": false
+      },
+      "weighted_harness": 0.8,
+      "weighted_baseline": 0.8,
+      "judge_weights_used": {
+        "model_a": 1.0,
+        "model_b": 0.6
+      },
+      "verdict": "tie",
+      "calls": [
+        {
+          "judge": "model_a",
+          "side_of_harness": "A",
+          "winner_label": "B",
+          "harness_won": false,
+          "confidence": 0.85,
+          "reason": "Answer B is within the 120-150 word count constraint (138 words), whereas Answer A is too short (118 words) and fails the hard length requirement.",
+          "raw": "{\n  \"winner\": \"B\",\n  \"confidence\": 0.85,\n  \"reason\": \"Answer B is within the 120-150 word count constraint (138 words), whereas Answer A is too short (118 words) and fails the hard length requirement.\"\n}",
+          "error": null
+        },
+        {
+          "judge": "model_a",
+          "side_of_harness": "B",
+          "winner_label": "B",
+          "harness_won": true,
+          "confidence": 0.8,
+          "reason": "Answer B is within the 120-150 word count constraint (approx. 135 words), whereas Answer A exceeds the limit (approx. 165 words).",
+          "raw": "{\n  \"winner\": \"B\",\n  \"confidence\": 0.8,\n  \"reason\": \"Answer B is within the 120-150 word count constraint (approx. 135 words), whereas Answer A exceeds the limit (approx. 165 words).\"\n}",
+          "error": null
+        },
+        {
+          "judge": "model_b",
+          "side_of_harness": "A",
+          "winner_label": "A",
+          "harness_won": true,
+          "confidence": 1.0,
+          "reason": "Answer A falls within the strict 120-150 word count range (138 words), whereas Answer B is too long (168 words).",
+          "raw": "```json\n{\n  \"winner\": \"A\",\n  \"confidence\": 1.0,\n  \"reason\": \"Answer A falls within the strict 120-150 word count range (138 words), whereas Answer B is too long (168 words).\"\n}\n```",
+          "error": null
+        },
+        {
+          "judge": "model_b",
+          "side_of_harness": "B",
+          "winner_label": "A",
+          "harness_won": false,
+          "confidence": 1.0,
+          "reason": "Answer A meets the word count constraint (148 words), whereas Answer B fails it (134 words is within range, but Answer A is closer to the target and Answer B's structure is slightly less polished).",
+          "raw": "```json\n{\n  \"winner\": \"A\",\n  \"confidence\": 1.0,\n  \"reason\": \"Answer A meets the word count constraint (148 words), whereas Answer B fails it (134 words is within range, but Answer A is closer to the target and Answer B's structure is slightly less polished).\"\n}\n```\n\nWait, let me re-calculate the word counts carefully.\n\nAnswer A:\n1. Hi 2. Kira, 3. Thank 4. you 5. so 6. much 7. for 8. taking 9. the 10. time 11. to 12. share 13. the 14. detailed 15. overview 16. of 17. FunnelForge\u2019s 18. sales-analytics 19. platform. 20. I 21. truly 22. appreciate 23. the 24. effort 25. you 26. put 27. into 28. preparing 29. the 30. presentation 31. and 32. explaining 33. how 34. your 35. tool 36. could 37. potentially 38. streamline 39. our 40. reporting 41. workflows. 42. It 43. is 44. clear 45. that 46. your 47. solution 48. is 49. robust 50. and 51. well-regarded 52. in 53. the 54. market, 55. and 56. I 57. was 58. impressed 59. by 60. the 6",
+          "error": null
+        }
+      ]
+    },
+    {
+      "task_file": "tasks/writing_elevator_pitch.json",
+      "task_id": "e4064683e056",
+      "run_id": "f6d81977a6c8",
+      "task_class": "non_verifiable",
+      "baseline_wall_ms": 2635,
+      "harness_wall_ms_total": 114680,
+      "baseline_output_preview": "Stop dreading stressful vet trips. Our service brings same-day in-home diagnostic blood testing directly to your doorstep, staffed by mobile veterinary phlebotomists who handle every step. You save hours of travel and waiting room time whil",
+      "harness_output_preview": "Stop wasting hours in stressful vet waiting rooms. Our mobile veterinary phlebotomists bring diagnostic blood testing directly to your living room on the same day you book. We provide professional, gentle care for your pet without the frant",
+      "mode": "pairwise",
+      "harness_wins": 4,
+      "baseline_wins": 0,
+      "ties": 0,
+      "total_calls": 4,
+      "order_consistent_per_judge": {
+        "model_a": true,
+        "model_b": true
+      },
+      "weighted_harness": 3.2,
+      "weighted_baseline": 0.0,
+      "judge_weights_used": {
+        "model_a": 1.0,
+        "model_b": 0.6
+      },
+      "verdict": "harness_win",
+      "calls": [
+        {
+          "judge": "model_a",
+          "side_of_harness": "A",
+          "winner_label": "A",
+          "harness_won": true,
+          "confidence": 0.9,
+          "reason": "Answer A is 58 words, fitting perfectly within the 50\u201380 word limit, whereas Answer B is 83 words and exceeds the maximum constraint.",
+          "raw": "{\n  \"winner\": \"A\",\n  \"confidence\": 0.9,\n  \"reason\": \"Answer A is 58 words, fitting perfectly within the 50\u201380 word limit, whereas Answer B is 83 words and exceeds the maximum constraint.\"\n}",
+          "error": null
+        },
+        {
+          "judge": "model_a",
+          "side_of_harness": "B",
+          "winner_label": "B",
+          "harness_won": true,
+          "confidence": 0.9,
+          "reason": "Answer B is 53 words, fitting perfectly within the 50\u201380 word constraint, whereas Answer A is 73 words but includes a weak, jargon-adjacent closing sentence that feels like filler; Answer B is more concise, concrete, and directly addresses the time-constrained benefit without unnecessary fluff.",
+          "raw": "{\n  \"winner\": \"B\",\n  \"confidence\": 0.9,\n  \"reason\": \"Answer B is 53 words, fitting perfectly within the 50\u201380 word constraint, whereas Answer A is 73 words but includes a weak, jargon-adjacent closing sentence that feels like filler; Answer B is more concise, concrete, and directly addresses the time-constrained benefit without unnecessary fluff.\"\n}",
+          "error": null
+        },
+        {
+          "judge": "model_b",
+          "side_of_harness": "A",
+          "winner_label": "A",
+          "harness_won": true,
+          "confidence": 1.0,
+          "reason": "Answer A follows the word count constraint (68 words), whereas Answer B exceeds the hard limit (94 words).",
+          "raw": "```json\n{\n  \"winner\": \"A\",\n  \"confidence\": 1.0,\n  \"reason\": \"Answer A follows the word count constraint (68 words), whereas Answer B exceeds the hard limit (94 words).\"\n}\n```",
+          "error": null
+        },
+        {
+          "judge": "model_b",
+          "side_of_harness": "B",
+          "winner_label": "B",
+          "harness_won": true,
+          "confidence": 1.0,
+          "reason": "Answer B adheres to the word count constraint (68 words), whereas Answer A exceeds it (88 words).",
+          "raw": "```json\n{\n  \"winner\": \"B\",\n  \"confidence\": 1.0,\n  \"reason\": \"Answer B adheres to the word count constraint (68 words), whereas Answer A exceeds it (88 words).\"\n}\n```",
+          "error": null
+        }
+      ]
+    },
+    {
+      "task_file": "tasks/writing_explain_kv_cache.json",
+      "task_id": "9a7bb926f796",
+      "run_id": "2986d8e02920",
+      "task_class": "non_verifiable",
+      "baseline_wall_ms": 5275,
+      "harness_wall_ms_total": 148153,
+      "baseline_output_preview": "In transformer inference, the KV cache stores the Key and Value projection matrices for all previously generated tokens. During each decoding step, the model computes attention only against the current input token\u2019s query, while retrieving ",
+      "harness_output_preview": "During autoregressive generation, a transformer computes attention for each new token against all previous tokens. The attention mechanism requires Key and Value projections for every token in the context. Recomputing these projections for ",
+      "mode": "pairwise",
+      "harness_wins": 4,
+      "baseline_wins": 0,
+      "ties": 0,
+      "total_calls": 4,
+      "order_consistent_per_judge": {
+        "model_a": true,
+        "model_b": true
+      },
+      "weighted_harness": 3.2,
+      "weighted_baseline": 0.0,
+      "judge_weights_used": {
+        "model_a": 1.0,
+        "model_b": 0.6
+      },
+      "verdict": "harness_win",
+      "calls": [
+        {
+          "judge": "model_a",
+          "side_of_harness": "A",
+          "winner_label": "A",
+          "harness_won": true,
+          "confidence": 0.9,
+          "reason": "Answer A is more precise and accurate, correctly describing the cache as storing Key and Value tensors per layer per token, whereas Answer B incorrectly refers to them as 'matrices' (which implies fixed weights rather than per-token activations) and includes unnecessary filler about paging/quantizat",
+          "raw": "{\n  \"winner\": \"A\",\n  \"confidence\": 0.9,\n  \"reason\": \"Answer A is more precise and accurate, correctly describing the cache as storing Key and Value tensors per layer per token, whereas Answer B incorrectly refers to them as 'matrices' (which implies fixed weights rather than per-token activations) and includes unnecessary filler about paging/quantization that dilutes the core explanation.\"\n}",
+          "error": null
+        },
+        {
+          "judge": "model_a",
+          "side_of_harness": "B",
+          "winner_label": "B",
+          "harness_won": true,
+          "confidence": 0.9,
+          "reason": "Answer B is approximately 145 words, fitting the 130-170 word constraint perfectly, whereas Answer A is approximately 155 words but includes a factual error regarding complexity scaling (claiming O(N^2) to O(N) per token is incorrect; it is O(N^2) total to O(N) per token, or O(N) per token to O(1) p",
+          "raw": "{\n  \"winner\": \"B\",\n  \"confidence\": 0.9,\n  \"reason\": \"Answer B is approximately 145 words, fitting the 130-170 word constraint perfectly, whereas Answer A is approximately 155 words but includes a factual error regarding complexity scaling (claiming O(N^2) to O(N) per token is incorrect; it is O(N^2) total to O(N) per token, or O(N) per token to O(1) per token if N is context length, but the phrasing is ambiguous and technically inaccurate in standard notation). Answer B is precise, accurate, and meets all constraints.\"\n}",
+          "error": null
+        },
+        {
+          "judge": "model_b",
+          "side_of_harness": "A",
+          "winner_label": "A",
+          "harness_won": true,
+          "confidence": 1.0,
+          "reason": "Answer A follows the word count constraint (164 words) much more closely than Answer B (208 words), which significantly exceeds the 170-word limit.",
+          "raw": "```json\n{\n  \"winner\": \"A\",\n  \"confidence\": 1.0,\n  \"reason\": \"Answer A follows the word count constraint (164 words) much more closely than Answer B (208 words), which significantly exceeds the 170-word limit.\"\n}\n```",
+          "error": null
+        },
+        {
+          "judge": "model_b",
+          "side_of_harness": "B",
+          "winner_label": "B",
+          "harness_won": true,
+          "confidence": 1.0,
+          "reason": "Answer B adheres much better to the word count constraint (158 words vs Answer A's 195 words), whereas Answer A significantly exceeds the 170-word limit.",
+          "raw": "```json\n{\n  \"winner\": \"B\",\n  \"confidence\": 1.0,\n  \"reason\": \"Answer B adheres much better to the word count constraint (158 words vs Answer A's 195 words), whereas Answer A significantly exceeds the 170-word limit.\"\n}\n```",
+          "error": null
+        }
+      ]
+    },
+    {
+      "task_file": "tasks/writing_meeting_invite.json",
+      "task_id": "99c85e7fa536",
+      "run_id": "d4a986374c83",
+      "task_class": "non_verifiable",
+      "baseline_wall_ms": 2129,
+      "harness_wall_ms_total": 97282,
+      "baseline_output_preview": "Hi team, let\u2019s kick off Q3 this Thursday from 14:00 to 14:30 CEST. It would be great to connect with the Growth and Marketing leads to align on our quarterly goals. We also need to discuss any staffing gaps and review a quick summary from o",
+      "harness_output_preview": "Hi team, let\u2019s kick off Q3 together this Thursday from 14:00 to 14:30 CEST. Growth and Marketing leads, please join us. We\u2019ll cover our quarterly goals, discuss any staffing gaps, and review a quick summary of our Q2 retro. Looking forward ",
+      "mode": "pairwise",
+      "harness_wins": 0,
+      "baseline_wins": 3,
+      "ties": 0,
+      "total_calls": 4,
+      "order_consistent_per_judge": {
+        "model_a": true,
+        "model_b": true
+      },
+      "weighted_harness": 0.0,
+      "weighted_baseline": 2.2,
+      "judge_weights_used": {
+        "model_a": 1.0,
+        "model_b": 0.6
+      },
+      "verdict": "baseline_win",
+      "calls": [
+        {
+          "judge": "model_a",
+          "side_of_harness": "A",
+          "winner_label": "B",
+          "harness_won": false,
+          "confidence": 0.8,
+          "reason": "Answer B flows more naturally as a cohesive paragraph without the slightly disjointed imperative sentence found in Answer A, while strictly adhering to all word count and content constraints.",
+          "raw": "{\n  \"winner\": \"B\",\n  \"confidence\": 0.8,\n  \"reason\": \"Answer B flows more naturally as a cohesive paragraph without the slightly disjointed imperative sentence found in Answer A, while strictly adhering to all word count and content constraints.\"\n}",
+          "error": null
+        },
+        {
+          "judge": "model_a",
+          "side_of_harness": "B",
+          "winner_label": "",
+          "harness_won": null,
+          "confidence": 0.0,
+          "reason": "",
+          "raw": "{\n  \"winner\": \"B\",\n  \"confidence\": 0.8,\n  \"reason\": \"Answer B is 43 words, fitting the 40-60 word constraint, whereas Answer A is 48 words but phrased less directly; however, upon closer inspection, Answer A is 48 words and Answer B is 43 words, both fit. Let's re-read carefully. Answer A: 'Hi team, let\u2019s kick off Q3 this Thursday from 14:00 to 14:30 CEST. It would be great to connect with the Growth and Marketing leads to align on our quarterly goals. We also need to discuss any staffing gaps and review a quick summary from our Q2 retro. Looking forward to seeing you all there.' Word count: Hi(1) team,(2) let\u2019s(3) kick(4) off(5) Q3(6) this(7) Thursday(8) from(9) 14:00(10) to(11) 14:30(12) CEST.(13) It(14) would(15) be(16) great(17) to(18) connect(19) with(20) the(21) Growth(22) and(23) Marketing(24) leads(25) to(26) align(27) on(28) our(29) quarterly(30) goals.(31) We(32) also(33) need(34) to(35) discuss(36) any(37) staffing(38) gaps(39) and(40) review(41) a(42) quick(43) summary(44) from(45)",
+          "error": "parse: could not parse JSON from text: '{\\n  \"winner\": \"B\",\\n  \"confidence\": 0.8,\\n  \"reason\": \"Answer B is 43 words, fitting the 40-60 word constraint, whereas Answer A is 48 words but phrased less directly; however, upon closer inspection, A'"
+        },
+        {
+          "judge": "model_b",
+          "side_of_harness": "A",
+          "winner_label": "B",
+          "harness_won": false,
+          "confidence": 1.0,
+          "reason": "Answer B meets the word count constraint (53 words), whereas Answer A exceeds it (58 words is fine, but Answer A is actually 58 words, wait\u2014let me re-count). Actually, Answer A is 58 words and Answer B is 53 words. However, Answer A includes 'aligning on our next steps' which leans slightly more cor",
+          "raw": "```json\n{\n  \"winner\": \"B\",\n  \"confidence\": 1.0,\n  \"reason\": \"Answer B meets the word count constraint (53 words), whereas Answer A exceeds it (58 words is fine, but Answer A is actually 58 words, wait\u2014let me re-count). Actually, Answer A is 58 words and Answer B is 53 words. However, Answer A includes 'aligning on our next steps' which leans slightly more corporate, while Answer B is more direct and stays well within the word count limits.\"\n}\n```\n\n**Wait, let me re-evaluate the word counts carefully:**\nAnswer A: \"Hi(1) team,(2) let\u2019s(3) kick(4) off(5) Q3(6) together(7) this(8) Thursday(9) from(10) 14:00(11) to(12) 14:30(13) CEST.(14) Growth(15) and(16) Marketing(17) leads,(18) please(19) join(20) us.(21) We\u2019ll(22) cover(23) our(24) quarterly(25) goals,(26) discuss(27) any(28) staffing(29) gaps,(30) and(31) review(32) a(33) quick(34) summary(35) of(36) our(37) Q2(38) retro.(39) Looking(40) forward(41) to(42) connecting(43) and(44) aligning(45) on(46) our(47) next(48) steps(49) for(5",
+          "error": null
+        },
+        {
+          "judge": "model_b",
+          "side_of_harness": "B",
+          "winner_label": "A",
+          "harness_won": false,
+          "confidence": 1.0,
+          "reason": "Answer A meets the word count constraint (53 words), whereas Answer B exceeds it (57 words is fine, but Answer A is more concise and avoids the slightly repetitive 'next steps for the quarter ahead' which pushes B closer to the limit).",
+          "raw": "```json\n{\n  \"winner\": \"A\",\n  \"confidence\": 1.0,\n  \"reason\": \"Answer A meets the word count constraint (53 words), whereas Answer B exceeds it (57 words is fine, but Answer A is more concise and avoids the slightly repetitive 'next steps for the quarter ahead' which pushes B closer to the limit).\"\n}\n```\n\nWait, let me re-count carefully.\nAnswer A: 53 words.\nAnswer B: 57 words.\n\nBoth are within 40-60.\nLet's check the \"warm and direct, no bullet points\" and \"no corporate jargon\".\nAnswer A: \"align on our quarterly goals\" (align is borderline corporate, but common).\nAnswer B: \"aligning on our next steps\" (aligning is corporate).\n\nAnswer A is slightly better because it flows more naturally as a single paragraph without the slightly clunky \"Growth and Marketing leads, please join us\" sentence structure in B.\n\nActually, looking at Answer A again:\n\"Hi team, let\u2019s kick off Q3 this Thursday from 14:00 to 14:30 CEST. It would be great to connect with the Growth and Marketing leads to align on our quarterly goals. We also need to discuss any staffing gaps and review a quick summary from our Q2 retro. Looking forward to seeing you all there.\"\nWord count: 53 words.\n\nAnswer B:\n\"Hi team, let\u2019s kick off Q3 together this Thursday from 14:00 to 14:30 CEST. Growth and Marketing leads, please join us. We\u2019ll cover our quarterly goals, discuss any staffing gaps, and review a quick summary of our Q2 retro. Looking forward to connecting and aligning on our next steps for the quarter ahead.\"\nWord count: 57",
+          "error": null
+        }
+      ]
+    },
+    {
+      "task_file": "tasks/writing_out_of_office.json",
+      "task_id": "c751e37a1208",
+      "run_id": "875f61dcd52e",
+      "task_class": "non_verifiable",
+      "baseline_wall_ms": 2090,
+      "harness_wall_ms_total": 107800,
+      "baseline_output_preview": "I am out of the office from 12 May 2026 through 19 May 2026 with limited email access. For urgent production matters, please contact ops-oncall@myco.example. I will respond to all other requests as soon as I return. Thank you for your under",
+      "harness_output_preview": "I am out of office from 12 May 2026 through 19 May 2026 with limited email access. For urgent production matters, please contact ops-oncall@myco.example. For all other requests, I will respond when I return. Thank you for your understanding",
+      "mode": "pairwise",
+      "harness_wins": 2,
+      "baseline_wins": 2,
+      "ties": 0,
+      "total_calls": 4,
+      "order_consistent_per_judge": {
+        "model_a": true,
+        "model_b": true
+      },
+      "weighted_harness": 2.0,
+      "weighted_baseline": 1.2,
+      "judge_weights_used": {
+        "model_a": 1.0,
+        "model_b": 0.6
+      },
+      "verdict": "harness_win",
+      "calls": [
+        {
+          "judge": "model_a",
+          "side_of_harness": "A",
+          "winner_label": "A",
+          "harness_won": true,
+          "confidence": 1.0,
+          "reason": "Answer A meets all constraints, including the word count and the prohibition of 'ASAP', whereas Answer B uses 'as soon as', which violates the negative constraint against 'ASAP' (interpreted as the concept or phrase) and is less professional than A's phrasing.",
+          "raw": "{\n  \"winner\": \"A\",\n  \"confidence\": 1.0,\n  \"reason\": \"Answer A meets all constraints, including the word count and the prohibition of 'ASAP', whereas Answer B uses 'as soon as', which violates the negative constraint against 'ASAP' (interpreted as the concept or phrase) and is less professional than A's phrasing.\"\n}",
+          "error": null
+        },
+        {
+          "judge": "model_a",
+          "side_of_harness": "B",
+          "winner_label": "B",
+          "harness_won": true,
+          "confidence": 0.9,
+          "reason": "Answer B strictly follows the instruction to say you will reply 'when back' for non-urgent requests, whereas Answer A uses 'as soon as I return' which risks violating the 'no ASAP' constraint due to semantic similarity, and Answer B's phrasing is slightly more precise regarding the return date.",
+          "raw": "{\n  \"winner\": \"B\",\n  \"confidence\": 0.9,\n  \"reason\": \"Answer B strictly follows the instruction to say you will reply 'when back' for non-urgent requests, whereas Answer A uses 'as soon as I return' which risks violating the 'no ASAP' constraint due to semantic similarity, and Answer B's phrasing is slightly more precise regarding the return date.\"\n}",
+          "error": null
+        },
+        {
+          "judge": "model_b",
+          "side_of_harness": "A",
+          "winner_label": "B",
+          "harness_won": false,
+          "confidence": 1.0,
+          "reason": "Answer B is 44 words, whereas Answer A is 51 words, making Answer B the only one to satisfy the 30-50 word constraint.",
+          "raw": "```json\n{\n  \"winner\": \"B\",\n  \"confidence\": 1.0,\n  \"reason\": \"Answer B is 44 words, whereas Answer A is 51 words, making Answer B the only one to satisfy the 30-50 word constraint.\"\n}\n```",
+          "error": null
+        },
+        {
+          "judge": "model_b",
+          "side_of_harness": "B",
+          "winner_label": "A",
+          "harness_won": false,
+          "confidence": 1.0,
+          "reason": "Answer A meets the word count constraint (44 words), whereas Answer B exceeds it (48 words is fine, but B is actually 48 words, wait\u2014let me re-count). Actually, Answer A is 44 words and Answer B is 48 words; both are within 30-50, but Answer A is slightly more concise and natural.",
+          "raw": "```json\n{\n  \"winner\": \"A\",\n  \"confidence\": 1.0,\n  \"reason\": \"Answer A meets the word count constraint (44 words), whereas Answer B exceeds it (48 words is fine, but B is actually 48 words, wait\u2014let me re-count). Actually, Answer A is 44 words and Answer B is 48 words; both are within 30-50, but Answer A is slightly more concise and natural.\"\n}\n```\n\nWait, let me re-calculate word counts carefully:\nAnswer A: \"I(1) am(2) out(3) of(4) the(5) office(6) from(7) 12(8) May(9) 2026(10) through(11) 19(12) May(13) 2026(14) with(15) limited(16) email(17) access.(18) For(19) urgent(20) production(21) matters,(22) please(23) contact(24) ops-oncall@myco.example.(25) I(26) will(27) respond(28) to(29) all(30) other(31) requests(32) as(33) soon(34) as(35) I(36) return.(37) Thank(38) you(39) for(40) your(41) understanding(42) and(43) patience.(44)\" -> 44 words.\n\nAnswer B: \"I(1) am(2) out(3) of(4) office(5) from(6) 12(7)",
+          "error": null
+        }
+      ]
+    },
+    {
+      "task_file": "tasks/writing_product_description.json",
+      "task_id": "4cc38ede264b",
+      "run_id": "698f42658ac4",
+      "task_class": "non_verifiable",
+      "baseline_wall_ms": 3938,
+      "harness_wall_ms_total": 145291,
+      "baseline_output_preview": "This camping blanket is crafted from 100% Merino wool, offering reliable warmth without synthetic additives. Weighing 1.2 kg, it provides substantial insulation while remaining manageable for backpacking trips. The dimensions of 150\u00d7200 cm ",
+      "harness_output_preview": "This camping blanket is built for long trips where reliability matters more than aesthetics. Constructed from 100% Merino wool, the piece weighs 1.2 kg and measures 150\u00d7200 cm, providing sufficient coverage for a single sleeper. The natural",
+      "mode": "pairwise",
+      "harness_wins": 3,
+      "baseline_wins": 1,
+      "ties": 0,
+      "total_calls": 4,
+      "order_consistent_per_judge": {
+        "model_a": true,
+        "model_b": false
+      },
+      "weighted_harness": 2.3,
+      "weighted_baseline": 0.3,
+      "judge_weights_used": {
+        "model_a": 1.0,
+        "model_b": 0.6
+      },
+      "verdict": "harness_win",
+      "calls": [
+        {
+          "judge": "model_a",
+          "side_of_harness": "A",
+          "winner_label": "A",
+          "harness_won": true,
+          "confidence": 0.9,
+          "reason": "Answer A is 86 words, fitting perfectly within the 80\u2013120 word limit, whereas Answer B is 98 words but includes slightly more fluff; more importantly, Answer A adheres more strictly to the 'grounded and concrete' tone by avoiding phrases like 'reliable warmth' and 'substantial insulation' which bord",
+          "raw": "{\n  \"winner\": \"A\",\n  \"confidence\": 0.9,\n  \"reason\": \"Answer A is 86 words, fitting perfectly within the 80\u2013120 word limit, whereas Answer B is 98 words but includes slightly more fluff; more importantly, Answer A adheres more strictly to the 'grounded and concrete' tone by avoiding phrases like 'reliable warmth' and 'substantial insulation' which border on marketing speak, while maintaining all factual constraints and negative constraints effectively.\"\n}",
+          "error": null
+        },
+        {
+          "judge": "model_a",
+          "side_of_harness": "B",
+          "winner_label": "B",
+          "harness_won": true,
+          "confidence": 0.9,
+          "reason": "Answer B strictly adheres to the 80-120 word count constraint (103 words), whereas Answer A exceeds the limit (118 words is close, but let's re-count carefully. A: 118 words. B: 103 words. Both are within range. However, Answer A uses the phrase 'One of its most practical features', which borders on",
+          "raw": "{\n  \"winner\": \"B\",\n  \"confidence\": 0.9,\n  \"reason\": \"Answer B strictly adheres to the 80-120 word count constraint (103 words), whereas Answer A exceeds the limit (118 words is close, but let's re-count carefully. A: 118 words. B: 103 words. Both are within range. However, Answer A uses the phrase 'One of its most practical features', which borders on superlative language ('most'), whereas Answer B avoids this entirely and maintains a more grounded, concrete tone suitable for a gear-review site.\"\n}",
+          "error": null
+        },
+        {
+          "judge": "model_b",
+          "side_of_harness": "A",
+          "winner_label": "A",
+          "harness_won": true,
+          "confidence": 1.0,
+          "reason": "Answer A adheres to the word count constraint (104 words), whereas Answer B exceeds it (135 words).",
+          "raw": "```json\n{\n  \"winner\": \"A\",\n  \"confidence\": 1.0,\n  \"reason\": \"Answer A adheres to the word count constraint (104 words), whereas Answer B exceeds it (135 words).\"\n}\n```",
+          "error": null
+        },
+        {
+          "judge": "model_b",
+          "side_of_harness": "B",
+          "winner_label": "A",
+          "harness_won": false,
+          "confidence": 1.0,
+          "reason": "Answer A follows all instructions and constraints, whereas Answer B contains a spelling error ('unnecessary') and is slightly under the word count requirement.",
+          "raw": "```json\n{\n  \"winner\": \"A\",\n  \"confidence\": 1.0,\n  \"reason\": \"Answer A follows all instructions and constraints, whereas Answer B contains a spelling error ('unnecessary') and is slightly under the word count requirement.\"\n}\n```",
+          "error": null
+        }
+      ]
+    },
+    {
+      "task_file": "tasks/writing_release_notes.json",
+      "task_id": "0a5c9a07465e",
+      "run_id": "324976af19b2",
+      "task_class": "non_verifiable",
+      "baseline_wall_ms": 2969,
+      "harness_wall_ms_total": 115712,
+      "baseline_output_preview": "Internal Dashboard 2.4.0 is now available for testing. New: users can export data as CSV from all chart views and toggle dark mode for reduced eye strain during late-night shifts. Fixed: a timezone bug that incorrectly shifted chart timesta",
+      "harness_output_preview": "Version 2.4.0 introduces several improvements and critical updates for the internal dashboard tool. New: We added CSV export functionality on all chart views and implemented a dark mode for better visibility during night shifts. Fixed: We r",
+      "mode": "pairwise",
+      "harness_wins": 1,
+      "baseline_wins": 3,
+      "ties": 0,
+      "total_calls": 4,
+      "order_consistent_per_judge": {
+        "model_a": true,
+        "model_b": false
+      },
+      "weighted_harness": 0.3,
+      "weighted_baseline": 2.3,
+      "judge_weights_used": {
+        "model_a": 1.0,
+        "model_b": 0.6
+      },
+      "verdict": "baseline_win",
+      "calls": [
+        {
+          "judge": "model_a",
+          "side_of_harness": "A",
+          "winner_label": "B",
+          "harness_won": false,
+          "confidence": 0.8,
+          "reason": "Answer B is 73 words, fitting the 60-100 word constraint, while Answer A is 78 words but includes a separator line which might be counted or cause formatting issues; however, the main differentiator is that Answer B flows better as plain prose and strictly adheres to the label format without extra c",
+          "raw": "{\n  \"winner\": \"B\",\n  \"confidence\": 0.8,\n  \"reason\": \"Answer B is 73 words, fitting the 60-100 word constraint, while Answer A is 78 words but includes a separator line which might be counted or cause formatting issues; however, the main differentiator is that Answer B flows better as plain prose and strictly adheres to the label format without extra conversational filler like 'Please note that' found in A, making it more professional for an engineering audience.\"\n}",
+          "error": null
+        },
+        {
+          "judge": "model_a",
+          "side_of_harness": "B",
+          "winner_label": "A",
+          "harness_won": false,
+          "confidence": 0.9,
+          "reason": "Answer A is 78 words, fitting perfectly within the 60-100 word limit, whereas Answer B is 79 words but feels slightly more verbose in its phrasing; however, both meet the criteria, but A's tone is slightly more professional and concise for an engineering audience, and it strictly adheres to the word",
+          "raw": "{\n  \"winner\": \"A\",\n  \"confidence\": 0.9,\n  \"reason\": \"Answer A is 78 words, fitting perfectly within the 60-100 word limit, whereas Answer B is 79 words but feels slightly more verbose in its phrasing; however, both meet the criteria, but A's tone is slightly more professional and concise for an engineering audience, and it strictly adheres to the word count constraint without risking being too short or too long.\"\n}",
+          "error": null
+        },
+        {
+          "judge": "model_b",
+          "side_of_harness": "A",
+          "winner_label": "B",
+          "harness_won": false,
+          "confidence": 1.0,
+          "reason": "Answer B follows all instructions and falls within the word count (94 words), whereas Answer A is slightly too short (84 words) but Answer B's prose is more professional and better fits the requested word count range while meeting all content requirements.",
+          "raw": "```json\n{\n  \"winner\": \"B\",\n  \"confidence\": 1.0,\n  \"reason\": \"Answer B follows all instructions and falls within the word count (94 words), whereas Answer A is slightly too short (84 words) but Answer B's prose is more professional and better fits the requested word count range while meeting all content requirements.\"\n}\n```",
+          "error": null
+        },
+        {
+          "judge": "model_b",
+          "side_of_harness": "B",
+          "winner_label": "B",
+          "harness_won": true,
+          "confidence": 1.0,
+          "reason": "Answer B follows the word count constraint (84 words), whereas Answer A exceeds it (98 words is fine, but Answer A is actually 103 words, failing the 60-100 limit).",
+          "raw": "```json\n{\n  \"winner\": \"B\",\n  \"confidence\": 1.0,\n  \"reason\": \"Answer B follows the word count constraint (84 words), whereas Answer A exceeds it (98 words is fine, but Answer A is actually 103 words, failing the 60-100 limit).\"\n}\n```",
+          "error": null
+        }
+      ]
+    },
+    {
+      "task_file": "tasks/writing_status_update.json",
+      "task_id": "a5efb0817eb2",
+      "run_id": "43ddecff93fc",
+      "task_class": "non_verifiable",
+      "baseline_wall_ms": 5464,
+      "harness_wall_ms_total": 137145,
+      "baseline_output_preview": "Progress: The team successfully completed the migration to the new NATS queue, ensuring all message passing is now routed through the updated infrastructure without data loss. Concurrently, development on the Go rewrite of the billing servi",
+      "harness_output_preview": "Progress: The backend team successfully completed the migration to the new NATS queue infrastructure this week. All critical message routing paths have been validated, and traffic has been fully shifted to the new system without data loss. ",
+      "mode": "pairwise",
+      "harness_wins": 3,
+      "baseline_wins": 1,
+      "ties": 0,
+      "total_calls": 4,
+      "order_consistent_per_judge": {
+        "model_a": true,
+        "model_b": false
+      },
+      "weighted_harness": 2.3,
+      "weighted_baseline": 0.3,
+      "judge_weights_used": {
+        "model_a": 1.0,
+        "model_b": 0.6
+      },
+      "verdict": "harness_win",
+      "calls": [
+        {
+          "judge": "model_a",
+          "side_of_harness": "A",
+          "winner_label": "A",
+          "harness_won": true,
+          "confidence": 1.0,
+          "reason": "Answer A is 108 words, fitting the 100\u2013150 word constraint, while Answer B is 168 words and exceeds the limit.",
+          "raw": "{\n  \"winner\": \"A\",\n  \"confidence\": 1.0,\n  \"reason\": \"Answer A is 108 words, fitting the 100\u2013150 word constraint, while Answer B is 168 words and exceeds the limit.\"\n}",
+          "error": null
+        },
+        {
+          "judge": "model_a",
+          "side_of_harness": "B",
+          "winner_label": "B",
+          "harness_won": true,
+          "confidence": 1.0,
+          "reason": "Answer B is within the 100-150 word count constraint (approx. 115 words), whereas Answer A exceeds the limit (approx. 165 words).",
+          "raw": "{\n  \"winner\": \"B\",\n  \"confidence\": 1.0,\n  \"reason\": \"Answer B is within the 100-150 word count constraint (approx. 115 words), whereas Answer A exceeds the limit (approx. 165 words).\"\n}",
+          "error": null
+        },
+        {
+          "judge": "model_b",
+          "side_of_harness": "A",
+          "winner_label": "A",
+          "harness_won": true,
+          "confidence": 1.0,
+          "reason": "Answer A adheres to the word count constraint (143 words), whereas Answer B is significantly over the limit (approx 215 words).",
+          "raw": "```json\n{\n  \"winner\": \"A\",\n  \"confidence\": 1.0,\n  \"reason\": \"Answer A adheres to the word count constraint (143 words), whereas Answer B is significantly over the limit (approx 215 words).\"\n}\n```",
+          "error": null
+        },
+        {
+          "judge": "model_b",
+          "side_of_harness": "B",
+          "winner_label": "A",
+          "harness_won": false,
+          "confidence": 1.0,
+          "reason": "Answer A follows the formatting requirement of having three distinct labeled sections, whereas Answer B fails to separate 'Risks:' and 'Next:' into their own sections, instead running them into the same paragraph.",
+          "raw": "```json\n{\n  \"winner\": \"A\",\n  \"confidence\": 1.0,\n  \"reason\": \"Answer A follows the formatting requirement of having three distinct labeled sections, whereas Answer B fails to separate 'Risks:' and 'Next:' into their own sections, instead running them into the same paragraph.\"\n}\n```",
+          "error": null
+        }
+      ]
+    }
+  ]
+}

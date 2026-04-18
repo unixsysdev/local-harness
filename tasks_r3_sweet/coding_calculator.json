@@ -1,0 +1,28 @@
+{
+  "raw_input": "Write a Python function `calc(expr: str) -> float` that evaluates an arithmetic expression string containing non-negative integers, the operators `+`, `-`, `*`, `/`, and parentheses `(` and `)`. Normal operator precedence applies (multiplication/division before addition/subtraction); associativity is left-to-right; `/` is floating-point division. Whitespace in the input is ignored. You may NOT use Python's `eval`, `exec`, `compile`, or any third-party parser; write the parser yourself. Assume input is syntactically valid.",
+  "task_class": "verifiable",
+  "task_type": "coding",
+  "deliverable_type": "code",
+  "success_criteria": [
+    "signature `calc(expr: str) -> float`",
+    "handles precedence (*/ before +-)",
+    "handles parentheses including nested",
+    "handles whitespace",
+    "does not use eval/exec/compile"
+  ],
+  "constraints": [
+    "single Python file",
+    "MUST NOT use eval, exec, compile, or ast.literal_eval",
+    "no external dependencies",
+    "no I/O"
+  ],
+  "risk_level": "low",
+  "verifier": {
+    "kind": "tests",
+    "inline": {
+      "entrypoint": "calc",
+      "timeout_sec": 15,
+      "tests": "import inspect\nsrc = inspect.getsource(calc)\nforbidden = ['eval(', 'exec(', 'compile(', 'literal_eval']\nfor f in forbidden:\n    assert f not in src, f'forbidden call {f} found in solution'\nassert abs(calc('1+1') - 2.0) < 1e-9\nassert abs(calc('3+2*2') - 7.0) < 1e-9\nassert abs(calc(' 3/2 ') - 1.5) < 1e-9\nassert abs(calc('(3+2)*2') - 10.0) < 1e-9\nassert abs(calc('2*(3+4)') - 14.0) < 1e-9\nassert abs(calc('(1+2)*(3+4)') - 21.0) < 1e-9\nassert abs(calc('((1+2))') - 3.0) < 1e-9\nassert abs(calc('10-2-3') - 5.0) < 1e-9\nassert abs(calc('20/2/5') - 2.0) < 1e-9\nassert abs(calc('2+3*4-5') - 9.0) < 1e-9\nassert abs(calc('((2+3)*4-(5-1))/2') - 8.0) < 1e-9\nassert abs(calc('7') - 7.0) < 1e-9\n"
+    }
+  }
+}

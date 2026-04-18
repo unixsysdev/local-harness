@@ -1,0 +1,28 @@
+{
+  "raw_input": "Write a Python function `is_valid_ipv4(s: str) -> bool` that returns True iff `s` is a strictly-valid IPv4 address in dotted notation. Requirements: exactly 4 octets separated by dots; each octet is a base-10 integer in [0, 255]; NO leading zeros allowed (so '01.2.3.4' is invalid but '0.1.2.3' is valid); reject empty strings, extra whitespace, negative numbers, non-digit characters, and anything with fewer or more than 4 octets.",
+  "task_class": "verifiable",
+  "task_type": "coding",
+  "deliverable_type": "code",
+  "success_criteria": [
+    "signature `is_valid_ipv4(s: str) -> bool`",
+    "accepts canonical valid addresses",
+    "rejects leading-zero octets ('01.2.3.4' -> False)",
+    "rejects out-of-range octets ('256.0.0.0' -> False)",
+    "rejects wrong number of parts",
+    "rejects non-digit characters and whitespace"
+  ],
+  "constraints": [
+    "single Python file",
+    "no external dependencies",
+    "no regex imports required but allowed"
+  ],
+  "risk_level": "low",
+  "verifier": {
+    "kind": "tests",
+    "inline": {
+      "entrypoint": "is_valid_ipv4",
+      "timeout_sec": 10,
+      "tests": "assert is_valid_ipv4('0.0.0.0') is True\nassert is_valid_ipv4('255.255.255.255') is True\nassert is_valid_ipv4('1.2.3.4') is True\nassert is_valid_ipv4('192.168.0.1') is True\nassert is_valid_ipv4('256.0.0.0') is False\nassert is_valid_ipv4('1.2.3') is False\nassert is_valid_ipv4('1.2.3.4.5') is False\nassert is_valid_ipv4('01.2.3.4') is False\nassert is_valid_ipv4('1.02.3.4') is False\nassert is_valid_ipv4('') is False\nassert is_valid_ipv4(' 1.2.3.4') is False\nassert is_valid_ipv4('1.2.3.4 ') is False\nassert is_valid_ipv4('1.2.3.a') is False\nassert is_valid_ipv4('-1.2.3.4') is False\nassert is_valid_ipv4('1..2.3') is False\nassert is_valid_ipv4('1.2.3.') is False\nassert is_valid_ipv4('.1.2.3') is False"
+    }
+  }
+}

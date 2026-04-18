@@ -1,0 +1,27 @@
+{
+  "raw_input": "Write a Python function `longest_palindrome(s: str) -> str` that returns the longest contiguous palindromic substring of `s`. If there are ties, return the one that appears first. Handle empty input by returning the empty string. The solution must handle inputs up to 2000 characters in under 1 second.",
+  "task_class": "verifiable",
+  "task_type": "coding",
+  "deliverable_type": "code",
+  "success_criteria": [
+    "signature `longest_palindrome(s: str) -> str`",
+    "correct on classic cases",
+    "handles ties by returning the earliest",
+    "handles empty string",
+    "fast enough on n=2000"
+  ],
+  "constraints": [
+    "single Python file",
+    "no external dependencies",
+    "no I/O"
+  ],
+  "risk_level": "low",
+  "verifier": {
+    "kind": "tests",
+    "inline": {
+      "entrypoint": "longest_palindrome",
+      "timeout_sec": 15,
+      "tests": "assert longest_palindrome('') == ''\nassert longest_palindrome('a') == 'a'\nassert longest_palindrome('ab') in ('a',)\nassert longest_palindrome('bb') == 'bb'\nassert longest_palindrome('babad') in ('bab', 'aba')\nassert longest_palindrome('cbbd') == 'bb'\nassert longest_palindrome('racecar') == 'racecar'\nassert longest_palindrome('abacdfgdcaba') == 'aba'\nassert longest_palindrome('aaaa') == 'aaaa'\nimport time\nt0 = time.perf_counter()\nbig = ('ab' * 1000)\nassert longest_palindrome(big) in ('a', 'b')\nassert (time.perf_counter() - t0) < 1.0, 'too slow on n=2000'"
+    }
+  }
+}

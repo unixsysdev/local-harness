@@ -1,0 +1,27 @@
+{
+  "raw_input": "Write a Python function `edit_distance(a: str, b: str) -> int` that returns the Levenshtein edit distance between `a` and `b` — the minimum number of single-character insertions, deletions, or substitutions needed to turn `a` into `b`. The function must handle inputs up to 500 characters each in under 2 seconds.",
+  "task_class": "verifiable",
+  "task_type": "coding",
+  "deliverable_type": "code",
+  "success_criteria": [
+    "signature `edit_distance(a: str, b: str) -> int`",
+    "correct on empty inputs (distance = length of other)",
+    "correct on identical inputs (0)",
+    "correct on classical examples",
+    "fast enough on n=500"
+  ],
+  "constraints": [
+    "single Python file",
+    "no external dependencies (no importing Levenshtein)",
+    "no I/O"
+  ],
+  "risk_level": "low",
+  "verifier": {
+    "kind": "tests",
+    "inline": {
+      "entrypoint": "edit_distance",
+      "timeout_sec": 15,
+      "tests": "assert edit_distance('', '') == 0\nassert edit_distance('abc', 'abc') == 0\nassert edit_distance('', 'abc') == 3\nassert edit_distance('abc', '') == 3\nassert edit_distance('kitten', 'sitting') == 3\nassert edit_distance('sunday', 'saturday') == 3\nassert edit_distance('horse', 'ros') == 3\nassert edit_distance('intention', 'execution') == 5\nassert edit_distance('a', 'b') == 1\nassert edit_distance('abc', 'yabc') == 1\nassert edit_distance('abcdef', 'azced') == 3\nimport time\nimport random\nrandom.seed(42)\nalpha = 'abcdefg'\na = ''.join(random.choice(alpha) for _ in range(500))\nb = ''.join(random.choice(alpha) for _ in range(500))\nt0 = time.perf_counter()\nd = edit_distance(a, b)\nassert isinstance(d, int) and 0 <= d <= 500\nassert (time.perf_counter() - t0) < 2.0, 'too slow at n=500'\n"
+    }
+  }
+}
